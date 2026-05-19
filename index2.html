@@ -92,53 +92,56 @@
       scroll-snap-align: center;
     }
 
-    .carousel-prev,
-    .carousel-next {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      z-index: 30;
+.carousel-prev,
+.carousel-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 30;
 
-      width: 42px;
-      height: 42px;
+  width: 54px;
+  height: 54px;
 
-      border-radius: 9999px;
+  border-radius: 9999px;
 
-      background: rgba(11,22,48,0.78);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+  background: linear-gradient(
+    135deg,
+    #FF6B6B 0%,
+    #8A5CFF 100%
+  );
 
-      border: 1px solid rgba(255,255,255,0.15);
+  color: white;
 
-      display: flex;
-      align-items: center;
-      justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-      cursor: pointer;
+  cursor: pointer;
 
-      box-shadow: 0 10px 25px rgba(0,0,0,.24);
+  box-shadow:
+    0 10px 30px rgba(138,92,255,.35),
+    0 6px 18px rgba(255,107,107,.25);
 
-      font-size: 28px;
-      line-height: 1;
+  font-size: 34px;
+  font-weight: 300;
+  line-height: 1;
 
-      transition: all 0.3s ease;
-    }
+  transition: all 0.3s ease;
+}
 
-    .carousel-prev {
-      left: 8px;
-      color: #FF6B6B;
-    }
+.carousel-prev {
+  left: 10px;
+}
 
-    .carousel-next {
-      right: 8px;
-      color: #8A5CFF;
-    }
+.carousel-next {
+  right: 10px;
+}
 
-    .carousel-prev:hover,
-    .carousel-next:hover {
-      transform: translateY(-50%) scale(1.08);
-      background: rgba(11,22,48,0.95);
-    }
+.carousel-prev:hover,
+.carousel-next:hover {
+  transform: translateY(-50%) scale(1.08);
+  filter: brightness(1.08);
+}
 
     @media (min-width: 640px) {
       .mobile-card {
