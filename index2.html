@@ -26,6 +26,9 @@
 
   <style>
     html { scroll-behavior: smooth; }
+
+    body { overflow-x: hidden; }
+
     .nav-scrolled {
       background: rgba(11, 22, 48, 0.88);
       backdrop-filter: blur(18px);
@@ -33,33 +36,99 @@
       box-shadow: 0 12px 35px rgba(0, 0, 0, 0.28);
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
-    .mobile-menu-open { max-height: 520px; opacity: 1; pointer-events: auto; }
-    .mobile-menu-closed { max-height: 0; opacity: 0; pointer-events: none; }
 
-    .mobile-scroll {
+    .mobile-menu-open {
+      max-height: 560px;
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .mobile-menu-closed {
+      max-height: 0;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    /* MARQUEE / AUTO CAROUSEL */
+    .marquee {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+      mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+    }
+
+    .marquee-track {
       display: flex;
       gap: 1rem;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      padding-bottom: 1rem;
-      -webkit-overflow-scrolling: touch;
+      width: max-content;
+      animation: marquee-left 32s linear infinite;
+      will-change: transform;
     }
-    .mobile-scroll::-webkit-scrollbar { height: 6px; }
-    .mobile-scroll::-webkit-scrollbar-thumb {
-      background: rgba(138, 92, 255, .35);
-      border-radius: 999px;
+
+    .marquee:hover .marquee-track {
+      animation-play-state: paused;
     }
-    .mobile-card {
-      min-width: 82%;
-      scroll-snap-align: start;
+
+    .marquee-card {
+      flex: 0 0 84vw;
+      max-width: 84vw;
     }
-    @media (min-width: 1024px) {
-      .mobile-scroll {
-        display: grid;
-        overflow: visible;
-        padding-bottom: 0;
+
+    @media (min-width: 640px) {
+      .marquee-card {
+        flex-basis: 46vw;
+        max-width: 46vw;
       }
-      .mobile-card { min-width: 0; }
+    }
+
+    @media (min-width: 1024px) {
+      .marquee-track {
+        display: grid;
+        width: auto;
+        animation: none;
+      }
+
+      .marquee-card {
+        flex: initial;
+        max-width: none;
+      }
+
+      .marquee .duplicate {
+        display: none;
+      }
+
+      .marquee {
+        -webkit-mask-image: none;
+        mask-image: none;
+        overflow: visible;
+      }
+    }
+
+    @keyframes marquee-left {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* FAITH MODAL */
+    .faith-modal-open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .faith-modal-open .faith-modal-panel {
+      transform: translateY(0) scale(1);
+      opacity: 1;
+    }
+
+    .faith-modal-closed {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .faith-modal-closed .faith-modal-panel {
+      transform: translateY(24px) scale(.98);
+      opacity: 0;
     }
   </style>
 </head>
@@ -79,11 +148,13 @@
           <img src="imagenes/ccr_logo_sqr.png" alt="CCR" class="h-12 w-12 rounded-xl shadow-lg" />
         </a>
 
-        <nav class="hidden lg:flex items-center gap-8 text-sm font-semibold tracking-wide">
+        <nav class="hidden lg:flex items-center gap-7 text-sm font-semibold tracking-wide">
           <a href="#inicio" class="hover:text-[#FF6B6B] transition-colors">Inicio</a>
           <a href="#nosotros" class="hover:text-[#FF6B6B] transition-colors">Nosotros</a>
           <a href="#pastor" class="hover:text-[#FF6B6B] transition-colors">Pastor</a>
+          <button type="button" data-open-faith class="hover:text-[#FF6B6B] transition-colors">Declaración de Fe</button>
           <a href="#reuniones" class="hover:text-[#FF6B6B] transition-colors">Reuniones</a>
+          <a href="#predicas" class="hover:text-[#FF6B6B] transition-colors">Prédicas</a>
           <a href="#oracion" class="hover:text-[#FF6B6B] transition-colors">Oración</a>
           <a href="#contacto" class="hover:text-[#FF6B6B] transition-colors">Contacto</a>
         </nav>
@@ -109,13 +180,89 @@
         <a href="#inicio" class="mobile-link block hover:text-[#FF6B6B] transition">Inicio</a>
         <a href="#nosotros" class="mobile-link block hover:text-[#FF6B6B] transition">Nosotros</a>
         <a href="#pastor" class="mobile-link block hover:text-[#FF6B6B] transition">Pastor</a>
+        <button type="button" data-open-faith class="mobile-link block text-left w-full hover:text-[#FF6B6B] transition">Declaración de Fe</button>
         <a href="#reuniones" class="mobile-link block hover:text-[#FF6B6B] transition">Reuniones</a>
+        <a href="#predicas" class="mobile-link block hover:text-[#FF6B6B] transition">Prédicas</a>
         <a href="#oracion" class="mobile-link block hover:text-[#FF6B6B] transition">Oración</a>
         <a href="#contacto" class="mobile-link block hover:text-[#FF6B6B] transition">Contacto</a>
         <a href="#visitanos" class="mobile-link block text-center mt-6 px-6 py-3 rounded-full font-bold bg-gradient-to-r from-[#FF6B6B] to-[#8A5CFF] shadow-lg">VISÍTANOS</a>
       </nav>
     </div>
   </header>
+
+  <!-- DECLARACIÓN DE FE MODAL -->
+  <div id="faithModal" class="faith-modal-closed fixed inset-0 z-[100] bg-[#0B1630]/80 backdrop-blur-xl transition-all duration-300">
+    <div class="min-h-screen px-5 py-8 flex items-center justify-center">
+      <div class="faith-modal-panel relative w-full max-w-4xl max-h-[86vh] overflow-y-auto bg-[#FAF8F5] text-[#0B1630] rounded-[2rem] shadow-2xl transition-all duration-300">
+
+        <button
+          type="button"
+          id="closeFaithModal"
+          aria-label="Cerrar declaración de fe"
+          class="sticky top-4 ml-auto mr-4 mt-4 z-10 w-11 h-11 rounded-full bg-[#0B1630] text-white flex items-center justify-center hover:scale-105 transition"
+        >
+          ✕
+        </button>
+
+        <div class="px-7 pb-10 lg:px-14 lg:pb-14">
+          <p class="uppercase tracking-[.55em] lg:tracking-[1em] text-sm lg:text-xl font-bold text-[#8A5CFF] mb-5">
+            Lo Que Creemos
+          </p>
+
+          <h2 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[0.95] tracking-tight">
+            Nuestra fe está centrada en Jesucristo y fundamentada en la Palabra de Dios.
+          </h2>
+
+          <p class="mt-7 text-base lg:text-lg text-[#0B1630]/75 leading-relaxed">
+            Estas verdades guían nuestra enseñanza, nuestra adoración y nuestra vida como comunidad de fe.
+          </p>
+
+          <div class="mt-10 grid gap-4">
+            <div class="bg-white rounded-3xl p-6 border border-[#0B1630]/5 shadow-sm">
+              <h3 class="text-2xl font-extrabold">La Biblia</h3>
+              <p class="mt-3 text-[#0B1630]/70 leading-relaxed">Creemos que la Biblia es la Palabra inspirada de Dios, verdadera, confiable y autoridad suprema para la vida y la fe cristiana.</p>
+            </div>
+
+            <div class="bg-white rounded-3xl p-6 border border-[#0B1630]/5 shadow-sm">
+              <h3 class="text-2xl font-extrabold">Dios</h3>
+              <p class="mt-3 text-[#0B1630]/70 leading-relaxed">Creemos en un solo Dios eterno, creador de todas las cosas, que existe en tres personas: Padre, Hijo y Espíritu Santo.</p>
+            </div>
+
+            <div class="bg-white rounded-3xl p-6 border border-[#0B1630]/5 shadow-sm">
+              <h3 class="text-2xl font-extrabold">Jesucristo</h3>
+              <p class="mt-3 text-[#0B1630]/70 leading-relaxed">Creemos que Jesucristo es el Hijo de Dios, vivió sin pecado, murió en la cruz por nuestros pecados y resucitó victoriosamente al tercer día.</p>
+            </div>
+
+            <div class="bg-white rounded-3xl p-6 border border-[#0B1630]/5 shadow-sm">
+              <h3 class="text-2xl font-extrabold">El Espíritu Santo</h3>
+              <p class="mt-3 text-[#0B1630]/70 leading-relaxed">Creemos que el Espíritu Santo habita en cada creyente, guiando, fortaleciendo y transformando nuestras vidas para reflejar a Cristo.</p>
+            </div>
+
+            <div class="bg-white rounded-3xl p-6 border border-[#0B1630]/5 shadow-sm">
+              <h3 class="text-2xl font-extrabold">Salvación</h3>
+              <p class="mt-3 text-[#0B1630]/70 leading-relaxed">Creemos que la salvación es un regalo de la gracia de Dios, recibido por medio de la fe en Jesucristo, no por obras humanas.</p>
+            </div>
+
+            <div class="bg-white rounded-3xl p-6 border border-[#0B1630]/5 shadow-sm">
+              <h3 class="text-2xl font-extrabold">La Iglesia</h3>
+              <p class="mt-3 text-[#0B1630]/70 leading-relaxed">Creemos que la Iglesia es el cuerpo de Cristo, llamado a adorar a Dios, crecer espiritualmente, servir y compartir el evangelio.</p>
+            </div>
+
+            <div class="bg-white rounded-3xl p-6 border border-[#0B1630]/5 shadow-sm">
+              <h3 class="text-2xl font-extrabold">Bautismo y Santa Cena</h3>
+              <p class="mt-3 text-[#0B1630]/70 leading-relaxed">Creemos en el bautismo como expresión pública de fe y en la Santa Cena como recordatorio del sacrificio de Jesús.</p>
+            </div>
+
+            <div class="bg-white rounded-3xl p-6 border border-[#0B1630]/5 shadow-sm">
+              <h3 class="text-2xl font-extrabold">Esperanza Eterna</h3>
+              <p class="mt-3 text-[#0B1630]/70 leading-relaxed">Creemos en la segunda venida de Jesucristo y en la promesa de vida eterna para todos los que han puesto su fe en Él.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
 
   <!-- HERO -->
   <section id="inicio" class="relative min-h-screen flex items-center overflow-hidden">
@@ -136,7 +283,7 @@
 
         <div class="mt-9 flex flex-col sm:flex-row gap-4">
           <a href="#visitanos" class="inline-flex items-center justify-center px-7 py-4 rounded-full font-semibold text-white bg-gradient-to-r from-[#FF6B6B] to-[#8A5CFF] hover:scale-105 transition-all duration-300 shadow-2xl shadow-black/30">PLANIFICA TU VISITA</a>
-          <a href="#nosotros" class="inline-flex items-center justify-center px-7 py-4 rounded-full border border-white/30 text-white hover:bg-white/10 backdrop-blur-md transition-all duration-300">CONOCE MÁS</a>
+          <button type="button" data-open-faith class="inline-flex items-center justify-center px-7 py-4 rounded-full border border-white/30 text-white hover:bg-white/10 backdrop-blur-md transition-all duration-300">LO QUE CREEMOS</button>
         </div>
       </div>
     </div>
@@ -181,14 +328,14 @@
             Somos una iglesia enfocada en compartir el amor de Jesucristo, acompañar a las familias y caminar juntos en fe, esperanza y restauración.
           </p>
 
-          <div class="mt-10 mobile-scroll lg:grid-cols-3">
-            <div class="mobile-card bg-white rounded-3xl p-5 shadow-sm border border-[#0B1630]/5">
+          <div class="mt-10 grid sm:grid-cols-3 gap-4">
+            <div class="bg-white rounded-3xl p-5 shadow-sm border border-[#0B1630]/5">
               <div class="text-2xl mb-3">✝</div><h3 class="font-bold mb-2">Nuestra Identidad</h3><p class="text-sm text-[#0B1630]/65">Cristo es el centro de todo.</p>
             </div>
-            <div class="mobile-card bg-white rounded-3xl p-5 shadow-sm border border-[#0B1630]/5">
+            <div class="bg-white rounded-3xl p-5 shadow-sm border border-[#0B1630]/5">
               <div class="text-2xl mb-3">♡</div><h3 class="font-bold mb-2">Nuestra Comunidad</h3><p class="text-sm text-[#0B1630]/65">Caminamos juntos en amor.</p>
             </div>
-            <div class="mobile-card bg-white rounded-3xl p-5 shadow-sm border border-[#0B1630]/5">
+            <div class="bg-white rounded-3xl p-5 shadow-sm border border-[#0B1630]/5">
               <div class="text-2xl mb-3">✦</div><h3 class="font-bold mb-2">Nuestra Esperanza</h3><p class="text-sm text-[#0B1630]/65">Creemos en vidas restauradas.</p>
             </div>
           </div>
@@ -198,7 +345,15 @@
           <div class="absolute -top-8 -left-8 w-40 h-40 bg-[#FF6B6B]/20 rounded-full blur-3xl"></div>
           <div class="absolute -bottom-8 -right-8 w-52 h-52 bg-[#8A5CFF]/20 rounded-full blur-3xl"></div>
 
-
+          <div class="relative rounded-[2rem] overflow-hidden shadow-2xl">
+            <img src="imagenes/nuevo.jpg" alt="Comunidad Cristiana de Restauración" class="w-full h-[390px] lg:h-[520px] object-cover" />
+            <div class="absolute inset-0 bg-gradient-to-t from-[#0B1630]/80 via-[#0B1630]/15 to-transparent"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-7">
+              <p class="text-white/80 text-sm uppercase tracking-[0.25em] mb-3">CCR</p>
+              <h3 class="text-white text-2xl lg:text-3xl font-bold leading-tight">Un lugar para pertenecer, crecer y caminar con Dios.</h3>
+            </div>
+          </div>
+        </div>
 
       </div>
     </div>
@@ -214,7 +369,7 @@
           <div class="absolute -bottom-8 -right-8 w-52 h-52 bg-[#8A5CFF]/20 rounded-full blur-3xl"></div>
 
           <div class="relative rounded-[2rem] overflow-hidden shadow-2xl">
-            <img src="imagenes/pastorcarlossanabria.png" alt="Pastor Carlos Sanabria" class="w-full h-[230px] lg:h-[310px] object-cover object-center" />
+            <img src="imagenes/pastorcarlossanabria.png" alt="Pastor Carlos Sanabria" class="w-full h-[330px] lg:h-[620px] object-cover object-center" />
           </div>
         </div>
 
@@ -278,7 +433,7 @@
     </div>
   </section>
 
-  <!-- REUNIONES -->
+  <!-- REUNIONES MARQUEE -->
   <section id="reuniones" class="bg-white text-[#0B1630] py-20 lg:py-32 px-6 overflow-hidden">
     <div class="max-w-7xl mx-auto">
 
@@ -288,54 +443,100 @@
           Reuniones Semanales
         </h2>
         <p class="mt-7 max-w-3xl text-base lg:text-lg text-[#0B1630]/75 leading-relaxed">
-          Compartimos espacios de oración, discipulado, enseñanza bíblica y fortalecimiento familiar para todas las edades.
+          Desliza para ver nuestras reuniones. En computadora se muestran como una agenda completa.
         </p>
       </div>
 
-      <div class="mobile-scroll lg:grid-cols-3 lg:gap-8">
+      <div class="marquee">
+        <div class="marquee-track lg:grid-cols-3 lg:gap-8">
 
-        <div class="mobile-card bg-[#FAF8F5] rounded-[2rem] p-6 lg:p-10 border border-[#0B1630]/5 shadow-sm">
-          <h3 class="text-3xl font-extrabold mb-6">Lunes</h3>
-          <div class="space-y-5">
-            <div><h4 class="text-lg font-bold">Oración de Varones</h4><p class="text-[#FF6B6B] mt-1 font-semibold">07:00</p></div>
-            <div><h4 class="text-lg font-bold">Reunión de Varones</h4><p class="text-[#FF6B6B] mt-1 font-semibold">20:00 – 22:00</p></div>
+          <!-- Original cards -->
+          <div class="marquee-card bg-[#FAF8F5] rounded-[2rem] p-6 lg:p-10 border border-[#0B1630]/5 shadow-sm">
+            <h3 class="text-3xl font-extrabold mb-6">Lunes</h3>
+            <div class="space-y-5">
+              <div><h4 class="text-lg font-bold">Oración de Varones</h4><p class="text-[#FF6B6B] mt-1 font-semibold">07:00</p></div>
+              <div><h4 class="text-lg font-bold">Reunión de Varones</h4><p class="text-[#FF6B6B] mt-1 font-semibold">20:00 – 22:00</p></div>
+            </div>
           </div>
-        </div>
 
-        <div class="mobile-card bg-[#FAF8F5] rounded-[2rem] p-6 lg:p-10 border border-[#0B1630]/5 shadow-sm">
-          <h3 class="text-3xl font-extrabold mb-6">Martes</h3>
-          <div class="space-y-5">
-            <div><h4 class="text-lg font-bold">Oración de Mujeres</h4><p class="text-[#FF6B6B] mt-1 font-semibold">07:00</p></div>
-            <div><h4 class="text-lg font-bold">Reunión de Mujeres</h4><p class="text-[#FF6B6B] mt-1 font-semibold">17:00 – 19:00</p></div>
+          <div class="marquee-card bg-[#FAF8F5] rounded-[2rem] p-6 lg:p-10 border border-[#0B1630]/5 shadow-sm">
+            <h3 class="text-3xl font-extrabold mb-6">Martes</h3>
+            <div class="space-y-5">
+              <div><h4 class="text-lg font-bold">Oración de Mujeres</h4><p class="text-[#FF6B6B] mt-1 font-semibold">07:00</p></div>
+              <div><h4 class="text-lg font-bold">Reunión de Mujeres</h4><p class="text-[#FF6B6B] mt-1 font-semibold">17:00 – 19:00</p></div>
+            </div>
           </div>
-        </div>
 
-        <div class="mobile-card bg-[#FAF8F5] rounded-[2rem] p-6 lg:p-10 border border-[#0B1630]/5 shadow-sm">
-          <h3 class="text-3xl font-extrabold mb-6">Miércoles</h3>
-          <h4 class="text-lg font-bold">Estudio Bíblico</h4><p class="text-[#FF6B6B] mt-1 font-semibold">20:00 – 21:00</p>
-        </div>
-
-        <div class="mobile-card bg-[#FAF8F5] rounded-[2rem] p-6 lg:p-10 border border-[#0B1630]/5 shadow-sm">
-          <h3 class="text-3xl font-extrabold mb-6">Jueves</h3>
-          <h4 class="text-lg font-bold">Discipulado</h4><p class="text-[#FF6B6B] mt-1 font-semibold">17:30 – 21:00</p>
-        </div>
-
-        <div class="mobile-card bg-[#FAF8F5] rounded-[2rem] p-6 lg:p-10 border border-[#0B1630]/5 shadow-sm">
-          <h3 class="text-3xl font-extrabold mb-6">Viernes</h3>
-          <div class="space-y-5">
-            <div><h4 class="text-lg font-bold">Reunión de Familias</h4><p class="text-[#FF6B6B] mt-1 font-semibold">20:00 – 22:00</p></div>
-            <div><h4 class="text-lg font-bold">Vigilia de Oración</h4><p class="text-[#FF6B6B] mt-1 font-semibold">20:00 – 22:00</p><p class="text-sm text-[#0B1630]/55 mt-1 italic">Último viernes de cada mes</p></div>
+          <div class="marquee-card bg-[#FAF8F5] rounded-[2rem] p-6 lg:p-10 border border-[#0B1630]/5 shadow-sm">
+            <h3 class="text-3xl font-extrabold mb-6">Miércoles</h3>
+            <h4 class="text-lg font-bold">Estudio Bíblico</h4><p class="text-[#FF6B6B] mt-1 font-semibold">20:00 – 21:00</p>
           </div>
-        </div>
 
-        <div class="mobile-card bg-[#FAF8F5] rounded-[2rem] p-6 lg:p-10 border border-[#0B1630]/5 shadow-sm">
-          <h3 class="text-3xl font-extrabold mb-6">Sábado</h3>
-          <div class="space-y-5">
-            <div><h4 class="text-lg font-bold">Jóvenes — Koinonía</h4><p class="text-[#FF6B6B] mt-1 font-semibold">18:00 – 20:00</p></div>
-            <div><h4 class="text-lg font-bold">Alabanza</h4><p class="text-[#FF6B6B] mt-1 font-semibold">16:00 – 18:00</p></div>
+          <div class="marquee-card bg-[#FAF8F5] rounded-[2rem] p-6 lg:p-10 border border-[#0B1630]/5 shadow-sm">
+            <h3 class="text-3xl font-extrabold mb-6">Jueves</h3>
+            <h4 class="text-lg font-bold">Discipulado</h4><p class="text-[#FF6B6B] mt-1 font-semibold">17:30 – 21:00</p>
           </div>
-        </div>
 
+          <div class="marquee-card bg-[#FAF8F5] rounded-[2rem] p-6 lg:p-10 border border-[#0B1630]/5 shadow-sm">
+            <h3 class="text-3xl font-extrabold mb-6">Viernes</h3>
+            <div class="space-y-5">
+              <div><h4 class="text-lg font-bold">Reunión de Familias</h4><p class="text-[#FF6B6B] mt-1 font-semibold">20:00 – 22:00</p></div>
+              <div><h4 class="text-lg font-bold">Vigilia de Oración</h4><p class="text-[#FF6B6B] mt-1 font-semibold">20:00 – 22:00</p><p class="text-sm text-[#0B1630]/55 mt-1 italic">Último viernes de cada mes</p></div>
+            </div>
+          </div>
+
+          <div class="marquee-card bg-[#FAF8F5] rounded-[2rem] p-6 lg:p-10 border border-[#0B1630]/5 shadow-sm">
+            <h3 class="text-3xl font-extrabold mb-6">Sábado</h3>
+            <div class="space-y-5">
+              <div><h4 class="text-lg font-bold">Jóvenes — Koinonía</h4><p class="text-[#FF6B6B] mt-1 font-semibold">18:00 – 20:00</p></div>
+              <div><h4 class="text-lg font-bold">Alabanza</h4><p class="text-[#FF6B6B] mt-1 font-semibold">16:00 – 18:00</p></div>
+            </div>
+          </div>
+
+          <!-- Duplicate cards for infinite marquee mobile -->
+          <div class="duplicate marquee-card bg-[#FAF8F5] rounded-[2rem] p-6 border border-[#0B1630]/5 shadow-sm">
+            <h3 class="text-3xl font-extrabold mb-6">Lunes</h3>
+            <div class="space-y-5">
+              <div><h4 class="text-lg font-bold">Oración de Varones</h4><p class="text-[#FF6B6B] mt-1 font-semibold">07:00</p></div>
+              <div><h4 class="text-lg font-bold">Reunión de Varones</h4><p class="text-[#FF6B6B] mt-1 font-semibold">20:00 – 22:00</p></div>
+            </div>
+          </div>
+
+          <div class="duplicate marquee-card bg-[#FAF8F5] rounded-[2rem] p-6 border border-[#0B1630]/5 shadow-sm">
+            <h3 class="text-3xl font-extrabold mb-6">Martes</h3>
+            <div class="space-y-5">
+              <div><h4 class="text-lg font-bold">Oración de Mujeres</h4><p class="text-[#FF6B6B] mt-1 font-semibold">07:00</p></div>
+              <div><h4 class="text-lg font-bold">Reunión de Mujeres</h4><p class="text-[#FF6B6B] mt-1 font-semibold">17:00 – 19:00</p></div>
+            </div>
+          </div>
+
+          <div class="duplicate marquee-card bg-[#FAF8F5] rounded-[2rem] p-6 border border-[#0B1630]/5 shadow-sm">
+            <h3 class="text-3xl font-extrabold mb-6">Miércoles</h3>
+            <h4 class="text-lg font-bold">Estudio Bíblico</h4><p class="text-[#FF6B6B] mt-1 font-semibold">20:00 – 21:00</p>
+          </div>
+
+          <div class="duplicate marquee-card bg-[#FAF8F5] rounded-[2rem] p-6 border border-[#0B1630]/5 shadow-sm">
+            <h3 class="text-3xl font-extrabold mb-6">Jueves</h3>
+            <h4 class="text-lg font-bold">Discipulado</h4><p class="text-[#FF6B6B] mt-1 font-semibold">17:30 – 21:00</p>
+          </div>
+
+          <div class="duplicate marquee-card bg-[#FAF8F5] rounded-[2rem] p-6 border border-[#0B1630]/5 shadow-sm">
+            <h3 class="text-3xl font-extrabold mb-6">Viernes</h3>
+            <div class="space-y-5">
+              <div><h4 class="text-lg font-bold">Reunión de Familias</h4><p class="text-[#FF6B6B] mt-1 font-semibold">20:00 – 22:00</p></div>
+              <div><h4 class="text-lg font-bold">Vigilia de Oración</h4><p class="text-[#FF6B6B] mt-1 font-semibold">20:00 – 22:00</p><p class="text-sm text-[#0B1630]/55 mt-1 italic">Último viernes de cada mes</p></div>
+            </div>
+          </div>
+
+          <div class="duplicate marquee-card bg-[#FAF8F5] rounded-[2rem] p-6 border border-[#0B1630]/5 shadow-sm">
+            <h3 class="text-3xl font-extrabold mb-6">Sábado</h3>
+            <div class="space-y-5">
+              <div><h4 class="text-lg font-bold">Jóvenes — Koinonía</h4><p class="text-[#FF6B6B] mt-1 font-semibold">18:00 – 20:00</p></div>
+              <div><h4 class="text-lg font-bold">Alabanza</h4><p class="text-[#FF6B6B] mt-1 font-semibold">16:00 – 18:00</p></div>
+            </div>
+          </div>
+
+        </div>
       </div>
 
       <div class="mt-10 relative overflow-hidden bg-gradient-to-r from-[#FF6B6B] to-[#8A5CFF] rounded-[2rem] p-8 lg:p-14 text-center text-white shadow-2xl">
@@ -361,38 +562,145 @@
     </div>
   </section>
 
+  <!-- PRÉDICAS MARQUEE -->
+  <section id="predicas" class="bg-[#0B1630] text-white py-20 lg:py-32 px-6 overflow-hidden">
+    <div class="max-w-7xl mx-auto">
+
+      <div class="max-w-5xl mb-14 lg:mb-20">
+        <p class="uppercase tracking-[.55em] lg:tracking-[1em] text-sm lg:text-xl font-bold text-[#C084FC] mb-5">Prédicas</p>
+
+        <h2 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[0.95] lg:leading-[0.92] tracking-tight max-w-5xl">
+          Mensajes que inspiran fe, esperanza y una vida centrada en Cristo.
+        </h2>
+
+        <p class="mt-7 text-base lg:text-lg text-white/75 leading-relaxed max-w-3xl">
+          Mira algunas de nuestras prédicas recientes. En móvil avanzan automáticamente tipo marquee.
+        </p>
+      </div>
+
+      <div class="marquee">
+        <div class="marquee-track lg:grid-cols-3 lg:gap-8">
+
+          <!-- Video 1 -->
+          <a href="https://www.youtube.com/watch?v=OxxLmWZ9tZ4" target="_blank" class="marquee-card group relative rounded-[2rem] overflow-hidden bg-white/5 border border-white/10 backdrop-blur-sm shadow-xl">
+            <div class="relative overflow-hidden">
+              <img src="https://img.youtube.com/vi/OxxLmWZ9tZ4/hqdefault.jpg" alt="Prédica CCR" class="w-full h-[235px] lg:h-[260px] object-cover group-hover:scale-105 transition-transform duration-700" />
+              <div class="absolute inset-0 bg-gradient-to-t from-[#0B1630] via-[#0B1630]/20 to-transparent"></div>
+              <div class="absolute inset-0 flex items-center justify-center">
+                <div class="w-20 h-20 rounded-full bg-white/15 backdrop-blur-md border border-white/20 flex items-center justify-center text-white text-3xl group-hover:scale-110 transition-transform duration-300">▶</div>
+              </div>
+            </div>
+            <div class="p-7">
+              <p class="uppercase tracking-[0.4em] text-xs font-bold text-[#C084FC] mb-4">Predicación</p>
+              <h3 class="text-3xl font-extrabold leading-tight tracking-tight">Mensaje CCR</h3>
+              <p class="mt-4 text-white/70 text-base leading-relaxed">Mira este mensaje y fortalece tu fe a través de la Palabra de Dios.</p>
+            </div>
+          </a>
+
+          <!-- Video 2 -->
+          <a href="https://www.youtube.com/watch?v=k-snnzX0uCA" target="_blank" class="marquee-card group relative rounded-[2rem] overflow-hidden bg-white/5 border border-white/10 backdrop-blur-sm shadow-xl">
+            <div class="relative overflow-hidden">
+              <img src="https://img.youtube.com/vi/k-snnzX0uCA/hqdefault.jpg" alt="Prédica CCR" class="w-full h-[235px] lg:h-[260px] object-cover group-hover:scale-105 transition-transform duration-700" />
+              <div class="absolute inset-0 bg-gradient-to-t from-[#0B1630] via-[#0B1630]/20 to-transparent"></div>
+              <div class="absolute inset-0 flex items-center justify-center">
+                <div class="w-20 h-20 rounded-full bg-white/15 backdrop-blur-md border border-white/20 flex items-center justify-center text-white text-3xl group-hover:scale-110 transition-transform duration-300">▶</div>
+              </div>
+            </div>
+            <div class="p-7">
+              <p class="uppercase tracking-[0.4em] text-xs font-bold text-[#C084FC] mb-4">Enseñanza</p>
+              <h3 class="text-3xl font-extrabold leading-tight tracking-tight">Comunidad Cristiana de Restauración</h3>
+              <p class="mt-4 text-white/70 text-base leading-relaxed">Continúa creciendo espiritualmente junto a nuestra comunidad.</p>
+            </div>
+          </a>
+
+          <!-- Video 3 -->
+          <a href="https://www.youtube.com/watch?v=Mj43mvE8G7Y" target="_blank" class="marquee-card group relative rounded-[2rem] overflow-hidden bg-white/5 border border-white/10 backdrop-blur-sm shadow-xl">
+            <div class="relative overflow-hidden">
+              <img src="https://img.youtube.com/vi/Mj43mvE8G7Y/hqdefault.jpg" alt="Prédica CCR" class="w-full h-[235px] lg:h-[260px] object-cover group-hover:scale-105 transition-transform duration-700" />
+              <div class="absolute inset-0 bg-gradient-to-t from-[#0B1630] via-[#0B1630]/20 to-transparent"></div>
+              <div class="absolute inset-0 flex items-center justify-center">
+                <div class="w-20 h-20 rounded-full bg-white/15 backdrop-blur-md border border-white/20 flex items-center justify-center text-white text-3xl group-hover:scale-110 transition-transform duration-300">▶</div>
+              </div>
+            </div>
+            <div class="p-7">
+              <p class="uppercase tracking-[0.4em] text-xs font-bold text-[#C084FC] mb-4">Mensaje Especial</p>
+              <h3 class="text-3xl font-extrabold leading-tight tracking-tight">Esperanza y Restauración</h3>
+              <p class="mt-4 text-white/70 text-base leading-relaxed">Un mensaje de fe, restauración y esperanza para tu caminar con Dios.</p>
+            </div>
+          </a>
+
+          <!-- Duplicate videos for infinite marquee mobile -->
+          <a href="https://www.youtube.com/watch?v=OxxLmWZ9tZ4" target="_blank" class="duplicate marquee-card group relative rounded-[2rem] overflow-hidden bg-white/5 border border-white/10 backdrop-blur-sm shadow-xl">
+            <div class="relative overflow-hidden">
+              <img src="https://img.youtube.com/vi/OxxLmWZ9tZ4/hqdefault.jpg" alt="Prédica CCR" class="w-full h-[235px] object-cover" />
+              <div class="absolute inset-0 bg-gradient-to-t from-[#0B1630] via-[#0B1630]/20 to-transparent"></div>
+              <div class="absolute inset-0 flex items-center justify-center"><div class="w-20 h-20 rounded-full bg-white/15 backdrop-blur-md border border-white/20 flex items-center justify-center text-white text-3xl">▶</div></div>
+            </div>
+            <div class="p-7"><p class="uppercase tracking-[0.4em] text-xs font-bold text-[#C084FC] mb-4">Predicación</p><h3 class="text-3xl font-extrabold leading-tight">Mensaje CCR</h3><p class="mt-4 text-white/70 text-base">Mira este mensaje y fortalece tu fe.</p></div>
+          </a>
+
+          <a href="https://www.youtube.com/watch?v=k-snnzX0uCA" target="_blank" class="duplicate marquee-card group relative rounded-[2rem] overflow-hidden bg-white/5 border border-white/10 backdrop-blur-sm shadow-xl">
+            <div class="relative overflow-hidden">
+              <img src="https://img.youtube.com/vi/k-snnzX0uCA/hqdefault.jpg" alt="Prédica CCR" class="w-full h-[235px] object-cover" />
+              <div class="absolute inset-0 bg-gradient-to-t from-[#0B1630] via-[#0B1630]/20 to-transparent"></div>
+              <div class="absolute inset-0 flex items-center justify-center"><div class="w-20 h-20 rounded-full bg-white/15 backdrop-blur-md border border-white/20 flex items-center justify-center text-white text-3xl">▶</div></div>
+            </div>
+            <div class="p-7"><p class="uppercase tracking-[0.4em] text-xs font-bold text-[#C084FC] mb-4">Enseñanza</p><h3 class="text-3xl font-extrabold leading-tight">Comunidad CCR</h3><p class="mt-4 text-white/70 text-base">Crece espiritualmente junto a nuestra comunidad.</p></div>
+          </a>
+
+          <a href="https://www.youtube.com/watch?v=Mj43mvE8G7Y" target="_blank" class="duplicate marquee-card group relative rounded-[2rem] overflow-hidden bg-white/5 border border-white/10 backdrop-blur-sm shadow-xl">
+            <div class="relative overflow-hidden">
+              <img src="https://img.youtube.com/vi/Mj43mvE8G7Y/hqdefault.jpg" alt="Prédica CCR" class="w-full h-[235px] object-cover" />
+              <div class="absolute inset-0 bg-gradient-to-t from-[#0B1630] via-[#0B1630]/20 to-transparent"></div>
+              <div class="absolute inset-0 flex items-center justify-center"><div class="w-20 h-20 rounded-full bg-white/15 backdrop-blur-md border border-white/20 flex items-center justify-center text-white text-3xl">▶</div></div>
+            </div>
+            <div class="p-7"><p class="uppercase tracking-[0.4em] text-xs font-bold text-[#C084FC] mb-4">Mensaje Especial</p><h3 class="text-3xl font-extrabold leading-tight">Esperanza y Restauración</h3><p class="mt-4 text-white/70 text-base">Un mensaje de fe y esperanza.</p></div>
+          </a>
+
+        </div>
+      </div>
+
+      <div class="mt-14 text-center">
+        <a href="https://www.youtube.com/@comunidadcristianaderestau6630" target="_blank" class="inline-flex items-center justify-center px-9 py-4 rounded-full font-bold text-white bg-gradient-to-r from-[#FF6B6B] to-[#8A5CFF] hover:scale-105 transition-all duration-300 shadow-xl">
+          VER CANAL DE YOUTUBE
+        </a>
+      </div>
+
+    </div>
+  </section>
+
   <!-- ORACIÓN -->
-  <section id="oracion" class="bg-[#0B1630] text-white py-20 lg:py-32 px-6 overflow-hidden">
+  <section id="oracion" class="bg-[#FAF8F5] text-[#0B1630] py-20 lg:py-32 px-6 overflow-hidden">
     <div class="max-w-7xl mx-auto">
       <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
 
         <div>
-          <p class="uppercase tracking-[.55em] lg:tracking-[1em] text-sm lg:text-xl font-bold text-[#C084FC] mb-5">Petición de Oración</p>
+          <p class="uppercase tracking-[.55em] lg:tracking-[1em] text-sm lg:text-xl font-bold text-[#8A5CFF] mb-5">Petición de Oración</p>
           <h2 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[0.95] lg:leading-[0.92] tracking-tight max-w-4xl">
             No estás solo. Queremos orar contigo.
           </h2>
-          <p class="mt-7 text-base lg:text-lg text-white/75 leading-relaxed max-w-3xl">
+          <p class="mt-7 text-base lg:text-lg text-[#0B1630]/75 leading-relaxed max-w-3xl">
             Si estás atravesando un momento difícil, necesitas dirección o deseas que oremos por ti, puedes compartir tu petición con nosotros.
           </p>
 
           <div class="mt-10 grid gap-4">
-            <div class="flex items-start gap-4 bg-white/10 rounded-2xl p-5 border border-white/10"><span class="text-[#FF6B6B] text-2xl">01</span><p class="text-white/80">Tu petición será recibida con respeto y cuidado.</p></div>
-            <div class="flex items-start gap-4 bg-white/10 rounded-2xl p-5 border border-white/10"><span class="text-[#FF6B6B] text-2xl">02</span><p class="text-white/80">Nuestro equipo pastoral orará por ti.</p></div>
+            <div class="flex items-start gap-4 bg-white rounded-2xl p-5 border border-[#0B1630]/5"><span class="text-[#FF6B6B] text-2xl">01</span><p class="text-[#0B1630]/75">Tu petición será recibida con respeto y cuidado.</p></div>
+            <div class="flex items-start gap-4 bg-white rounded-2xl p-5 border border-[#0B1630]/5"><span class="text-[#FF6B6B] text-2xl">02</span><p class="text-[#0B1630]/75">Nuestro equipo pastoral orará por ti.</p></div>
           </div>
         </div>
 
-        <div class="relative bg-white rounded-[2rem] p-7 lg:p-12 shadow-2xl text-[#0B1630]">
-          <p class="uppercase tracking-[0.5em] text-xs font-bold text-[#8A5CFF] mb-5">Formulario</p>
+        <div class="relative bg-[#0B1630] rounded-[2rem] p-7 lg:p-12 shadow-2xl text-white">
+          <p class="uppercase tracking-[0.5em] text-xs font-bold text-[#C084FC] mb-5">Formulario</p>
           <h3 class="text-3xl lg:text-4xl font-extrabold leading-tight">Enviar petición por WhatsApp</h3>
 
           <form id="prayerForm" class="mt-8 space-y-5">
             <div>
-              <label class="block text-sm font-bold mb-2">Nombre</label>
-              <input id="prayerName" type="text" placeholder="Tu nombre" class="w-full rounded-2xl border border-[#0B1630]/10 px-5 py-4 outline-none focus:ring-2 focus:ring-[#8A5CFF]" />
+              <label class="block text-sm font-bold mb-2 text-white/85">Nombre</label>
+              <input id="prayerName" type="text" placeholder="Tu nombre" class="w-full rounded-2xl border border-white/10 bg-white/10 px-5 py-4 outline-none focus:ring-2 focus:ring-[#8A5CFF] text-white placeholder:text-white/45" />
             </div>
             <div>
-              <label class="block text-sm font-bold mb-2">Petición de oración</label>
-              <textarea id="prayerMessage" rows="5" placeholder="Escribe tu petición..." class="w-full rounded-2xl border border-[#0B1630]/10 px-5 py-4 outline-none focus:ring-2 focus:ring-[#8A5CFF]"></textarea>
+              <label class="block text-sm font-bold mb-2 text-white/85">Petición de oración</label>
+              <textarea id="prayerMessage" rows="5" placeholder="Escribe tu petición..." class="w-full rounded-2xl border border-white/10 bg-white/10 px-5 py-4 outline-none focus:ring-2 focus:ring-[#8A5CFF] text-white placeholder:text-white/45"></textarea>
             </div>
             <button type="submit" class="w-full inline-flex items-center justify-center px-8 py-4 rounded-full font-semibold text-white bg-gradient-to-r from-[#FF6B6B] to-[#8A5CFF] hover:scale-105 transition-all duration-300 shadow-xl">
               ENVIAR PETICIÓN
@@ -491,7 +799,9 @@
             <a href="#inicio" class="block hover:text-white transition">Inicio</a>
             <a href="#nosotros" class="block hover:text-white transition">Quiénes Somos</a>
             <a href="#pastor" class="block hover:text-white transition">Pastor</a>
+            <button type="button" data-open-faith class="block hover:text-white transition text-left">Declaración de Fe</button>
             <a href="#reuniones" class="block hover:text-white transition">Reuniones</a>
+            <a href="#predicas" class="block hover:text-white transition">Prédicas</a>
             <a href="#oracion" class="block hover:text-white transition">Petición de Oración</a>
             <a href="#contacto" class="block hover:text-white transition">Contacto</a>
           </nav>
@@ -566,6 +876,40 @@
       else navbar.classList.remove("nav-scrolled");
     });
 
+    /* Declaración de Fe Modal */
+    const faithModal = document.getElementById("faithModal");
+    const closeFaithModal = document.getElementById("closeFaithModal");
+    const openFaithButtons = document.querySelectorAll("[data-open-faith]");
+
+    function openFaithModal() {
+      faithModal.classList.remove("faith-modal-closed");
+      faithModal.classList.add("faith-modal-open");
+      document.body.style.overflow = "hidden";
+
+      if (menuOpen) toggleMenu();
+    }
+
+    function closeModal() {
+      faithModal.classList.remove("faith-modal-open");
+      faithModal.classList.add("faith-modal-closed");
+      document.body.style.overflow = "";
+    }
+
+    openFaithButtons.forEach(button => {
+      button.addEventListener("click", openFaithModal);
+    });
+
+    closeFaithModal.addEventListener("click", closeModal);
+
+    faithModal.addEventListener("click", function(e) {
+      if (e.target === faithModal) closeModal();
+    });
+
+    document.addEventListener("keydown", function(e) {
+      if (e.key === "Escape") closeModal();
+    });
+
+    /* Petición de oración por WhatsApp */
     const prayerForm = document.getElementById("prayerForm");
     if (prayerForm) {
       prayerForm.addEventListener("submit", function(e) {
