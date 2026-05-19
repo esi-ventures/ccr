@@ -151,6 +151,7 @@
         <nav class="hidden lg:flex items-center gap-7 text-sm font-semibold tracking-wide">
           <a href="#inicio" class="hover:text-[#FF6B6B] transition-colors">Inicio</a>
           <a href="#nosotros" class="hover:text-[#FF6B6B] transition-colors">Nosotros</a>
+          <button id="openFaithModal" type="button" class="hover:text-[#FF6B6B] transition-colors">Declaración de Fe</button>
           <a href="#pastor" class="hover:text-[#FF6B6B] transition-colors">Pastor</a>
           <button type="button" data-open-faith class="hover:text-[#FF6B6B] transition-colors">Declaración de Fe</button>
           <a href="#reuniones" class="hover:text-[#FF6B6B] transition-colors">Reuniones</a>
@@ -179,6 +180,7 @@
       <nav class="px-6 py-6 space-y-5 text-sm font-semibold tracking-wide">
         <a href="#inicio" class="mobile-link block hover:text-[#FF6B6B] transition">Inicio</a>
         <a href="#nosotros" class="mobile-link block hover:text-[#FF6B6B] transition">Nosotros</a>
+        <button id="openFaithModalMobile" type="button" class="mobile-link block text-left w-full hover:text-[#FF6B6B] transition">Declaración de Fe</button>
         <a href="#pastor" class="mobile-link block hover:text-[#FF6B6B] transition">Pastor</a>
         <button type="button" data-open-faith class="mobile-link block text-left w-full hover:text-[#FF6B6B] transition">Declaración de Fe</button>
         <a href="#reuniones" class="mobile-link block hover:text-[#FF6B6B] transition">Reuniones</a>
@@ -341,7 +343,7 @@
           </div>
         </div>
 
-        <div class="relative">
+        <div class="relative hidden lg:block">
           <div class="absolute -top-8 -left-8 w-40 h-40 bg-[#FF6B6B]/20 rounded-full blur-3xl"></div>
           <div class="absolute -bottom-8 -right-8 w-52 h-52 bg-[#8A5CFF]/20 rounded-full blur-3xl"></div>
 
@@ -369,7 +371,7 @@
           <div class="absolute -bottom-8 -right-8 w-52 h-52 bg-[#8A5CFF]/20 rounded-full blur-3xl"></div>
 
           <div class="relative rounded-[2rem] overflow-hidden shadow-2xl">
-            <img src="imagenes/pastorcarlossanabria.png" alt="Pastor Carlos Sanabria" class="w-full h-[330px] lg:h-[620px] object-cover object-center" />
+            <img src="imagenes/pastorcarlossanabria.png" alt="Pastor Carlos Sanabria" class="w-full h-[180px] sm:h-[220px] lg:h-[310px] object-cover object-center" />
           </div>
         </div>
 
@@ -830,6 +832,72 @@
     </div>
   </footer>
 
+
+  <!-- MODAL DECLARACIÓN DE FE -->
+  <div id="faithModal" class="fixed inset-0 z-[100] faith-modal-closed transition-opacity duration-300">
+    <div class="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
+
+    <div class="relative z-10 min-h-screen flex items-center justify-center px-5 py-10">
+      <div class="relative w-full max-w-3xl max-h-[85vh] overflow-y-auto rounded-[2rem] bg-[#FAF8F5] text-[#0B1630] shadow-2xl p-7 lg:p-10">
+
+        <button
+          id="closeFaithModal"
+          type="button"
+          aria-label="Cerrar Declaración de Fe"
+          class="absolute top-5 right-5 w-11 h-11 rounded-full bg-[#0B1630]/10 hover:bg-[#0B1630]/15 flex items-center justify-center text-2xl transition"
+        >
+          ×
+        </button>
+
+        <p class="uppercase tracking-[0.5em] text-xs font-bold text-[#8A5CFF] mb-5">
+          Lo Que Creemos
+        </p>
+
+        <h2 class="text-4xl lg:text-5xl font-extrabold leading-[0.95] tracking-tight pr-10">
+          Nuestra fe está centrada en Jesucristo.
+        </h2>
+
+        <p class="mt-6 text-[#0B1630]/75 leading-relaxed">
+          Estas verdades guían nuestra enseñanza, nuestra adoración y nuestra vida como comunidad de fe.
+        </p>
+
+        <div class="mt-8 space-y-5 text-[#0B1630]/75 leading-relaxed">
+
+          <div>
+            <h3 class="text-xl font-extrabold text-[#0B1630]">La Biblia</h3>
+            <p class="mt-2">Creemos que la Biblia es la Palabra inspirada de Dios, verdadera, confiable y autoridad suprema para la vida cristiana.</p>
+          </div>
+
+          <div>
+            <h3 class="text-xl font-extrabold text-[#0B1630]">Dios</h3>
+            <p class="mt-2">Creemos en un solo Dios eterno, creador de todas las cosas, que existe en tres personas: Padre, Hijo y Espíritu Santo.</p>
+          </div>
+
+          <div>
+            <h3 class="text-xl font-extrabold text-[#0B1630]">Jesucristo</h3>
+            <p class="mt-2">Creemos que Jesucristo es el Hijo de Dios, vivió sin pecado, murió en la cruz por nuestros pecados y resucitó victoriosamente.</p>
+          </div>
+
+          <div>
+            <h3 class="text-xl font-extrabold text-[#0B1630]">Salvación</h3>
+            <p class="mt-2">Creemos que la salvación es un regalo de la gracia de Dios, recibido por medio de la fe en Jesucristo.</p>
+          </div>
+
+          <div>
+            <h3 class="text-xl font-extrabold text-[#0B1630]">La Iglesia</h3>
+            <p class="mt-2">Creemos que la Iglesia es el cuerpo de Cristo, llamado a adorar a Dios, crecer espiritualmente, servir y compartir el evangelio.</p>
+          </div>
+
+          <div>
+            <h3 class="text-xl font-extrabold text-[#0B1630]">Esperanza Eterna</h3>
+            <p class="mt-2">Creemos en la segunda venida de Jesucristo y en la promesa de vida eterna para todos los que han puesto su fe en Él.</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script>
     const navbar = document.getElementById("navbar");
     const menuBtn = document.getElementById("menuBtn");
@@ -841,6 +909,41 @@
     const bar3 = document.getElementById("bar3");
 
     let menuOpen = false;
+
+    const faithModal = document.getElementById("faithModal");
+    const openFaithBtns = [
+      document.getElementById("openFaithModal"),
+      document.getElementById("openFaithModalMobile"),
+      document.getElementById("openFaithModalSection")
+    ].filter(Boolean);
+    const closeFaithModal = document.getElementById("closeFaithModal");
+
+    function openFaith() {
+      if (!faithModal) return;
+      faithModal.classList.remove("faith-modal-closed");
+      faithModal.classList.add("faith-modal-open");
+      document.body.style.overflow = "hidden";
+      if (menuOpen) toggleMenu();
+    }
+
+    function closeFaith() {
+      if (!faithModal) return;
+      faithModal.classList.remove("faith-modal-open");
+      faithModal.classList.add("faith-modal-closed");
+      document.body.style.overflow = "";
+    }
+
+    openFaithBtns.forEach(btn => btn.addEventListener("click", openFaith));
+    if (closeFaithModal) closeFaithModal.addEventListener("click", closeFaith);
+    if (faithModal) {
+      faithModal.addEventListener("click", function(e) {
+        if (e.target === faithModal || e.target.classList.contains("bg-black/70")) closeFaith();
+      });
+    }
+    document.addEventListener("keydown", function(e) {
+      if (e.key === "Escape") closeFaith();
+    });
+
 
     function toggleMenu() {
       menuOpen = !menuOpen;
