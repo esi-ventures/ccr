@@ -130,15 +130,18 @@
       transform: translateY(24px) scale(.98);
       opacity: 0;
     }
-  
     .mobile-scroll {
       display: flex;
-      gap: 1rem;
+      gap: 0.9rem;
       overflow-x: auto;
+      overflow-y: hidden;
       scroll-snap-type: x mandatory;
-      padding-bottom: 1rem;
-      -webkit-overflow-scrolling: touch;
       scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      touch-action: pan-x;
+      padding: 0 2.75rem 1rem 2.75rem;
+      margin-left: -2.75rem;
+      margin-right: -2.75rem;
       scrollbar-width: none;
     }
 
@@ -147,13 +150,22 @@
     }
 
     .mobile-card {
-      min-width: 82%;
-      scroll-snap-align: start;
+      flex: 0 0 72%;
+      min-width: 72%;
+      max-width: 72%;
+      scroll-snap-align: center;
+    }
+
+    .carousel-prev,
+    .carousel-next {
+      display: flex;
     }
 
     @media (min-width: 640px) {
       .mobile-card {
-        min-width: 48%;
+        flex-basis: 46%;
+        min-width: 46%;
+        max-width: 46%;
       }
     }
 
@@ -161,12 +173,16 @@
       .mobile-scroll {
         display: grid;
         overflow: visible;
-        padding-bottom: 0;
+        padding: 0;
+        margin-left: 0;
+        margin-right: 0;
         scrollbar-width: auto;
       }
 
       .mobile-card {
+        flex: initial;
         min-width: 0;
+        max-width: none;
       }
 
       .carousel-prev,
@@ -174,6 +190,7 @@
         display: none;
       }
     }
+
 
   </style>
 </head>
@@ -499,87 +516,87 @@
 
           <!-- Original cards -->
           <div class="marquee-card bg-[#FAF8F5] rounded-[2rem] p-6 lg:p-10 border border-[#0B1630]/5 shadow-sm">
-            <h3 class="text-3xl font-extrabold mb-6">Lunes</h3>
-            <div class="space-y-5">
-              <div><h4 class="text-lg font-bold">Oración de Varones</h4><p class="text-[#FF6B6B] mt-1 font-semibold">07:00</p></div>
-              <div><h4 class="text-lg font-bold">Reunión de Varones</h4><p class="text-[#FF6B6B] mt-1 font-semibold">20:00 – 22:00</p></div>
+            <h3 class="text-2xl lg:text-3xl font-extrabold mb-5">Lunes</h3>
+            <div class="space-y-4">
+              <div><h4 class="text-base lg:text-lg font-bold">Oración de Varones</h4><p class="text-[#FF6B6B] mt-1 font-semibold">07:00</p></div>
+              <div><h4 class="text-base lg:text-lg font-bold">Reunión de Varones</h4><p class="text-[#FF6B6B] mt-1 font-semibold">20:00 – 22:00</p></div>
             </div>
           </div>
 
           <div class="marquee-card bg-[#FAF8F5] rounded-[2rem] p-6 lg:p-10 border border-[#0B1630]/5 shadow-sm">
-            <h3 class="text-3xl font-extrabold mb-6">Martes</h3>
-            <div class="space-y-5">
-              <div><h4 class="text-lg font-bold">Oración de Mujeres</h4><p class="text-[#FF6B6B] mt-1 font-semibold">07:00</p></div>
-              <div><h4 class="text-lg font-bold">Reunión de Mujeres</h4><p class="text-[#FF6B6B] mt-1 font-semibold">17:00 – 19:00</p></div>
+            <h3 class="text-2xl lg:text-3xl font-extrabold mb-5">Martes</h3>
+            <div class="space-y-4">
+              <div><h4 class="text-base lg:text-lg font-bold">Oración de Mujeres</h4><p class="text-[#FF6B6B] mt-1 font-semibold">07:00</p></div>
+              <div><h4 class="text-base lg:text-lg font-bold">Reunión de Mujeres</h4><p class="text-[#FF6B6B] mt-1 font-semibold">17:00 – 19:00</p></div>
             </div>
           </div>
 
           <div class="marquee-card bg-[#FAF8F5] rounded-[2rem] p-6 lg:p-10 border border-[#0B1630]/5 shadow-sm">
-            <h3 class="text-3xl font-extrabold mb-6">Miércoles</h3>
-            <h4 class="text-lg font-bold">Estudio Bíblico</h4><p class="text-[#FF6B6B] mt-1 font-semibold">20:00 – 21:00</p>
+            <h3 class="text-2xl lg:text-3xl font-extrabold mb-5">Miércoles</h3>
+            <h4 class="text-base lg:text-lg font-bold">Estudio Bíblico</h4><p class="text-[#FF6B6B] mt-1 font-semibold">20:00 – 21:00</p>
           </div>
 
           <div class="marquee-card bg-[#FAF8F5] rounded-[2rem] p-6 lg:p-10 border border-[#0B1630]/5 shadow-sm">
-            <h3 class="text-3xl font-extrabold mb-6">Jueves</h3>
-            <h4 class="text-lg font-bold">Discipulado</h4><p class="text-[#FF6B6B] mt-1 font-semibold">17:30 – 21:00</p>
+            <h3 class="text-2xl lg:text-3xl font-extrabold mb-5">Jueves</h3>
+            <h4 class="text-base lg:text-lg font-bold">Discipulado</h4><p class="text-[#FF6B6B] mt-1 font-semibold">17:30 – 21:00</p>
           </div>
 
           <div class="marquee-card bg-[#FAF8F5] rounded-[2rem] p-6 lg:p-10 border border-[#0B1630]/5 shadow-sm">
-            <h3 class="text-3xl font-extrabold mb-6">Viernes</h3>
-            <div class="space-y-5">
-              <div><h4 class="text-lg font-bold">Reunión de Familias</h4><p class="text-[#FF6B6B] mt-1 font-semibold">20:00 – 22:00</p></div>
-              <div><h4 class="text-lg font-bold">Vigilia de Oración</h4><p class="text-[#FF6B6B] mt-1 font-semibold">20:00 – 22:00</p><p class="text-sm text-[#0B1630]/55 mt-1 italic">Último viernes de cada mes</p></div>
+            <h3 class="text-2xl lg:text-3xl font-extrabold mb-5">Viernes</h3>
+            <div class="space-y-4">
+              <div><h4 class="text-base lg:text-lg font-bold">Reunión de Familias</h4><p class="text-[#FF6B6B] mt-1 font-semibold">20:00 – 22:00</p></div>
+              <div><h4 class="text-base lg:text-lg font-bold">Vigilia de Oración</h4><p class="text-[#FF6B6B] mt-1 font-semibold">20:00 – 22:00</p><p class="text-sm text-[#0B1630]/55 mt-1 italic">Último viernes de cada mes</p></div>
             </div>
           </div>
 
           <div class="marquee-card bg-[#FAF8F5] rounded-[2rem] p-6 lg:p-10 border border-[#0B1630]/5 shadow-sm">
-            <h3 class="text-3xl font-extrabold mb-6">Sábado</h3>
-            <div class="space-y-5">
-              <div><h4 class="text-lg font-bold">Jóvenes — Koinonía</h4><p class="text-[#FF6B6B] mt-1 font-semibold">18:00 – 20:00</p></div>
-              <div><h4 class="text-lg font-bold">Alabanza</h4><p class="text-[#FF6B6B] mt-1 font-semibold">16:00 – 18:00</p></div>
+            <h3 class="text-2xl lg:text-3xl font-extrabold mb-5">Sábado</h3>
+            <div class="space-y-4">
+              <div><h4 class="text-base lg:text-lg font-bold">Jóvenes — Koinonía</h4><p class="text-[#FF6B6B] mt-1 font-semibold">18:00 – 20:00</p></div>
+              <div><h4 class="text-base lg:text-lg font-bold">Alabanza</h4><p class="text-[#FF6B6B] mt-1 font-semibold">16:00 – 18:00</p></div>
             </div>
           </div>
 
           <!-- Duplicate cards for infinite marquee mobile -->
           <div class="duplicate marquee-card bg-[#FAF8F5] rounded-[2rem] p-6 border border-[#0B1630]/5 shadow-sm">
-            <h3 class="text-3xl font-extrabold mb-6">Lunes</h3>
-            <div class="space-y-5">
-              <div><h4 class="text-lg font-bold">Oración de Varones</h4><p class="text-[#FF6B6B] mt-1 font-semibold">07:00</p></div>
-              <div><h4 class="text-lg font-bold">Reunión de Varones</h4><p class="text-[#FF6B6B] mt-1 font-semibold">20:00 – 22:00</p></div>
+            <h3 class="text-2xl lg:text-3xl font-extrabold mb-5">Lunes</h3>
+            <div class="space-y-4">
+              <div><h4 class="text-base lg:text-lg font-bold">Oración de Varones</h4><p class="text-[#FF6B6B] mt-1 font-semibold">07:00</p></div>
+              <div><h4 class="text-base lg:text-lg font-bold">Reunión de Varones</h4><p class="text-[#FF6B6B] mt-1 font-semibold">20:00 – 22:00</p></div>
             </div>
           </div>
 
           <div class="duplicate marquee-card bg-[#FAF8F5] rounded-[2rem] p-6 border border-[#0B1630]/5 shadow-sm">
-            <h3 class="text-3xl font-extrabold mb-6">Martes</h3>
-            <div class="space-y-5">
-              <div><h4 class="text-lg font-bold">Oración de Mujeres</h4><p class="text-[#FF6B6B] mt-1 font-semibold">07:00</p></div>
-              <div><h4 class="text-lg font-bold">Reunión de Mujeres</h4><p class="text-[#FF6B6B] mt-1 font-semibold">17:00 – 19:00</p></div>
+            <h3 class="text-2xl lg:text-3xl font-extrabold mb-5">Martes</h3>
+            <div class="space-y-4">
+              <div><h4 class="text-base lg:text-lg font-bold">Oración de Mujeres</h4><p class="text-[#FF6B6B] mt-1 font-semibold">07:00</p></div>
+              <div><h4 class="text-base lg:text-lg font-bold">Reunión de Mujeres</h4><p class="text-[#FF6B6B] mt-1 font-semibold">17:00 – 19:00</p></div>
             </div>
           </div>
 
           <div class="duplicate marquee-card bg-[#FAF8F5] rounded-[2rem] p-6 border border-[#0B1630]/5 shadow-sm">
-            <h3 class="text-3xl font-extrabold mb-6">Miércoles</h3>
-            <h4 class="text-lg font-bold">Estudio Bíblico</h4><p class="text-[#FF6B6B] mt-1 font-semibold">20:00 – 21:00</p>
+            <h3 class="text-2xl lg:text-3xl font-extrabold mb-5">Miércoles</h3>
+            <h4 class="text-base lg:text-lg font-bold">Estudio Bíblico</h4><p class="text-[#FF6B6B] mt-1 font-semibold">20:00 – 21:00</p>
           </div>
 
           <div class="duplicate marquee-card bg-[#FAF8F5] rounded-[2rem] p-6 border border-[#0B1630]/5 shadow-sm">
-            <h3 class="text-3xl font-extrabold mb-6">Jueves</h3>
-            <h4 class="text-lg font-bold">Discipulado</h4><p class="text-[#FF6B6B] mt-1 font-semibold">17:30 – 21:00</p>
+            <h3 class="text-2xl lg:text-3xl font-extrabold mb-5">Jueves</h3>
+            <h4 class="text-base lg:text-lg font-bold">Discipulado</h4><p class="text-[#FF6B6B] mt-1 font-semibold">17:30 – 21:00</p>
           </div>
 
           <div class="duplicate marquee-card bg-[#FAF8F5] rounded-[2rem] p-6 border border-[#0B1630]/5 shadow-sm">
-            <h3 class="text-3xl font-extrabold mb-6">Viernes</h3>
-            <div class="space-y-5">
-              <div><h4 class="text-lg font-bold">Reunión de Familias</h4><p class="text-[#FF6B6B] mt-1 font-semibold">20:00 – 22:00</p></div>
-              <div><h4 class="text-lg font-bold">Vigilia de Oración</h4><p class="text-[#FF6B6B] mt-1 font-semibold">20:00 – 22:00</p><p class="text-sm text-[#0B1630]/55 mt-1 italic">Último viernes de cada mes</p></div>
+            <h3 class="text-2xl lg:text-3xl font-extrabold mb-5">Viernes</h3>
+            <div class="space-y-4">
+              <div><h4 class="text-base lg:text-lg font-bold">Reunión de Familias</h4><p class="text-[#FF6B6B] mt-1 font-semibold">20:00 – 22:00</p></div>
+              <div><h4 class="text-base lg:text-lg font-bold">Vigilia de Oración</h4><p class="text-[#FF6B6B] mt-1 font-semibold">20:00 – 22:00</p><p class="text-sm text-[#0B1630]/55 mt-1 italic">Último viernes de cada mes</p></div>
             </div>
           </div>
 
           <div class="duplicate marquee-card bg-[#FAF8F5] rounded-[2rem] p-6 border border-[#0B1630]/5 shadow-sm">
-            <h3 class="text-3xl font-extrabold mb-6">Sábado</h3>
-            <div class="space-y-5">
-              <div><h4 class="text-lg font-bold">Jóvenes — Koinonía</h4><p class="text-[#FF6B6B] mt-1 font-semibold">18:00 – 20:00</p></div>
-              <div><h4 class="text-lg font-bold">Alabanza</h4><p class="text-[#FF6B6B] mt-1 font-semibold">16:00 – 18:00</p></div>
+            <h3 class="text-2xl lg:text-3xl font-extrabold mb-5">Sábado</h3>
+            <div class="space-y-4">
+              <div><h4 class="text-base lg:text-lg font-bold">Jóvenes — Koinonía</h4><p class="text-[#FF6B6B] mt-1 font-semibold">18:00 – 20:00</p></div>
+              <div><h4 class="text-base lg:text-lg font-bold">Alabanza</h4><p class="text-[#FF6B6B] mt-1 font-semibold">16:00 – 18:00</p></div>
             </div>
           </div>
 
@@ -1060,17 +1077,39 @@
     /* Petición de oración por WhatsApp */
 
     document.querySelectorAll(".carousel-track").forEach(track => {
-      const wrapper = track.parentElement;
-      const prev = wrapper.querySelector(".carousel-prev");
-      const next = wrapper.querySelector(".carousel-next");
+      const wrapper = track.closest(".relative");
+      const prev = wrapper ? wrapper.querySelector(".carousel-prev") : null;
+      const next = wrapper ? wrapper.querySelector(".carousel-next") : null;
 
       if (!prev || !next) return;
 
-      prev.addEventListener("click", () => {
+      function getScrollAmount() {
+        const card = track.querySelector(".mobile-card");
+        if (!card) return track.clientWidth * 0.75;
+        const styles = window.getComputedStyle(track);
+        const gap = parseFloat(styles.columnGap || styles.gap || 16);
+        return card.getBoundingClientRect().width + gap;
+      }
+
+      prev.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
         track.scrollBy({
-          left: -track.clientWidth * 0.85,
+          left: -getScrollAmount(),
           behavior: "smooth"
         });
+      });
+
+      next.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        track.scrollBy({
+          left: getScrollAmount(),
+          behavior: "smooth"
+        });
+      });
+    });
+
       });
 
       next.addEventListener("click", () => {
