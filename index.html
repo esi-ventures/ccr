@@ -35,78 +35,6 @@
       opacity: 0;
       pointer-events: none;
     }
-
-
-    /* Optimización móvil: carruseles horizontales para secciones con muchas tarjetas */
-    @media (max-width: 767px) {
-      body {
-        overflow-x: hidden;
-      }
-
-      section {
-        scroll-margin-top: 80px;
-      }
-
-      .mobile-carousel {
-        display: flex !important;
-        overflow-x: auto;
-        gap: 1rem !important;
-        scroll-snap-type: x mandatory;
-        padding-bottom: 1rem;
-        -webkit-overflow-scrolling: touch;
-      }
-
-      .mobile-carousel::-webkit-scrollbar {
-        height: 6px;
-      }
-
-      .mobile-carousel::-webkit-scrollbar-track {
-        background: rgba(11, 22, 48, 0.08);
-        border-radius: 999px;
-      }
-
-      .mobile-carousel::-webkit-scrollbar-thumb {
-        background: rgba(138, 92, 255, 0.45);
-        border-radius: 999px;
-      }
-
-      .mobile-carousel > * {
-        flex: 0 0 84%;
-        min-width: 84%;
-        scroll-snap-align: start;
-      }
-
-      .mobile-carousel > .p-10,
-      .mobile-carousel > .p-8 {
-        padding: 1.5rem !important;
-      }
-
-      #mensajes .mobile-carousel .p-8,
-      #testimonios .mobile-carousel .p-10 {
-        padding: 1.5rem !important;
-      }
-
-      #mensajes .mobile-carousel img {
-        height: 210px !important;
-      }
-
-      #ministerios .mobile-carousel h3,
-      #valores .mobile-carousel h3,
-      #reuniones .mobile-carousel h3,
-      #testimonios .mobile-carousel h3 {
-        font-size: 1.7rem !important;
-        line-height: 1.05 !important;
-      }
-
-      #ministerios .mobile-carousel p,
-      #valores .mobile-carousel p,
-      #reuniones .mobile-carousel p,
-      #testimonios .mobile-carousel p {
-        font-size: 0.95rem !important;
-        line-height: 1.55 !important;
-      }
-    }
-
   </style>
 </head>
 
@@ -379,7 +307,7 @@
 
         <div class="relative rounded-[2rem] overflow-hidden shadow-2xl">
           <img
-            src="imagenes/nuevo.jpg"
+            src="imagenes/ccr_hero.png"
             alt="Comunidad Cristiana de Restauración"
             class="w-full h-[520px] object-cover"
           />
@@ -395,67 +323,6 @@
               Un lugar para pertenecer, crecer y caminar con Dios.
             </h3>
           </div>
-        </div>
-      </div>
-
-    </div>
-
-  </div>
-</section>
-
-
-<!-- PASTOR PRINCIPAL -->
-<section id="pastor" class="bg-white text-[#0B1630] py-24 lg:py-32 px-6 overflow-hidden">
-  <div class="max-w-7xl mx-auto">
-
-    <div class="grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
-
-      <!-- FOTO -->
-      <div class="relative">
-        <div class="absolute -top-8 -left-8 w-40 h-40 bg-[#FF6B6B]/20 rounded-full blur-3xl"></div>
-        <div class="absolute -bottom-8 -right-8 w-52 h-52 bg-[#8A5CFF]/20 rounded-full blur-3xl"></div>
-
-        <div class="relative rounded-[2rem] overflow-hidden shadow-2xl">
-          <img
-            src="imagenes/pastorcarlossanabria.png"
-            alt="Pastor Carlos Sanabria"
-            class="w-full h-[620px] object-cover object-center"
-          />
-        </div>
-      </div>
-
-      <!-- TEXTO -->
-      <div>
-        <p class="uppercase tracking-[1em] text-xl font-bold text-[#8A5CFF] mb-5">
-          Pastor Principal
-        </p>
-
-        <h2 class="text-5xl sm:text-6xl lg:text-6xl font-extrabold leading-[0.92] tracking-tight max-w-3xl">
-          Pastor Carlos Sanabria
-        </h2>
-
-        <p class="mt-7 text-lg text-[#0B1630]/75 leading-relaxed">
-          El Pastor Carlos Sanabria guía a Comunidad Cristiana de Restauración con un corazón enfocado en Cristo, la Palabra de Dios y la restauración de las personas.
-        </p>
-
-        <p class="mt-5 text-lg text-[#0B1630]/75 leading-relaxed">
-          Su deseo es acompañar a cada persona y familia en un camino de fe, esperanza y crecimiento espiritual, creando un espacio donde todos puedan acercarse a Dios y encontrar comunidad.
-        </p>
-
-        <div class="mt-10 flex flex-col sm:flex-row gap-4">
-          <a
-            href="#contacto"
-            class="inline-flex items-center justify-center px-8 py-4 rounded-full font-semibold text-white bg-gradient-to-r from-[#FF6B6B] to-[#8A5CFF] hover:scale-105 transition-all duration-300 shadow-xl"
-          >
-            CONTÁCTANOS
-          </a>
-
-          <a
-            href="#mensajes"
-            class="inline-flex items-center justify-center px-8 py-4 rounded-full border border-[#0B1630]/15 text-[#0B1630] hover:bg-[#0B1630]/5 transition-all duration-300"
-          >
-            VER MENSAJES
-          </a>
         </div>
       </div>
 
@@ -569,7 +436,7 @@
     </div>
 
     <!-- GRID -->
-    <div class="mobile-carousel grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
       <!-- FE -->
       <div class="group bg-white rounded-[2rem] p-8 border border-[#0B1630]/5 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
@@ -701,8 +568,8 @@
     <div class="max-w-5xl space-y-4">
 
       <div class="faith-item bg-[#FAF8F5] rounded-3xl border border-[#0B1630]/5 overflow-hidden">
-        <button class="faith-btn w-full flex items-center justify-between gap-4 text-left p-4 lg:p-6">
-          <span class="text-2xl lg:text-2xl font-extrabold">La Biblia</span>
+        <button class="faith-btn w-full flex items-center justify-between gap-6 text-left p-6 lg:p-8">
+          <span class="text-2xl lg:text-3xl font-extrabold">La Biblia</span>
           <span class="faith-icon text-3xl text-[#8A5CFF]">+</span>
         </button>
         <div class="faith-content max-h-0 overflow-hidden transition-all duration-500">
@@ -713,8 +580,8 @@
       </div>
 
       <div class="faith-item bg-[#FAF8F5] rounded-3xl border border-[#0B1630]/5 overflow-hidden">
-        <button class="faith-btn w-full flex items-center justify-between gap-4 text-left p-4 lg:p-6">
-          <span class="text-2xl lg:text-2xl font-extrabold">Dios</span>
+        <button class="faith-btn w-full flex items-center justify-between gap-6 text-left p-6 lg:p-8">
+          <span class="text-2xl lg:text-3xl font-extrabold">Dios</span>
           <span class="faith-icon text-3xl text-[#8A5CFF]">+</span>
         </button>
         <div class="faith-content max-h-0 overflow-hidden transition-all duration-500">
@@ -725,8 +592,8 @@
       </div>
 
       <div class="faith-item bg-[#FAF8F5] rounded-3xl border border-[#0B1630]/5 overflow-hidden">
-        <button class="faith-btn w-full flex items-center justify-between gap-4 text-left p-4 lg:p-6">
-          <span class="text-2xl lg:text-2xl font-extrabold">Jesucristo</span>
+        <button class="faith-btn w-full flex items-center justify-between gap-6 text-left p-6 lg:p-8">
+          <span class="text-2xl lg:text-3xl font-extrabold">Jesucristo</span>
           <span class="faith-icon text-3xl text-[#8A5CFF]">+</span>
         </button>
         <div class="faith-content max-h-0 overflow-hidden transition-all duration-500">
@@ -737,8 +604,8 @@
       </div>
 
       <div class="faith-item bg-[#FAF8F5] rounded-3xl border border-[#0B1630]/5 overflow-hidden">
-        <button class="faith-btn w-full flex items-center justify-between gap-4 text-left p-4 lg:p-6">
-          <span class="text-2xl lg:text-2xl font-extrabold">El Espíritu Santo</span>
+        <button class="faith-btn w-full flex items-center justify-between gap-6 text-left p-6 lg:p-8">
+          <span class="text-2xl lg:text-3xl font-extrabold">El Espíritu Santo</span>
           <span class="faith-icon text-3xl text-[#8A5CFF]">+</span>
         </button>
         <div class="faith-content max-h-0 overflow-hidden transition-all duration-500">
@@ -749,8 +616,8 @@
       </div>
 
       <div class="faith-item bg-[#FAF8F5] rounded-3xl border border-[#0B1630]/5 overflow-hidden">
-        <button class="faith-btn w-full flex items-center justify-between gap-4 text-left p-4 lg:p-6">
-          <span class="text-2xl lg:text-2xl font-extrabold">Salvación</span>
+        <button class="faith-btn w-full flex items-center justify-between gap-6 text-left p-6 lg:p-8">
+          <span class="text-2xl lg:text-3xl font-extrabold">Salvación</span>
           <span class="faith-icon text-3xl text-[#8A5CFF]">+</span>
         </button>
         <div class="faith-content max-h-0 overflow-hidden transition-all duration-500">
@@ -761,8 +628,8 @@
       </div>
 
       <div class="faith-item bg-[#FAF8F5] rounded-3xl border border-[#0B1630]/5 overflow-hidden">
-        <button class="faith-btn w-full flex items-center justify-between gap-4 text-left p-4 lg:p-6">
-          <span class="text-2xl lg:text-2xl font-extrabold">La Iglesia</span>
+        <button class="faith-btn w-full flex items-center justify-between gap-6 text-left p-6 lg:p-8">
+          <span class="text-2xl lg:text-3xl font-extrabold">La Iglesia</span>
           <span class="faith-icon text-3xl text-[#8A5CFF]">+</span>
         </button>
         <div class="faith-content max-h-0 overflow-hidden transition-all duration-500">
@@ -773,8 +640,8 @@
       </div>
 
       <div class="faith-item bg-[#FAF8F5] rounded-3xl border border-[#0B1630]/5 overflow-hidden">
-        <button class="faith-btn w-full flex items-center justify-between gap-4 text-left p-4 lg:p-6">
-          <span class="text-2xl lg:text-2xl font-extrabold">Bautismo y Santa Cena</span>
+        <button class="faith-btn w-full flex items-center justify-between gap-6 text-left p-6 lg:p-8">
+          <span class="text-2xl lg:text-3xl font-extrabold">Bautismo y Santa Cena</span>
           <span class="faith-icon text-3xl text-[#8A5CFF]">+</span>
         </button>
         <div class="faith-content max-h-0 overflow-hidden transition-all duration-500">
@@ -785,8 +652,8 @@
       </div>
 
       <div class="faith-item bg-[#FAF8F5] rounded-3xl border border-[#0B1630]/5 overflow-hidden">
-        <button class="faith-btn w-full flex items-center justify-between gap-4 text-left p-4 lg:p-6">
-          <span class="text-2xl lg:text-2xl font-extrabold">Esperanza Eterna</span>
+        <button class="faith-btn w-full flex items-center justify-between gap-6 text-left p-6 lg:p-8">
+          <span class="text-2xl lg:text-3xl font-extrabold">Esperanza Eterna</span>
           <span class="faith-icon text-3xl text-[#8A5CFF]">+</span>
         </button>
         <div class="faith-content max-h-0 overflow-hidden transition-all duration-500">
@@ -914,7 +781,7 @@
     </div>
 
     <!-- GRID -->
-    <div class="mobile-carousel grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 
       <!-- LUNES -->
       <div class="bg-white rounded-[2rem] p-10 border border-[#0B1630]/5 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500">
@@ -1098,7 +965,7 @@
     </div>
 
     <!-- GRID -->
-    <div class="mobile-carousel grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
 
       <!-- JÓVENES -->
       <div class="group relative bg-[#FAF8F5] rounded-[2rem] p-10 overflow-hidden border border-[#0B1630]/5 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500">
@@ -1266,7 +1133,7 @@
     </div>
 
     <!-- GRID -->
-    <div class="mobile-carousel grid lg:grid-cols-3 gap-8">
+    <div class="grid lg:grid-cols-3 gap-8">
 
       <!-- VIDEO 1 -->
       <div class="group relative rounded-[2rem] overflow-hidden bg-white/5 border border-white/10 backdrop-blur-sm hover:-translate-y-2 hover:shadow-2xl transition-all duration-500">
@@ -1476,7 +1343,7 @@
     </div>
 
     <!-- GRID -->
-    <div class="mobile-carousel grid lg:grid-cols-3 gap-8">
+    <div class="grid lg:grid-cols-3 gap-8">
 
       <!-- TESTIMONIO 1 -->
       <div class="relative bg-white rounded-[2rem] p-10 border border-[#0B1630]/5 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 overflow-hidden">
