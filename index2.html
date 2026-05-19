@@ -49,65 +49,103 @@
       pointer-events: none;
     }
 
-    /* MARQUEE / AUTO CAROUSEL */
-    .marquee {
+    /* CARRUSELES CON DEDO + FLECHAS */
+    .carousel-wrap {
       position: relative;
-      overflow: hidden;
       width: 100%;
-      -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
-      mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+      overflow: visible;
     }
 
-    .marquee-track {
+    .mobile-scroll {
       display: flex;
-      gap: 1rem;
-      width: max-content;
-      animation: marquee-left 32s linear infinite;
-      will-change: transform;
+      gap: 0.9rem;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      touch-action: pan-x;
+      padding: 0 2.5rem 1rem 2.5rem;
+      margin-left: -0.75rem;
+      margin-right: -0.75rem;
+      scrollbar-width: none;
     }
 
-    .marquee:hover .marquee-track {
-      animation-play-state: paused;
+    .mobile-scroll::-webkit-scrollbar {
+      display: none;
     }
 
-    .marquee-card {
-      flex: 0 0 84vw;
-      max-width: 84vw;
+    .mobile-card {
+      flex: 0 0 54%;
+      min-width: 54%;
+      max-width: 54%;
+      scroll-snap-align: center;
     }
+
+    .video-card {
+      flex: 0 0 78%;
+      min-width: 78%;
+      max-width: 78%;
+      scroll-snap-align: center;
+    }
+
+    .carousel-prev,
+    .carousel-next {
+      display: flex;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 30;
+      width: 38px;
+      height: 38px;
+      border-radius: 999px;
+      background: rgba(11, 22, 48, .92);
+      color: white;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 25px rgba(0,0,0,.24);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      font-size: 28px;
+      line-height: 1;
+    }
+
+    .carousel-prev { left: 0; }
+    .carousel-next { right: 0; }
 
     @media (min-width: 640px) {
-      .marquee-card {
-        flex-basis: 46vw;
-        max-width: 46vw;
+      .mobile-card {
+        flex-basis: 38%;
+        min-width: 38%;
+        max-width: 38%;
+      }
+
+      .video-card {
+        flex-basis: 46%;
+        min-width: 46%;
+        max-width: 46%;
       }
     }
 
     @media (min-width: 1024px) {
-      .marquee-track {
+      .mobile-scroll {
         display: grid;
-        width: auto;
-        animation: none;
+        overflow: visible;
+        padding: 0;
+        margin: 0;
       }
 
-      .marquee-card {
+      .mobile-card,
+      .video-card {
         flex: initial;
+        min-width: 0;
         max-width: none;
       }
 
-      .marquee .duplicate {
+      .carousel-prev,
+      .carousel-next {
         display: none;
       }
-
-      .marquee {
-        -webkit-mask-image: none;
-        mask-image: none;
-        overflow: visible;
-      }
-    }
-
-    @keyframes marquee-left {
-      from { transform: translateX(0); }
-      to { transform: translateX(-50%); }
     }
 
     /* FAITH MODAL */
@@ -130,67 +168,6 @@
       transform: translateY(24px) scale(.98);
       opacity: 0;
     }
-    .mobile-scroll {
-      display: flex;
-      gap: 0.9rem;
-      overflow-x: auto;
-      overflow-y: hidden;
-      scroll-snap-type: x mandatory;
-      scroll-behavior: smooth;
-      -webkit-overflow-scrolling: touch;
-      touch-action: pan-x;
-      padding: 0 1rem 1rem 1rem;
-      margin-left: 0rem;
-      margin-right: 0rem;
-      scrollbar-width: none;
-    }
-
-    .mobile-scroll::-webkit-scrollbar {
-      display: none;
-    }
-
-    .mobile-card {
-      flex: 0 0 48%;
-      min-width: 48%;
-      max-width: 48%;
-      scroll-snap-align: start;
-    }
-
-    .carousel-prev,
-    .carousel-next {
-      display: flex;
-    }
-
-    @media (min-width: 640px) {
-      .mobile-card {
-        flex-basis: 38%;
-        min-width: 38%;
-        max-width: 38%;
-      }
-    }
-
-    @media (min-width: 1024px) {
-      .mobile-scroll {
-        display: grid;
-        overflow: visible;
-        padding: 0;
-        margin-left: 0;
-        margin-right: 0;
-        scrollbar-width: auto;
-      }
-
-      .mobile-card {
-        flex: initial;
-        min-width: 0;
-        max-width: none;
-      }
-
-      .carousel-prev,
-      .carousel-next {
-        display: none;
-      }
-    }
-
 
   </style>
 </head>
@@ -213,9 +190,8 @@
         <nav class="hidden lg:flex items-center gap-7 text-sm font-semibold tracking-wide">
           <a href="#inicio" class="hover:text-[#FF6B6B] transition-colors">Inicio</a>
           <a href="#nosotros" class="hover:text-[#FF6B6B] transition-colors">Nosotros</a>
-          <button id="openFaithModal" type="button" class="hover:text-[#FF6B6B] transition-colors">Declaración de Fe</button>
-          <a href="#pastor" class="hover:text-[#FF6B6B] transition-colors">Pastor</a>
           <button type="button" data-open-faith class="hover:text-[#FF6B6B] transition-colors">Declaración de Fe</button>
+          <a href="#pastor" class="hover:text-[#FF6B6B] transition-colors">Pastor</a>
           <a href="#reuniones" class="hover:text-[#FF6B6B] transition-colors">Reuniones</a>
           <a href="#predicas" class="hover:text-[#FF6B6B] transition-colors">Prédicas</a>
           <a href="#oracion" class="hover:text-[#FF6B6B] transition-colors">Oración</a>
@@ -242,9 +218,8 @@
       <nav class="px-6 py-6 space-y-5 text-sm font-semibold tracking-wide">
         <a href="#inicio" class="mobile-link block hover:text-[#FF6B6B] transition">Inicio</a>
         <a href="#nosotros" class="mobile-link block hover:text-[#FF6B6B] transition">Nosotros</a>
-        <button id="openFaithModalMobile" type="button" class="mobile-link block text-left w-full hover:text-[#FF6B6B] transition">Declaración de Fe</button>
-        <a href="#pastor" class="mobile-link block hover:text-[#FF6B6B] transition">Pastor</a>
         <button type="button" data-open-faith class="mobile-link block text-left w-full hover:text-[#FF6B6B] transition">Declaración de Fe</button>
+        <a href="#pastor" class="mobile-link block hover:text-[#FF6B6B] transition">Pastor</a>
         <a href="#reuniones" class="mobile-link block hover:text-[#FF6B6B] transition">Reuniones</a>
         <a href="#predicas" class="mobile-link block hover:text-[#FF6B6B] transition">Prédicas</a>
         <a href="#oracion" class="mobile-link block hover:text-[#FF6B6B] transition">Oración</a>
@@ -405,7 +380,7 @@
           </div>
         </div>
 
-        <div class="relative hidden lg:block hidden lg:block">
+        <div class="relative hidden lg:block">
           <div class="absolute -top-8 -left-8 w-40 h-40 bg-[#FF6B6B]/20 rounded-full blur-3xl"></div>
           <div class="absolute -bottom-8 -right-8 w-52 h-52 bg-[#8A5CFF]/20 rounded-full blur-3xl"></div>
 
@@ -497,7 +472,7 @@
     </div>
   </section>
 
-  <!-- REUNIONES MARQUEE -->
+  <!-- REUNIONES -->
   <section id="reuniones" class="bg-white text-[#0B1630] py-20 lg:py-32 px-6 overflow-hidden">
     <div class="max-w-7xl mx-auto">
 
@@ -507,15 +482,16 @@
           Reuniones Semanales
         </h2>
         <p class="mt-7 max-w-3xl text-base lg:text-lg text-[#0B1630]/75 leading-relaxed">
-          Desliza para ver nuestras reuniones. En computadora se muestran como una agenda completa.
+          Desliza con el dedo o usa las flechas para ver nuestras reuniones. En computadora se muestran como una agenda completa.
         </p>
       </div>
 
-      <div class="marquee">
-        <div class="marquee-track lg:grid-cols-3 lg:gap-8">
+      <div class="carousel-wrap">
+        <button type="button" aria-label="Anterior" class="carousel-prev">‹</button>
 
-          <!-- Original cards -->
-          <div class="marquee-card bg-[#FAF8F5] rounded-[2rem] p-4 lg:p-8 border border-[#0B1630]/5 shadow-sm">
+        <div class="mobile-scroll carousel-track lg:grid-cols-3 lg:gap-8">
+
+          <div class="mobile-card bg-[#FAF8F5] rounded-[1.6rem] p-4 lg:p-8 border border-[#0B1630]/5 shadow-sm">
             <h3 class="text-xl lg:text-3xl font-extrabold mb-5">Lunes</h3>
             <div class="space-y-4">
               <div><h4 class="text-base lg:text-lg font-bold">Oración de Varones</h4><p class="text-[#FF6B6B] mt-1 font-semibold">07:00</p></div>
@@ -523,7 +499,7 @@
             </div>
           </div>
 
-          <div class="marquee-card bg-[#FAF8F5] rounded-[2rem] p-4 lg:p-8 border border-[#0B1630]/5 shadow-sm">
+          <div class="mobile-card bg-[#FAF8F5] rounded-[1.6rem] p-4 lg:p-8 border border-[#0B1630]/5 shadow-sm">
             <h3 class="text-xl lg:text-3xl font-extrabold mb-5">Martes</h3>
             <div class="space-y-4">
               <div><h4 class="text-base lg:text-lg font-bold">Oración de Mujeres</h4><p class="text-[#FF6B6B] mt-1 font-semibold">07:00</p></div>
@@ -531,17 +507,19 @@
             </div>
           </div>
 
-          <div class="marquee-card bg-[#FAF8F5] rounded-[2rem] p-4 lg:p-8 border border-[#0B1630]/5 shadow-sm">
+          <div class="mobile-card bg-[#FAF8F5] rounded-[1.6rem] p-4 lg:p-8 border border-[#0B1630]/5 shadow-sm">
             <h3 class="text-xl lg:text-3xl font-extrabold mb-5">Miércoles</h3>
-            <h4 class="text-base lg:text-lg font-bold">Estudio Bíblico</h4><p class="text-[#FF6B6B] mt-1 font-semibold">20:00 – 21:00</p>
+            <h4 class="text-base lg:text-lg font-bold">Estudio Bíblico</h4>
+            <p class="text-[#FF6B6B] mt-1 font-semibold">20:00 – 21:00</p>
           </div>
 
-          <div class="marquee-card bg-[#FAF8F5] rounded-[2rem] p-4 lg:p-8 border border-[#0B1630]/5 shadow-sm">
+          <div class="mobile-card bg-[#FAF8F5] rounded-[1.6rem] p-4 lg:p-8 border border-[#0B1630]/5 shadow-sm">
             <h3 class="text-xl lg:text-3xl font-extrabold mb-5">Jueves</h3>
-            <h4 class="text-base lg:text-lg font-bold">Discipulado</h4><p class="text-[#FF6B6B] mt-1 font-semibold">17:30 – 21:00</p>
+            <h4 class="text-base lg:text-lg font-bold">Discipulado</h4>
+            <p class="text-[#FF6B6B] mt-1 font-semibold">17:30 – 21:00</p>
           </div>
 
-          <div class="marquee-card bg-[#FAF8F5] rounded-[2rem] p-4 lg:p-8 border border-[#0B1630]/5 shadow-sm">
+          <div class="mobile-card bg-[#FAF8F5] rounded-[1.6rem] p-4 lg:p-8 border border-[#0B1630]/5 shadow-sm">
             <h3 class="text-xl lg:text-3xl font-extrabold mb-5">Viernes</h3>
             <div class="space-y-4">
               <div><h4 class="text-base lg:text-lg font-bold">Reunión de Familias</h4><p class="text-[#FF6B6B] mt-1 font-semibold">20:00 – 22:00</p></div>
@@ -549,7 +527,7 @@
             </div>
           </div>
 
-          <div class="marquee-card bg-[#FAF8F5] rounded-[2rem] p-6 lg:p-10 border border-[#0B1630]/5 shadow-sm">
+          <div class="mobile-card bg-[#FAF8F5] rounded-[1.6rem] p-4 lg:p-8 border border-[#0B1630]/5 shadow-sm">
             <h3 class="text-xl lg:text-3xl font-extrabold mb-5">Sábado</h3>
             <div class="space-y-4">
               <div><h4 class="text-base lg:text-lg font-bold">Jóvenes — Koinonía</h4><p class="text-[#FF6B6B] mt-1 font-semibold">18:00 – 20:00</p></div>
@@ -557,50 +535,9 @@
             </div>
           </div>
 
-          <!-- Duplicate cards for infinite marquee mobile -->
-          <div class="duplicate marquee-card bg-[#FAF8F5] rounded-[2rem] p-6 border border-[#0B1630]/5 shadow-sm">
-            <h3 class="text-2xl lg:text-3xl font-extrabold mb-5">Lunes</h3>
-            <div class="space-y-4">
-              <div><h4 class="text-base lg:text-lg font-bold">Oración de Varones</h4><p class="text-[#FF6B6B] mt-1 font-semibold">07:00</p></div>
-              <div><h4 class="text-base lg:text-lg font-bold">Reunión de Varones</h4><p class="text-[#FF6B6B] mt-1 font-semibold">20:00 – 22:00</p></div>
-            </div>
-          </div>
-
-          <div class="duplicate marquee-card bg-[#FAF8F5] rounded-[2rem] p-6 border border-[#0B1630]/5 shadow-sm">
-            <h3 class="text-2xl lg:text-3xl font-extrabold mb-5">Martes</h3>
-            <div class="space-y-4">
-              <div><h4 class="text-base lg:text-lg font-bold">Oración de Mujeres</h4><p class="text-[#FF6B6B] mt-1 font-semibold">07:00</p></div>
-              <div><h4 class="text-base lg:text-lg font-bold">Reunión de Mujeres</h4><p class="text-[#FF6B6B] mt-1 font-semibold">17:00 – 19:00</p></div>
-            </div>
-          </div>
-
-          <div class="duplicate marquee-card bg-[#FAF8F5] rounded-[2rem] p-6 border border-[#0B1630]/5 shadow-sm">
-            <h3 class="text-2xl lg:text-3xl font-extrabold mb-5">Miércoles</h3>
-            <h4 class="text-base lg:text-lg font-bold">Estudio Bíblico</h4><p class="text-[#FF6B6B] mt-1 font-semibold">20:00 – 21:00</p>
-          </div>
-
-          <div class="duplicate marquee-card bg-[#FAF8F5] rounded-[2rem] p-6 border border-[#0B1630]/5 shadow-sm">
-            <h3 class="text-2xl lg:text-3xl font-extrabold mb-5">Jueves</h3>
-            <h4 class="text-base lg:text-lg font-bold">Discipulado</h4><p class="text-[#FF6B6B] mt-1 font-semibold">17:30 – 21:00</p>
-          </div>
-
-          <div class="duplicate marquee-card bg-[#FAF8F5] rounded-[2rem] p-6 border border-[#0B1630]/5 shadow-sm">
-            <h3 class="text-2xl lg:text-3xl font-extrabold mb-5">Viernes</h3>
-            <div class="space-y-4">
-              <div><h4 class="text-base lg:text-lg font-bold">Reunión de Familias</h4><p class="text-[#FF6B6B] mt-1 font-semibold">20:00 – 22:00</p></div>
-              <div><h4 class="text-base lg:text-lg font-bold">Vigilia de Oración</h4><p class="text-[#FF6B6B] mt-1 font-semibold">20:00 – 22:00</p><p class="text-sm text-[#0B1630]/55 mt-1 italic">Último viernes de cada mes</p></div>
-            </div>
-          </div>
-
-          <div class="duplicate marquee-card bg-[#FAF8F5] rounded-[2rem] p-6 border border-[#0B1630]/5 shadow-sm">
-            <h3 class="text-2xl lg:text-3xl font-extrabold mb-5">Sábado</h3>
-            <div class="space-y-4">
-              <div><h4 class="text-base lg:text-lg font-bold">Jóvenes — Koinonía</h4><p class="text-[#FF6B6B] mt-1 font-semibold">18:00 – 20:00</p></div>
-              <div><h4 class="text-base lg:text-lg font-bold">Alabanza</h4><p class="text-[#FF6B6B] mt-1 font-semibold">16:00 – 18:00</p></div>
-            </div>
-          </div>
-
         </div>
+
+        <button type="button" aria-label="Siguiente" class="carousel-next">›</button>
       </div>
 
       <div class="mt-10 relative overflow-hidden bg-gradient-to-r from-[#FF6B6B] to-[#8A5CFF] rounded-[2rem] p-8 lg:p-14 text-center text-white shadow-2xl">
@@ -626,7 +563,8 @@
     </div>
   </section>
 
-  <!-- PRÉDICAS MARQUEE -->
+
+  <!-- PRÉDICAS -->
   <section id="predicas" class="bg-[#0B1630] text-white py-20 lg:py-32 px-6 overflow-hidden">
     <div class="max-w-7xl mx-auto">
 
@@ -638,90 +576,63 @@
         </h2>
 
         <p class="mt-7 text-base lg:text-lg text-white/75 leading-relaxed max-w-3xl">
-          Mira algunas de nuestras prédicas recientes. En móvil avanzan automáticamente tipo marquee.
+          Desliza con el dedo o usa las flechas para ver nuestras prédicas recientes.
         </p>
       </div>
 
-      <div class="marquee">
-        <div class="marquee-track lg:grid-cols-3 lg:gap-8">
+      <div class="carousel-wrap">
+        <button type="button" aria-label="Anterior" class="carousel-prev">‹</button>
 
-          <!-- Video 1 -->
-          <a href="https://www.youtube.com/watch?v=OxxLmWZ9tZ4" target="_blank" class="marquee-card group relative rounded-[2rem] overflow-hidden bg-white/5 border border-white/10 backdrop-blur-sm shadow-xl">
+        <div class="mobile-scroll carousel-track lg:grid-cols-3 lg:gap-8">
+
+          <div class="video-card group relative rounded-[2rem] overflow-hidden bg-white/5 border border-white/10 backdrop-blur-sm shadow-xl">
             <div class="relative overflow-hidden">
-              <img src="https://img.youtube.com/vi/OxxLmWZ9tZ4/hqdefault.jpg" alt="Prédica CCR" class="w-full h-[235px] lg:h-[260px] object-cover group-hover:scale-105 transition-transform duration-700" />
+              <img src="https://img.youtube.com/vi/OxxLmWZ9tZ4/hqdefault.jpg" alt="Prédica CCR" class="w-full h-[210px] lg:h-[260px] object-cover group-hover:scale-105 transition-transform duration-700" />
               <div class="absolute inset-0 bg-gradient-to-t from-[#0B1630] via-[#0B1630]/20 to-transparent"></div>
               <div class="absolute inset-0 flex items-center justify-center">
-                <div class="w-20 h-20 rounded-full bg-white/15 backdrop-blur-md border border-white/20 flex items-center justify-center text-white text-3xl group-hover:scale-110 transition-transform duration-300">▶</div>
+                <div class="w-16 h-16 lg:w-20 lg:h-20 rounded-full bg-white/15 backdrop-blur-md border border-white/20 flex items-center justify-center text-white text-2xl lg:text-3xl">▶</div>
               </div>
             </div>
-            <div class="p-7">
+            <div class="p-6 lg:p-7">
               <p class="uppercase tracking-[0.4em] text-xs font-bold text-[#C084FC] mb-4">Predicación</p>
-              <h3 class="text-3xl font-extrabold leading-tight tracking-tight">Mensaje CCR</h3>
-              <p class="mt-4 text-white/70 text-base leading-relaxed">Mira este mensaje y fortalece tu fe a través de la Palabra de Dios.</p>
+              <h3 class="text-2xl lg:text-3xl font-extrabold leading-tight tracking-tight">Mensaje CCR</h3>
+              <a href="https://www.youtube.com/watch?v=OxxLmWZ9tZ4" target="_blank" class="inline-flex items-center gap-2 mt-5 text-[#FF6B6B] font-semibold hover:gap-3 transition-all">Ver ahora <span>→</span></a>
             </div>
-          </a>
+          </div>
 
-          <!-- Video 2 -->
-          <a href="https://www.youtube.com/watch?v=k-snnzX0uCA" target="_blank" class="marquee-card group relative rounded-[2rem] overflow-hidden bg-white/5 border border-white/10 backdrop-blur-sm shadow-xl">
+          <div class="video-card group relative rounded-[2rem] overflow-hidden bg-white/5 border border-white/10 backdrop-blur-sm shadow-xl">
             <div class="relative overflow-hidden">
-              <img src="https://img.youtube.com/vi/k-snnzX0uCA/hqdefault.jpg" alt="Prédica CCR" class="w-full h-[235px] lg:h-[260px] object-cover group-hover:scale-105 transition-transform duration-700" />
+              <img src="https://img.youtube.com/vi/k-snnzX0uCA/hqdefault.jpg" alt="Prédica CCR" class="w-full h-[210px] lg:h-[260px] object-cover group-hover:scale-105 transition-transform duration-700" />
               <div class="absolute inset-0 bg-gradient-to-t from-[#0B1630] via-[#0B1630]/20 to-transparent"></div>
               <div class="absolute inset-0 flex items-center justify-center">
-                <div class="w-20 h-20 rounded-full bg-white/15 backdrop-blur-md border border-white/20 flex items-center justify-center text-white text-3xl group-hover:scale-110 transition-transform duration-300">▶</div>
+                <div class="w-16 h-16 lg:w-20 lg:h-20 rounded-full bg-white/15 backdrop-blur-md border border-white/20 flex items-center justify-center text-white text-2xl lg:text-3xl">▶</div>
               </div>
             </div>
-            <div class="p-7">
+            <div class="p-6 lg:p-7">
               <p class="uppercase tracking-[0.4em] text-xs font-bold text-[#C084FC] mb-4">Enseñanza</p>
-              <h3 class="text-3xl font-extrabold leading-tight tracking-tight">Comunidad Cristiana de Restauración</h3>
-              <p class="mt-4 text-white/70 text-base leading-relaxed">Continúa creciendo espiritualmente junto a nuestra comunidad.</p>
+              <h3 class="text-2xl lg:text-3xl font-extrabold leading-tight tracking-tight">Comunidad Cristiana de Restauración</h3>
+              <a href="https://www.youtube.com/watch?v=k-snnzX0uCA" target="_blank" class="inline-flex items-center gap-2 mt-5 text-[#FF6B6B] font-semibold hover:gap-3 transition-all">Ver ahora <span>→</span></a>
             </div>
-          </a>
+          </div>
 
-          <!-- Video 3 -->
-          <a href="https://www.youtube.com/watch?v=Mj43mvE8G7Y" target="_blank" class="marquee-card group relative rounded-[2rem] overflow-hidden bg-white/5 border border-white/10 backdrop-blur-sm shadow-xl">
+          <div class="video-card group relative rounded-[2rem] overflow-hidden bg-white/5 border border-white/10 backdrop-blur-sm shadow-xl">
             <div class="relative overflow-hidden">
-              <img src="https://img.youtube.com/vi/Mj43mvE8G7Y/hqdefault.jpg" alt="Prédica CCR" class="w-full h-[235px] lg:h-[260px] object-cover group-hover:scale-105 transition-transform duration-700" />
+              <img src="https://img.youtube.com/vi/Mj43mvE8G7Y/hqdefault.jpg" alt="Prédica CCR" class="w-full h-[210px] lg:h-[260px] object-cover group-hover:scale-105 transition-transform duration-700" />
               <div class="absolute inset-0 bg-gradient-to-t from-[#0B1630] via-[#0B1630]/20 to-transparent"></div>
               <div class="absolute inset-0 flex items-center justify-center">
-                <div class="w-20 h-20 rounded-full bg-white/15 backdrop-blur-md border border-white/20 flex items-center justify-center text-white text-3xl group-hover:scale-110 transition-transform duration-300">▶</div>
+                <div class="w-16 h-16 lg:w-20 lg:h-20 rounded-full bg-white/15 backdrop-blur-md border border-white/20 flex items-center justify-center text-white text-2xl lg:text-3xl">▶</div>
               </div>
             </div>
-            <div class="p-7">
+            <div class="p-6 lg:p-7">
               <p class="uppercase tracking-[0.4em] text-xs font-bold text-[#C084FC] mb-4">Mensaje Especial</p>
-              <h3 class="text-3xl font-extrabold leading-tight tracking-tight">Esperanza y Restauración</h3>
-              <p class="mt-4 text-white/70 text-base leading-relaxed">Un mensaje de fe, restauración y esperanza para tu caminar con Dios.</p>
+              <h3 class="text-2xl lg:text-3xl font-extrabold leading-tight tracking-tight">Esperanza y Restauración</h3>
+              <a href="https://www.youtube.com/watch?v=Mj43mvE8G7Y" target="_blank" class="inline-flex items-center gap-2 mt-5 text-[#FF6B6B] font-semibold hover:gap-3 transition-all">Ver ahora <span>→</span></a>
             </div>
-          </a>
-
-          <!-- Duplicate videos for infinite marquee mobile -->
-          <a href="https://www.youtube.com/watch?v=OxxLmWZ9tZ4" target="_blank" class="duplicate marquee-card group relative rounded-[2rem] overflow-hidden bg-white/5 border border-white/10 backdrop-blur-sm shadow-xl">
-            <div class="relative overflow-hidden">
-              <img src="https://img.youtube.com/vi/OxxLmWZ9tZ4/hqdefault.jpg" alt="Prédica CCR" class="w-full h-[235px] object-cover" />
-              <div class="absolute inset-0 bg-gradient-to-t from-[#0B1630] via-[#0B1630]/20 to-transparent"></div>
-              <div class="absolute inset-0 flex items-center justify-center"><div class="w-20 h-20 rounded-full bg-white/15 backdrop-blur-md border border-white/20 flex items-center justify-center text-white text-3xl">▶</div></div>
-            </div>
-            <div class="p-7"><p class="uppercase tracking-[0.4em] text-xs font-bold text-[#C084FC] mb-4">Predicación</p><h3 class="text-3xl font-extrabold leading-tight">Mensaje CCR</h3><p class="mt-4 text-white/70 text-base">Mira este mensaje y fortalece tu fe.</p></div>
-          </a>
-
-          <a href="https://www.youtube.com/watch?v=k-snnzX0uCA" target="_blank" class="duplicate marquee-card group relative rounded-[2rem] overflow-hidden bg-white/5 border border-white/10 backdrop-blur-sm shadow-xl">
-            <div class="relative overflow-hidden">
-              <img src="https://img.youtube.com/vi/k-snnzX0uCA/hqdefault.jpg" alt="Prédica CCR" class="w-full h-[235px] object-cover" />
-              <div class="absolute inset-0 bg-gradient-to-t from-[#0B1630] via-[#0B1630]/20 to-transparent"></div>
-              <div class="absolute inset-0 flex items-center justify-center"><div class="w-20 h-20 rounded-full bg-white/15 backdrop-blur-md border border-white/20 flex items-center justify-center text-white text-3xl">▶</div></div>
-            </div>
-            <div class="p-7"><p class="uppercase tracking-[0.4em] text-xs font-bold text-[#C084FC] mb-4">Enseñanza</p><h3 class="text-3xl font-extrabold leading-tight">Comunidad CCR</h3><p class="mt-4 text-white/70 text-base">Crece espiritualmente junto a nuestra comunidad.</p></div>
-          </a>
-
-          <a href="https://www.youtube.com/watch?v=Mj43mvE8G7Y" target="_blank" class="duplicate marquee-card group relative rounded-[2rem] overflow-hidden bg-white/5 border border-white/10 backdrop-blur-sm shadow-xl">
-            <div class="relative overflow-hidden">
-              <img src="https://img.youtube.com/vi/Mj43mvE8G7Y/hqdefault.jpg" alt="Prédica CCR" class="w-full h-[235px] object-cover" />
-              <div class="absolute inset-0 bg-gradient-to-t from-[#0B1630] via-[#0B1630]/20 to-transparent"></div>
-              <div class="absolute inset-0 flex items-center justify-center"><div class="w-20 h-20 rounded-full bg-white/15 backdrop-blur-md border border-white/20 flex items-center justify-center text-white text-3xl">▶</div></div>
-            </div>
-            <div class="p-7"><p class="uppercase tracking-[0.4em] text-xs font-bold text-[#C084FC] mb-4">Mensaje Especial</p><h3 class="text-3xl font-extrabold leading-tight">Esperanza y Restauración</h3><p class="mt-4 text-white/70 text-base">Un mensaje de fe y esperanza.</p></div>
-          </a>
+          </div>
 
         </div>
+
+        <button type="button" aria-label="Siguiente" class="carousel-next">›</button>
       </div>
 
       <div class="mt-14 text-center">
@@ -732,6 +643,7 @@
 
     </div>
   </section>
+
 
   <!-- ORACIÓN -->
   <section id="oracion" class="bg-[#FAF8F5] text-[#0B1630] py-20 lg:py-32 px-6 overflow-hidden">
@@ -895,71 +807,6 @@
   </footer>
 
 
-  <!-- MODAL DECLARACIÓN DE FE -->
-  <div id="faithModal" class="fixed inset-0 z-[100] faith-modal-closed transition-opacity duration-300">
-    <div class="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
-
-    <div class="relative z-10 min-h-screen flex items-center justify-center px-5 py-10">
-      <div class="relative w-full max-w-3xl max-h-[85vh] overflow-y-auto rounded-[2rem] bg-[#FAF8F5] text-[#0B1630] shadow-2xl p-7 lg:p-10">
-
-        <button
-          id="closeFaithModal"
-          type="button"
-          aria-label="Cerrar Declaración de Fe"
-          class="absolute top-5 right-5 w-11 h-11 rounded-full bg-[#0B1630]/10 hover:bg-[#0B1630]/15 flex items-center justify-center text-2xl transition"
-        >
-          ×
-        </button>
-
-        <p class="uppercase tracking-[0.5em] text-xs font-bold text-[#8A5CFF] mb-5">
-          Lo Que Creemos
-        </p>
-
-        <h2 class="text-4xl lg:text-5xl font-extrabold leading-[0.95] tracking-tight pr-10">
-          Nuestra fe está centrada en Jesucristo.
-        </h2>
-
-        <p class="mt-6 text-[#0B1630]/75 leading-relaxed">
-          Estas verdades guían nuestra enseñanza, nuestra adoración y nuestra vida como comunidad de fe.
-        </p>
-
-        <div class="mt-8 space-y-5 text-[#0B1630]/75 leading-relaxed">
-
-          <div>
-            <h3 class="text-xl font-extrabold text-[#0B1630]">La Biblia</h3>
-            <p class="mt-2">Creemos que la Biblia es la Palabra inspirada de Dios, verdadera, confiable y autoridad suprema para la vida cristiana.</p>
-          </div>
-
-          <div>
-            <h3 class="text-xl font-extrabold text-[#0B1630]">Dios</h3>
-            <p class="mt-2">Creemos en un solo Dios eterno, creador de todas las cosas, que existe en tres personas: Padre, Hijo y Espíritu Santo.</p>
-          </div>
-
-          <div>
-            <h3 class="text-xl font-extrabold text-[#0B1630]">Jesucristo</h3>
-            <p class="mt-2">Creemos que Jesucristo es el Hijo de Dios, vivió sin pecado, murió en la cruz por nuestros pecados y resucitó victoriosamente.</p>
-          </div>
-
-          <div>
-            <h3 class="text-xl font-extrabold text-[#0B1630]">Salvación</h3>
-            <p class="mt-2">Creemos que la salvación es un regalo de la gracia de Dios, recibido por medio de la fe en Jesucristo.</p>
-          </div>
-
-          <div>
-            <h3 class="text-xl font-extrabold text-[#0B1630]">La Iglesia</h3>
-            <p class="mt-2">Creemos que la Iglesia es el cuerpo de Cristo, llamado a adorar a Dios, crecer espiritualmente, servir y compartir el evangelio.</p>
-          </div>
-
-          <div>
-            <h3 class="text-xl font-extrabold text-[#0B1630]">Esperanza Eterna</h3>
-            <p class="mt-2">Creemos en la segunda venida de Jesucristo y en la promesa de vida eterna para todos los que han puesto su fe en Él.</p>
-          </div>
-
-        </div>
-      </div>
-    </div>
-  </div>
-
   <script>
     const navbar = document.getElementById("navbar");
     const menuBtn = document.getElementById("menuBtn");
@@ -971,41 +818,6 @@
     const bar3 = document.getElementById("bar3");
 
     let menuOpen = false;
-
-    const faithModal = document.getElementById("faithModal");
-    const openFaithBtns = [
-      document.getElementById("openFaithModal"),
-      document.getElementById("openFaithModalMobile"),
-      document.getElementById("openFaithModalSection")
-    ].filter(Boolean);
-    const closeFaithModal = document.getElementById("closeFaithModal");
-
-    function openFaith() {
-      if (!faithModal) return;
-      faithModal.classList.remove("faith-modal-closed");
-      faithModal.classList.add("faith-modal-open");
-      document.body.style.overflow = "hidden";
-      if (menuOpen) toggleMenu();
-    }
-
-    function closeFaith() {
-      if (!faithModal) return;
-      faithModal.classList.remove("faith-modal-open");
-      faithModal.classList.add("faith-modal-closed");
-      document.body.style.overflow = "";
-    }
-
-    openFaithBtns.forEach(btn => btn.addEventListener("click", openFaith));
-    if (closeFaithModal) closeFaithModal.addEventListener("click", closeFaith);
-    if (faithModal) {
-      faithModal.addEventListener("click", function(e) {
-        if (e.target === faithModal || e.target.classList.contains("bg-black/70")) closeFaith();
-      });
-    }
-    document.addEventListener("keydown", function(e) {
-      if (e.key === "Escape") closeFaith();
-    });
-
 
     function toggleMenu() {
       menuOpen = !menuOpen;
@@ -1028,7 +840,9 @@
       }
     }
 
-    menuBtn.addEventListener("click", toggleMenu);
+    if (menuBtn) {
+      menuBtn.addEventListener("click", toggleMenu);
+    }
 
     mobileLinks.forEach(link => {
       link.addEventListener("click", () => {
@@ -1044,17 +858,18 @@
     /* Declaración de Fe Modal */
     const faithModal = document.getElementById("faithModal");
     const closeFaithModal = document.getElementById("closeFaithModal");
-    const openFaithButtons = document.querySelectorAll("[data-open-faith]");
+    const openFaithButtons = document.querySelectorAll("[data-open-faith], #openFaithModal, #openFaithModalMobile");
 
     function openFaithModal() {
+      if (!faithModal) return;
       faithModal.classList.remove("faith-modal-closed");
       faithModal.classList.add("faith-modal-open");
       document.body.style.overflow = "hidden";
-
       if (menuOpen) toggleMenu();
     }
 
     function closeModal() {
+      if (!faithModal) return;
       faithModal.classList.remove("faith-modal-open");
       faithModal.classList.add("faith-modal-closed");
       document.body.style.overflow = "";
@@ -1064,28 +879,29 @@
       button.addEventListener("click", openFaithModal);
     });
 
-    closeFaithModal.addEventListener("click", closeModal);
+    if (closeFaithModal) closeFaithModal.addEventListener("click", closeModal);
 
-    faithModal.addEventListener("click", function(e) {
-      if (e.target === faithModal) closeModal();
-    });
+    if (faithModal) {
+      faithModal.addEventListener("click", function(e) {
+        if (e.target === faithModal) closeModal();
+      });
+    }
 
     document.addEventListener("keydown", function(e) {
       if (e.key === "Escape") closeModal();
     });
 
-    /* Petición de oración por WhatsApp */
-
+    /* Carruseles táctiles con flechas */
     document.querySelectorAll(".carousel-track").forEach(track => {
-      const wrapper = track.closest(".relative");
+      const wrapper = track.closest(".carousel-wrap");
       const prev = wrapper ? wrapper.querySelector(".carousel-prev") : null;
       const next = wrapper ? wrapper.querySelector(".carousel-next") : null;
 
       if (!prev || !next) return;
 
       function getScrollAmount() {
-        const card = track.querySelector(".mobile-card");
-        if (!card) return track.clientWidth * 0.75;
+        const card = track.querySelector(".mobile-card, .video-card");
+        if (!card) return track.clientWidth * 0.7;
         const styles = window.getComputedStyle(track);
         const gap = parseFloat(styles.columnGap || styles.gap || 16);
         return card.getBoundingClientRect().width + gap;
@@ -1094,32 +910,17 @@
       prev.addEventListener("click", (e) => {
         e.preventDefault();
         e.stopPropagation();
-        track.scrollBy({
-          left: -getScrollAmount(),
-          behavior: "smooth"
-        });
+        track.scrollBy({ left: -getScrollAmount(), behavior: "smooth" });
       });
 
       next.addEventListener("click", (e) => {
         e.preventDefault();
         e.stopPropagation();
-        track.scrollBy({
-          left: getScrollAmount(),
-          behavior: "smooth"
-        });
+        track.scrollBy({ left: getScrollAmount(), behavior: "smooth" });
       });
     });
 
-      });
-
-      next.addEventListener("click", () => {
-        track.scrollBy({
-          left: track.clientWidth * 0.85,
-          behavior: "smooth"
-        });
-      });
-    });
-
+    /* Petición de oración por WhatsApp */
     const prayerForm = document.getElementById("prayerForm");
     if (prayerForm) {
       prayerForm.addEventListener("submit", function(e) {
