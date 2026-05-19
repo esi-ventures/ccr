@@ -130,6 +130,51 @@
       transform: translateY(24px) scale(.98);
       opacity: 0;
     }
+  
+    .mobile-scroll {
+      display: flex;
+      gap: 1rem;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding-bottom: 1rem;
+      -webkit-overflow-scrolling: touch;
+      scroll-behavior: smooth;
+      scrollbar-width: none;
+    }
+
+    .mobile-scroll::-webkit-scrollbar {
+      display: none;
+    }
+
+    .mobile-card {
+      min-width: 82%;
+      scroll-snap-align: start;
+    }
+
+    @media (min-width: 640px) {
+      .mobile-card {
+        min-width: 48%;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .mobile-scroll {
+        display: grid;
+        overflow: visible;
+        padding-bottom: 0;
+        scrollbar-width: auto;
+      }
+
+      .mobile-card {
+        min-width: 0;
+      }
+
+      .carousel-prev,
+      .carousel-next {
+        display: none;
+      }
+    }
+
   </style>
 </head>
 
@@ -343,7 +388,7 @@
           </div>
         </div>
 
-        <div class="relative hidden lg:block">
+        <div class="relative hidden lg:block hidden lg:block">
           <div class="absolute -top-8 -left-8 w-40 h-40 bg-[#FF6B6B]/20 rounded-full blur-3xl"></div>
           <div class="absolute -bottom-8 -right-8 w-52 h-52 bg-[#8A5CFF]/20 rounded-full blur-3xl"></div>
 
@@ -366,7 +411,7 @@
     <div class="max-w-7xl mx-auto">
       <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
 
-        <div class="relative ">
+        <div class="relative">
           <div class="absolute -top-8 -left-8 w-40 h-40 bg-[#FF6B6B]/20 rounded-full blur-3xl"></div>
           <div class="absolute -bottom-8 -right-8 w-52 h-52 bg-[#8A5CFF]/20 rounded-full blur-3xl"></div>
 
@@ -1013,6 +1058,29 @@
     });
 
     /* Petición de oración por WhatsApp */
+
+    document.querySelectorAll(".carousel-track").forEach(track => {
+      const wrapper = track.parentElement;
+      const prev = wrapper.querySelector(".carousel-prev");
+      const next = wrapper.querySelector(".carousel-next");
+
+      if (!prev || !next) return;
+
+      prev.addEventListener("click", () => {
+        track.scrollBy({
+          left: -track.clientWidth * 0.85,
+          behavior: "smooth"
+        });
+      });
+
+      next.addEventListener("click", () => {
+        track.scrollBy({
+          left: track.clientWidth * 0.85,
+          behavior: "smooth"
+        });
+      });
+    });
+
     const prayerForm = document.getElementById("prayerForm");
     if (prayerForm) {
       prayerForm.addEventListener("submit", function(e) {
