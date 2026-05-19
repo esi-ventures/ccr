@@ -112,13 +112,16 @@
 
   color: white;
 
+  appearance: none;
+  -webkit-appearance: none;
+  border: none;
+
   display: flex;
   align-items: center;
   justify-content: center;
 
-  padding-bottom: 2px;
-
   cursor: pointer;
+  text-align: center;
 
   box-shadow:
     0 10px 30px rgba(138,92,255,.35),
@@ -127,7 +130,7 @@
   font-size: 26px;
   font-weight: 700;
   line-height: 1;
-  padding-bottom: 3px;
+  padding-bottom: 2px;
 
   transition: all 0.3s ease;
 }
@@ -618,7 +621,7 @@
       </div>
 
       <div class="carousel-wrap">
-        <button type="button" aria-label="Anterior" class="carousel-prev">‹</button>
+        <button type="button" aria-label="Anterior" class="carousel-prev">&#10094;</button>
 
         <div class="mobile-scroll carousel-track lg:grid-cols-3 lg:gap-8">
 
@@ -669,7 +672,7 @@
 
         </div>
 
-        <button type="button" aria-label="Siguiente" class="carousel-next">›</button>
+        <button type="button" aria-label="Siguiente" class="carousel-next">&#10095;</button>
       </div>
 
       <div class="mt-14 text-center">
