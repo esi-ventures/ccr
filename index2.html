@@ -685,56 +685,156 @@
     </div>
   </section>
 
-  <!-- CONTACTO -->
-  <section id="contacto" class="bg-white text-[#0B1630] py-20 lg:py-32 px-6 overflow-hidden">
-    <div class="max-w-7xl mx-auto">
+<!-- CONTACTO -->
+<section id="contacto" class="bg-white text-[#0B1630] py-20 lg:py-28 px-6 overflow-hidden">
+  <div class="max-w-7xl mx-auto">
 
-      <div class="max-w-5xl mb-14 lg:mb-20">
-        <p class="uppercase tracking-[.55em] lg:tracking-[1em] text-sm lg:text-xl font-bold text-[#8A5CFF] mb-5">
-          Ubicación y Contacto
+    <!-- HEADER -->
+    <div class="max-w-5xl mb-12 lg:mb-16">
+      <p class="uppercase tracking-[.55em] lg:tracking-[1em] text-sm lg:text-xl font-bold text-[#8A5CFF] mb-5">
+        Ubicación y Contacto
+      </p>
+
+      <h2 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[0.95] lg:leading-[0.92] tracking-tight max-w-5xl">
+        Nos encantaría conocerte y darte la bienvenida a CCR.
+      </h2>
+    </div>
+
+    <!-- GRID -->
+    <div class="grid lg:grid-cols-2 gap-8 lg:gap-10 items-stretch">
+
+      <!-- INFORMACIÓN -->
+      <div class="bg-[#FAF8F5] rounded-[2rem] p-7 lg:p-10 border border-[#0B1630]/5 shadow-sm">
+
+        <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#FF6B6B] to-[#8A5CFF] flex items-center justify-center text-white text-3xl shadow-lg">
+          📍
+        </div>
+
+        <p class="uppercase tracking-[0.4em] text-xs font-bold text-[#8A5CFF] mt-8 mb-4">
+          Ubicación
         </p>
 
-        <h2 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[0.95] lg:leading-[0.92] tracking-tight max-w-5xl">
-          Nos encantaría conocerte y darte la bienvenida a CCR.
-        </h2>
-      </div>
+        <h3 class="text-3xl lg:text-5xl font-extrabold leading-tight tracking-tight">
+          Comunidad Cristiana de Restauración
+        </h3>
 
-      <div class="grid lg:grid-cols-2 gap-10 items-stretch">
+        <div class="mt-8 space-y-6 text-base lg:text-lg text-[#0B1630]/75 leading-relaxed">
 
-        <!-- UBICACIÓN SIN MAPA -->
-        <div class="bg-[#FAF8F5] rounded-[2rem] p-8 lg:p-12 border border-[#0B1630]/5 shadow-sm flex flex-col justify-center">
+          <div class="flex items-start gap-4">
+            <span class="text-2xl">📍</span>
 
-          <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#FF6B6B] to-[#8A5CFF] flex items-center justify-center text-white text-3xl shadow-lg">
-            📍
+            <p>
+              Achumani Calle 11 #92,<br>
+              casi esq. Alexander.<br>
+              La Paz, Bolivia
+            </p>
           </div>
 
-          <p class="uppercase tracking-[0.4em] text-xs font-bold text-[#8A5CFF] mt-8 mb-4">
-            Ubicación
-          </p>
+          <a
+            href="tel:+59167131579"
+            class="flex items-center gap-4 hover:text-[#8A5CFF] transition"
+          >
+            <span class="text-2xl">📞</span>
+            <span>67131579</span>
+          </a>
 
-          <h3 class="text-3xl lg:text-5xl font-extrabold leading-tight tracking-tight">
-            Comunidad Cristiana de Restauración
-          </h3>
+          <a
+            href="mailto:ccr.comunidadcristiana@gmail.com"
+            class="flex items-start gap-4 hover:text-[#8A5CFF] transition break-all"
+          >
+            <span class="text-2xl">✉</span>
+            <span>ccr.comunidadcristiana@gmail.com</span>
+          </a>
 
-          <p class="mt-6 text-base lg:text-lg text-[#0B1630]/70 leading-relaxed">
-            Achumani Calle 11 #92,<br>
-            casi esq. Alexander.<br>
-            La Paz, Bolivia
-          </p>
+        </div>
 
-          <span class="text-[#FF6B6B] text-2xl">📞</span>
-              <span>67131579</span>
-           <span>ccr.comunidadcristiana@gmail.com</span>
-            </a>
+        <!-- BOTONES -->
+        <div class="flex flex-col sm:flex-row gap-4 mt-10">
+
           <a
             href="https://maps.app.goo.gl/p8fPzqUUx53Qydr48"
             target="_blank"
-            class="inline-flex items-center justify-center mt-8 px-8 py-4 rounded-full font-semibold text-white bg-gradient-to-r from-[#FF6B6B] to-[#8A5CFF] hover:scale-105 transition-all duration-300 shadow-xl w-fit"
+            class="inline-flex items-center justify-center px-7 py-4 rounded-full font-semibold text-white bg-gradient-to-r from-[#FF6B6B] to-[#8A5CFF] hover:scale-105 transition-all duration-300 shadow-xl"
           >
             VER EN GOOGLE MAPS
           </a>
 
+          <a
+            href="https://wa.me/59167131579"
+            target="_blank"
+            class="inline-flex items-center justify-center px-7 py-4 rounded-full font-semibold text-white bg-[#25D366] hover:bg-[#1ebe5a] hover:scale-105 transition-all duration-300 shadow-xl"
+          >
+            ESCRÍBENOS POR WHATSAPP
+          </a>
+
         </div>
+
+      </div>
+
+      <!-- IMAGEN / FONDO -->
+      <div class="relative rounded-[2rem] overflow-hidden min-h-[420px] shadow-2xl">
+
+        <!-- IMAGEN -->
+        <img
+          src="imagenes/frontis(1).jpg"
+          alt="CCR La Paz"
+          class="absolute inset-0 w-full h-full object-cover"
+        />
+
+        <!-- OVERLAY -->
+        <div class="absolute inset-0 bg-[#0B1630]/75"></div>
+
+        <!-- DEGRADADO -->
+        <div class="absolute inset-0 bg-gradient-to-br from-[#0B1630]/30 via-[#0B1630]/65 to-[#0B1630]/90"></div>
+
+        <!-- CONTENIDO -->
+        <div class="relative z-10 h-full flex flex-col justify-between p-7 lg:p-10 text-white">
+
+          <div>
+
+            <p class="uppercase tracking-[0.4em] text-xs font-bold text-[#C084FC] mb-5">
+              Nuestra Iglesia
+            </p>
+
+            <h3 class="text-3xl lg:text-5xl font-extrabold leading-tight max-w-md">
+              Te esperamos con los brazos abiertos.
+            </h3>
+
+            <p class="mt-5 text-white/75 leading-relaxed max-w-md">
+              Un lugar para crecer en fe, encontrar comunidad y acercarte más a Dios.
+            </p>
+
+          </div>
+
+          <!-- BOTONES -->
+          <div class="flex flex-col gap-4 mt-10">
+
+            <a
+              href="https://maps.app.goo.gl/p8fPzqUUx53Qydr48"
+              target="_blank"
+              class="inline-flex items-center justify-center px-7 py-4 rounded-full font-semibold text-white bg-gradient-to-r from-[#FF6B6B] to-[#8A5CFF] hover:scale-105 transition-all duration-300 shadow-xl"
+            >
+              VER EN GOOGLE MAPS
+            </a>
+
+            <a
+              href="https://wa.me/59167131579"
+              target="_blank"
+              class="inline-flex items-center justify-center px-7 py-4 rounded-full font-semibold text-white border border-white/20 bg-white/10 backdrop-blur-md hover:bg-white/15 hover:scale-105 transition-all duration-300"
+            >
+              ESCRIBIR POR WHATSAPP
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
 
 
 
