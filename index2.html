@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Comunidad Cristiana de Restauración | CCR La Paz Bolivia</title>
+  <meta name="description" content="Comunidad Cristiana de Restauración en La Paz, Bolivia. Un lugar para crecer en fe, encontrar esperanza y vivir en comunidad.">
+  <meta name="keywords" content="iglesia cristiana, CCR, Comunidad Cristiana de Restauración, iglesia en La Paz, iglesia cristiana Bolivia">
+  <meta name="author" content="ESI Ventures">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Comunidad Cristiana de Restauración">
+  <meta property="og:description" content="Un lugar para crecer en fe, encontrar esperanza y vivir en comunidad.">
+  <meta property="og:image" content="imagenes/ccr_social.jpg">
+  <meta property="og:type" content="website">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Comunidad Cristiana de Restauración">
+  <meta name="twitter:description" content="Un lugar para crecer en fe y encontrar comunidad.">
+  <meta name="twitter:image" content="imagenes/ccr_social.jpg">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" type="image/png" href="imagenes/favicon.png">
+
+  <style>
+    html { scroll-behavior: smooth; }
+    .nav-scrolled {
+      background: rgba(11, 22, 48, 0.88);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.28);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .mobile-menu-open { max-height: 520px; opacity: 1; pointer-events: auto; }
+    .mobile-menu-closed { max-height: 0; opacity: 0; pointer-events: none; }
+
+    .mobile-scroll {
+      display: flex;
+      gap: 1rem;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding-bottom: 1rem;
+      -webkit-overflow-scrolling: touch;
+    }
+    .mobile-scroll::-webkit-scrollbar { height: 6px; }
+    .mobile-scroll::-webkit-scrollbar-thumb {
+      background: rgba(138, 92, 255, .35);
+      border-radius: 999px;
+    }
+    .mobile-card {
+      min-width: 82%;
+      scroll-snap-align: start;
+    }
+    @media (min-width: 1024px) {
+      .mobile-scroll {
+        display: grid;
+        overflow: visible;
+        padding-bottom: 0;
+      }
+      .mobile-card { min-width: 0; }
+    }
+  </style>
+</head>
+
+<body class="bg-[#0B1630] text-white">
+
+  <!-- HEADER -->
+  <header id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-500">
+    <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-10">
+      <div class="flex items-center justify-between h-20 lg:h-24">
+
+        <a href="#inicio" class="hidden md:flex items-center">
+          <img src="imagenes/ccr_logo_hor-trnasp_wt.png" alt="CCR - Comunidad Cristiana de Restauración" class="h-14 lg:h-16 w-auto" />
+        </a>
+
+        <a href="#inicio" class="flex md:hidden items-center">
+          <img src="imagenes/ccr_logo_sqr.png" alt="CCR" class="h-12 w-12 rounded-xl shadow-lg" />
+        </a>
+
+        <nav class="hidden lg:flex items-center gap-8 text-sm font-semibold tracking-wide">
+          <a href="#inicio" class="hover:text-[#FF6B6B] transition-colors">Inicio</a>
+          <a href="#nosotros" class="hover:text-[#FF6B6B] transition-colors">Nosotros</a>
+          <a href="#pastor" class="hover:text-[#FF6B6B] transition-colors">Pastor</a>
+          <a href="#reuniones" class="hover:text-[#FF6B6B] transition-colors">Reuniones</a>
+          <a href="#oracion" class="hover:text-[#FF6B6B] transition-colors">Oración</a>
+          <a href="#contacto" class="hover:text-[#FF6B6B] transition-colors">Contacto</a>
+        </nav>
+
+        <div class="hidden lg:block">
+          <a href="#visitanos" class="inline-flex items-center justify-center px-6 py-3 rounded-full text-sm font-bold tracking-wide bg-gradient-to-r from-[#FF6B6B] to-[#8A5CFF] shadow-lg shadow-black/25 hover:scale-105 transition-transform duration-300">
+            VISÍTANOS
+          </a>
+        </div>
+
+        <button id="menuBtn" aria-label="Abrir menú" aria-expanded="false" class="lg:hidden inline-flex items-center justify-center w-11 h-11 rounded-full bg-white/10 backdrop-blur-md border border-white/15 hover:bg-white/20 transition">
+          <span class="relative w-6 h-5 block">
+            <span id="bar1" class="absolute left-0 top-0 w-6 h-0.5 bg-white rounded-full transition-all duration-300"></span>
+            <span id="bar2" class="absolute left-0 top-2 w-6 h-0.5 bg-white rounded-full transition-all duration-300"></span>
+            <span id="bar3" class="absolute left-0 top-4 w-6 h-0.5 bg-white rounded-full transition-all duration-300"></span>
+          </span>
+        </button>
+      </div>
+    </div>
+
+    <div id="mobileMenu" class="lg:hidden mobile-menu-closed overflow-hidden transition-all duration-500 bg-[#0B1630]/95 backdrop-blur-xl border-t border-white/10">
+      <nav class="px-6 py-6 space-y-5 text-sm font-semibold tracking-wide">
+        <a href="#inicio" class="mobile-link block hover:text-[#FF6B6B] transition">Inicio</a>
+        <a href="#nosotros" class="mobile-link block hover:text-[#FF6B6B] transition">Nosotros</a>
+        <a href="#pastor" class="mobile-link block hover:text-[#FF6B6B] transition">Pastor</a>
+        <a href="#reuniones" class="mobile-link block hover:text-[#FF6B6B] transition">Reuniones</a>
+        <a href="#oracion" class="mobile-link block hover:text-[#FF6B6B] transition">Oración</a>
+        <a href="#contacto" class="mobile-link block hover:text-[#FF6B6B] transition">Contacto</a>
+        <a href="#visitanos" class="mobile-link block text-center mt-6 px-6 py-3 rounded-full font-bold bg-gradient-to-r from-[#FF6B6B] to-[#8A5CFF] shadow-lg">VISÍTANOS</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section id="inicio" class="relative min-h-screen flex items-center overflow-hidden">
+    <div class="absolute inset-0 bg-cover bg-center scale-105" style="background-image: url('imagenes/ccr_hero.png');"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/45 to-[#0B1630]/95"></div>
+
+    <div class="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-10 pt-36 pb-56 lg:pb-44">
+      <div class="max-w-2xl">
+        <p class="uppercase tracking-[0.35em] text-xs md:text-sm text-white/80 mb-5 font-medium">Bienvenido a CCR</p>
+
+        <h1 class="text-4xl sm:text-5xl lg:text-7xl font-extrabold leading-[0.98] tracking-tight text-white">
+          Un lugar para crecer en fe, encontrar comunidad y acercarte a Dios.
+        </h1>
+
+        <p class="mt-7 text-base md:text-xl text-white/80 leading-relaxed max-w-xl">
+          Creemos en el poder transformador de Jesucristo para restaurar vidas, fortalecer familias y dar propósito.
+        </p>
+
+        <div class="mt-9 flex flex-col sm:flex-row gap-4">
+          <a href="#visitanos" class="inline-flex items-center justify-center px-7 py-4 rounded-full font-semibold text-white bg-gradient-to-r from-[#FF6B6B] to-[#8A5CFF] hover:scale-105 transition-all duration-300 shadow-2xl shadow-black/30">PLANIFICA TU VISITA</a>
+          <a href="#nosotros" class="inline-flex items-center justify-center px-7 py-4 rounded-full border border-white/30 text-white hover:bg-white/10 backdrop-blur-md transition-all duration-300">CONOCE MÁS</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="absolute bottom-0 left-0 w-full z-20">
+      <div class="bg-black/35 backdrop-blur-xl border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-6 lg:px-10 py-5">
+          <div class="grid grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-8">
+            <div class="flex items-start gap-3"><div class="text-[#FF6B6B] text-xl">♡</div><div><h3 class="text-xs font-bold uppercase text-white">Amor</h3><p class="text-xs text-white/65 mt-1">Amamos como Jesús nos amó.</p></div></div>
+            <div class="flex items-start gap-3"><div class="text-[#8A5CFF] text-xl">▱</div><div><h3 class="text-xs font-bold uppercase text-white">Palabra</h3><p class="text-xs text-white/65 mt-1">La Biblia es nuestro fundamento.</p></div></div>
+            <div class="flex items-start gap-3"><div class="text-[#FFB86B] text-xl">☷</div><div><h3 class="text-xs font-bold uppercase text-white">Comunidad</h3><p class="text-xs text-white/65 mt-1">Caminamos juntos en fe.</p></div></div>
+            <div class="flex items-start gap-3"><div class="text-[#C084FC] text-xl">✝</div><div><h3 class="text-xs font-bold uppercase text-white">Propósito</h3><p class="text-xs text-white/65 mt-1">Dios tiene propósito para ti.</p></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="relative w-full overflow-hidden leading-none">
+        <svg class="relative block w-full h-[55px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120" preserveAspectRatio="none">
+          <path fill="#FAF8F5" d="M0,64L80,69.3C160,75,320,85,480,85.3C640,85,800,75,960,64C1120,53,1280,43,1360,37.3L1440,32L1440,120L0,120Z"></path>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUIÉNES SOMOS -->
+  <section id="nosotros" class="bg-[#FAF8F5] text-[#0B1630] py-20 lg:py-32 px-6 overflow-hidden">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+
+        <div>
+          <p class="uppercase tracking-[.55em] lg:tracking-[1em] text-sm lg:text-xl font-bold text-[#8A5CFF] mb-5">Quiénes Somos</p>
+
+          <h2 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[0.95] lg:leading-[0.92] tracking-tight max-w-3xl">
+            Una comunidad centrada en Cristo y en la restauración de las personas.
+          </h2>
+
+          <p class="mt-7 text-base lg:text-lg text-[#0B1630]/75 leading-relaxed">
+            En Comunidad Cristiana de Restauración creemos que cada persona tiene valor, propósito y una historia que Dios puede transformar.
+          </p>
+
+          <p class="mt-5 text-base lg:text-lg text-[#0B1630]/75 leading-relaxed">
+            Somos una iglesia enfocada en compartir el amor de Jesucristo, acompañar a las familias y caminar juntos en fe, esperanza y restauración.
+          </p>
+
+          <div class="mt-10 mobile-scroll lg:grid-cols-3">
+            <div class="mobile-card bg-white rounded-3xl p-5 shadow-sm border border-[#0B1630]/5">
+              <div class="text-2xl mb-3">✝</div><h3 class="font-bold mb-2">Nuestra Identidad</h3><p class="text-sm text-[#0B1630]/65">Cristo es el centro de todo.</p>
+            </div>
+            <div class="mobile-card bg-white rounded-3xl p-5 shadow-sm border border-[#0B1630]/5">
+              <div class="text-2xl mb-3">♡</div><h3 class="font-bold mb-2">Nuestra Comunidad</h3><p class="text-sm text-[#0B1630]/65">Caminamos juntos en amor.</p>
+            </div>
+            <div class="mobile-card bg-white rounded-3xl p-5 shadow-sm border border-[#0B1630]/5">
+              <div class="text-2xl mb-3">✦</div><h3 class="font-bold mb-2">Nuestra Esperanza</h3><p class="text-sm text-[#0B1630]/65">Creemos en vidas restauradas.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="relative">
+          <div class="absolute -top-8 -left-8 w-40 h-40 bg-[#FF6B6B]/20 rounded-full blur-3xl"></div>
+          <div class="absolute -bottom-8 -right-8 w-52 h-52 bg-[#8A5CFF]/20 rounded-full blur-3xl"></div>
+
+          <div class="relative rounded-[2rem] overflow-hidden shadow-2xl">
+            <img src="imagenes/nuevo.jpg" alt="Comunidad Cristiana de Restauración" class="w-full h-[420px] lg:h-[520px] object-cover" />
+            <div class="absolute inset-0 bg-gradient-to-t from-[#0B1630]/80 via-[#0B1630]/15 to-transparent"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-7">
+              <p class="text-white/80 text-sm uppercase tracking-[0.25em] mb-3">CCR</p>
+              <h3 class="text-white text-2xl lg:text-3xl font-bold leading-tight">Un lugar para pertenecer, crecer y caminar con Dios.</h3>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PASTOR -->
+  <section id="pastor" class="bg-white text-[#0B1630] py-20 lg:py-32 px-6 overflow-hidden">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+
+        <div class="relative">
+          <div class="absolute -top-8 -left-8 w-40 h-40 bg-[#FF6B6B]/20 rounded-full blur-3xl"></div>
+          <div class="absolute -bottom-8 -right-8 w-52 h-52 bg-[#8A5CFF]/20 rounded-full blur-3xl"></div>
+
+          <div class="relative rounded-[2rem] overflow-hidden shadow-2xl">
+            <img src="imagenes/pastorcarlossanabria.png" alt="Pastor Carlos Sanabria" class="w-full h-[460px] lg:h-[620px] object-cover object-center" />
+          </div>
+        </div>
+
+        <div>
+          <p class="uppercase tracking-[.55em] lg:tracking-[1em] text-sm lg:text-xl font-bold text-[#8A5CFF] mb-5">Pastor Principal</p>
+
+          <h2 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[0.95] lg:leading-[0.92] tracking-tight max-w-3xl">
+            Pastor Carlos Sanabria
+          </h2>
+
+          <p class="mt-7 text-base lg:text-lg text-[#0B1630]/75 leading-relaxed">
+            El Pastor Carlos Sanabria guía a Comunidad Cristiana de Restauración con un corazón enfocado en Cristo, la Palabra de Dios y la restauración de las personas.
+          </p>
+
+          <p class="mt-5 text-base lg:text-lg text-[#0B1630]/75 leading-relaxed">
+            Su deseo es acompañar a cada persona y familia en un camino de fe, esperanza y crecimiento espiritual.
+          </p>
+
+          <div class="mt-10 flex flex-col sm:flex-row gap-4">
+            <a href="#contacto" class="inline-flex items-center justify-center px-8 py-4 rounded-full font-semibold text-white bg-gradient-to-r from-[#FF6B6B] to-[#8A5CFF] hover:scale-105 transition-all duration-300 shadow-xl">CONTÁCTANOS</a>
+            <a href="#oracion" class="inline-flex items-center justify-center px-8 py-4 rounded-full border border-[#0B1630]/15 text-[#0B1630] hover:bg-[#0B1630]/5 transition-all duration-300">PEDIR ORACIÓN</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PRIMERA VEZ -->
+  <section id="visitanos" class="bg-[#FAF8F5] text-[#0B1630] py-20 lg:py-32 px-6 overflow-hidden">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+
+        <div class="relative order-2 lg:order-1">
+          <div class="relative rounded-[2rem] overflow-hidden shadow-2xl bg-[#0B1630] p-7 lg:p-14">
+            <p class="uppercase tracking-[0.5em] text-xs lg:text-sm font-bold text-[#C084FC] mb-6">Ven tal como eres</p>
+            <h3 class="text-white text-3xl lg:text-5xl font-extrabold leading-[0.98] tracking-tight">
+              Queremos que tu primera visita sea sencilla, cálida y especial.
+            </h3>
+            <p class="mt-7 text-base lg:text-lg text-white/75 leading-relaxed">
+              No necesitas conocer todo, vestir de cierta manera o tener todo resuelto. En CCR encontrarás una comunidad lista para recibirte con amor.
+            </p>
+          </div>
+        </div>
+
+        <div class="order-1 lg:order-2">
+          <p class="uppercase tracking-[.55em] lg:tracking-[1em] text-sm lg:text-xl font-bold text-[#8A5CFF] mb-5">Primera Vez</p>
+          <h2 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[0.95] lg:leading-[0.92] tracking-tight max-w-3xl">
+            Puedes venir tal como eres.
+          </h2>
+          <p class="mt-7 text-base lg:text-lg text-[#0B1630]/75 leading-relaxed">
+            Sabemos que visitar una iglesia por primera vez puede sentirse diferente. Por eso queremos que desde el primer momento te sientas en casa.
+          </p>
+          <div class="mt-10 flex flex-col sm:flex-row gap-4">
+            <a href="#reuniones" class="inline-flex items-center justify-center px-8 py-4 rounded-full font-semibold text-white bg-gradient-to-r from-[#FF6B6B] to-[#8A5CFF] hover:scale-105 transition-all duration-300 shadow-xl">VER REUNIONES</a>
+            <a href="#contacto" class="inline-flex items-center justify-center px-8 py-4 rounded-full border border-[#0B1630]/15 text-[#0B1630] hover:bg-[#0B1630]/5 transition-all duration-300">ESCRÍBENOS</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- REUNIONES -->
+  <section id="reuniones" class="bg-white text-[#0B1630] py-20 lg:py-32 px-6 overflow-hidden">
+    <div class="max-w-7xl mx-auto">
+
+      <div class="max-w-5xl mb-14 lg:mb-20">
+        <p class="uppercase tracking-[.55em] lg:tracking-[1em] text-sm lg:text-xl font-bold text-[#8A5CFF] mb-5">Comunidad y Crecimiento</p>
+        <h2 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[0.95] lg:leading-[0.92] tracking-tight">
+          Reuniones Semanales
+        </h2>
+        <p class="mt-7 max-w-3xl text-base lg:text-lg text-[#0B1630]/75 leading-relaxed">
+          Compartimos espacios de oración, discipulado, enseñanza bíblica y fortalecimiento familiar para todas las edades.
+        </p>
+      </div>
+
+      <div class="mobile-scroll lg:grid-cols-3 lg:gap-8">
+
+        <div class="mobile-card bg-[#FAF8F5] rounded-[2rem] p-6 lg:p-10 border border-[#0B1630]/5 shadow-sm">
+          <h3 class="text-3xl font-extrabold mb-6">Lunes</h3>
+          <div class="space-y-5">
+            <div><h4 class="text-lg font-bold">Oración de Varones</h4><p class="text-[#FF6B6B] mt-1 font-semibold">07:00</p></div>
+            <div><h4 class="text-lg font-bold">Reunión de Varones</h4><p class="text-[#FF6B6B] mt-1 font-semibold">20:00 – 22:00</p></div>
+          </div>
+        </div>
+
+        <div class="mobile-card bg-[#FAF8F5] rounded-[2rem] p-6 lg:p-10 border border-[#0B1630]/5 shadow-sm">
+          <h3 class="text-3xl font-extrabold mb-6">Martes</h3>
+          <div class="space-y-5">
+            <div><h4 class="text-lg font-bold">Oración de Mujeres</h4><p class="text-[#FF6B6B] mt-1 font-semibold">07:00</p></div>
+            <div><h4 class="text-lg font-bold">Reunión de Mujeres</h4><p class="text-[#FF6B6B] mt-1 font-semibold">17:00 – 19:00</p></div>
+          </div>
+        </div>
+
+        <div class="mobile-card bg-[#FAF8F5] rounded-[2rem] p-6 lg:p-10 border border-[#0B1630]/5 shadow-sm">
+          <h3 class="text-3xl font-extrabold mb-6">Miércoles</h3>
+          <h4 class="text-lg font-bold">Estudio Bíblico</h4><p class="text-[#FF6B6B] mt-1 font-semibold">20:00 – 21:00</p>
+        </div>
+
+        <div class="mobile-card bg-[#FAF8F5] rounded-[2rem] p-6 lg:p-10 border border-[#0B1630]/5 shadow-sm">
+          <h3 class="text-3xl font-extrabold mb-6">Jueves</h3>
+          <h4 class="text-lg font-bold">Discipulado</h4><p class="text-[#FF6B6B] mt-1 font-semibold">17:30 – 21:00</p>
+        </div>
+
+        <div class="mobile-card bg-[#FAF8F5] rounded-[2rem] p-6 lg:p-10 border border-[#0B1630]/5 shadow-sm">
+          <h3 class="text-3xl font-extrabold mb-6">Viernes</h3>
+          <div class="space-y-5">
+            <div><h4 class="text-lg font-bold">Reunión de Familias</h4><p class="text-[#FF6B6B] mt-1 font-semibold">20:00 – 22:00</p></div>
+            <div><h4 class="text-lg font-bold">Vigilia de Oración</h4><p class="text-[#FF6B6B] mt-1 font-semibold">20:00 – 22:00</p><p class="text-sm text-[#0B1630]/55 mt-1 italic">Último viernes de cada mes</p></div>
+          </div>
+        </div>
+
+        <div class="mobile-card bg-[#FAF8F5] rounded-[2rem] p-6 lg:p-10 border border-[#0B1630]/5 shadow-sm">
+          <h3 class="text-3xl font-extrabold mb-6">Sábado</h3>
+          <div class="space-y-5">
+            <div><h4 class="text-lg font-bold">Jóvenes — Koinonía</h4><p class="text-[#FF6B6B] mt-1 font-semibold">18:00 – 20:00</p></div>
+            <div><h4 class="text-lg font-bold">Alabanza</h4><p class="text-[#FF6B6B] mt-1 font-semibold">16:00 – 18:00</p></div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="mt-10 relative overflow-hidden bg-gradient-to-r from-[#FF6B6B] to-[#8A5CFF] rounded-[2rem] p-8 lg:p-14 text-center text-white shadow-2xl">
+        <p class="uppercase tracking-[0.5em] text-xs lg:text-sm font-bold text-white/80 mb-5">Encuentro Principal</p>
+        <h3 class="text-3xl md:text-5xl font-extrabold leading-tight">Domingo — Culto General</h3>
+        <p class="mt-5 text-xl lg:text-2xl font-semibold">10:00 – 12:00</p>
+      </div>
+
+      <div class="mt-10 bg-[#FAF8F5] rounded-[2rem] p-7 lg:p-12 border border-[#0B1630]/5 shadow-sm">
+        <div class="grid md:grid-cols-2 gap-8 items-center">
+          <div>
+            <p class="uppercase tracking-[0.4em] text-xs font-bold text-[#8A5CFF] mb-4">Acompañamiento Espiritual</p>
+            <h3 class="text-3xl lg:text-4xl font-extrabold">Consejería</h3>
+            <p class="mt-5 text-base lg:text-lg text-[#0B1630]/70 leading-relaxed">Espacios de consejería y acompañamiento espiritual para personas y familias.</p>
+          </div>
+          <div class="space-y-4">
+            <div class="bg-white rounded-2xl p-4"><p class="text-[#0B1630]/75 font-medium">Lunes, martes y miércoles por la tarde</p></div>
+            <div class="bg-white rounded-2xl p-4"><p class="text-[#0B1630]/75 font-medium">Contacto: 67131579</p></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ORACIÓN -->
+  <section id="oracion" class="bg-[#0B1630] text-white py-20 lg:py-32 px-6 overflow-hidden">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+
+        <div>
+          <p class="uppercase tracking-[.55em] lg:tracking-[1em] text-sm lg:text-xl font-bold text-[#C084FC] mb-5">Petición de Oración</p>
+          <h2 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[0.95] lg:leading-[0.92] tracking-tight max-w-4xl">
+            No estás solo. Queremos orar contigo.
+          </h2>
+          <p class="mt-7 text-base lg:text-lg text-white/75 leading-relaxed max-w-3xl">
+            Si estás atravesando un momento difícil, necesitas dirección o deseas que oremos por ti, puedes compartir tu petición con nosotros.
+          </p>
+
+          <div class="mt-10 grid gap-4">
+            <div class="flex items-start gap-4 bg-white/10 rounded-2xl p-5 border border-white/10"><span class="text-[#FF6B6B] text-2xl">01</span><p class="text-white/80">Tu petición será recibida con respeto y cuidado.</p></div>
+            <div class="flex items-start gap-4 bg-white/10 rounded-2xl p-5 border border-white/10"><span class="text-[#FF6B6B] text-2xl">02</span><p class="text-white/80">Nuestro equipo pastoral orará por ti.</p></div>
+          </div>
+        </div>
+
+        <div class="relative bg-white rounded-[2rem] p-7 lg:p-12 shadow-2xl text-[#0B1630]">
+          <p class="uppercase tracking-[0.5em] text-xs font-bold text-[#8A5CFF] mb-5">Formulario</p>
+          <h3 class="text-3xl lg:text-4xl font-extrabold leading-tight">Enviar petición por WhatsApp</h3>
+
+          <form id="prayerForm" class="mt-8 space-y-5">
+            <div>
+              <label class="block text-sm font-bold mb-2">Nombre</label>
+              <input id="prayerName" type="text" placeholder="Tu nombre" class="w-full rounded-2xl border border-[#0B1630]/10 px-5 py-4 outline-none focus:ring-2 focus:ring-[#8A5CFF]" />
+            </div>
+            <div>
+              <label class="block text-sm font-bold mb-2">Petición de oración</label>
+              <textarea id="prayerMessage" rows="5" placeholder="Escribe tu petición..." class="w-full rounded-2xl border border-[#0B1630]/10 px-5 py-4 outline-none focus:ring-2 focus:ring-[#8A5CFF]"></textarea>
+            </div>
+            <button type="submit" class="w-full inline-flex items-center justify-center px-8 py-4 rounded-full font-semibold text-white bg-gradient-to-r from-[#FF6B6B] to-[#8A5CFF] hover:scale-105 transition-all duration-300 shadow-xl">
+              ENVIAR PETICIÓN
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto" class="bg-white text-[#0B1630] py-20 lg:py-32 px-6 overflow-hidden">
+    <div class="max-w-7xl mx-auto">
+
+      <div class="max-w-5xl mb-14 lg:mb-20">
+        <p class="uppercase tracking-[.55em] lg:tracking-[1em] text-sm lg:text-xl font-bold text-[#8A5CFF] mb-5">Ubicación y Contacto</p>
+        <h2 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[0.95] lg:leading-[0.92] tracking-tight max-w-5xl">
+          Nos encantaría conocerte y darte la bienvenida a CCR.
+        </h2>
+        <p class="mt-7 text-base lg:text-lg text-[#0B1630]/75 leading-relaxed max-w-3xl">
+          Estamos aquí para responder tus preguntas, acompañarte y ayudarte a dar tu siguiente paso en fe.
+        </p>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-10 items-stretch">
+
+        <div class="relative rounded-[2rem] overflow-hidden shadow-2xl min-h-[480px] lg:min-h-[620px]">
+          <iframe src="https://www.google.com/maps?q=Achumani+Calle+11+92+La+Paz+Bolivia&output=embed" class="absolute inset-0 w-full h-full border-0" loading="lazy" allowfullscreen></iframe>
+
+          <div class="absolute bottom-6 left-6 right-6 bg-white/92 backdrop-blur-xl rounded-3xl p-6 lg:p-8 shadow-xl border border-white/50">
+            <p class="uppercase tracking-[0.4em] text-xs font-bold text-[#8A5CFF] mb-3">CCR</p>
+            <h3 class="text-2xl lg:text-3xl font-extrabold tracking-tight">Comunidad Cristiana de Restauración</h3>
+            <p class="mt-3 text-[#0B1630]/70 leading-relaxed">Un lugar para crecer en fe, encontrar comunidad y acercarte a Dios.</p>
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-6">
+          <div class="bg-[#FAF8F5] rounded-[2rem] p-7 lg:p-10 border border-[#0B1630]/5 shadow-sm">
+            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#FF6B6B] to-[#8A5CFF] flex items-center justify-center text-white text-3xl shadow-lg">📍</div>
+            <h3 class="mt-8 text-3xl lg:text-4xl font-extrabold tracking-tight">Dirección</h3>
+            <p class="mt-5 text-base lg:text-lg text-[#0B1630]/70 leading-relaxed">
+              Achumani Calle 11 #92,<br>casi esq. Alexander.<br>La Paz, Bolivia
+            </p>
+            <a href="https://maps.app.goo.gl/p8fPzqUUx53Qydr48" target="_blank" class="inline-flex items-center gap-2 mt-6 text-[#8A5CFF] font-semibold hover:gap-3 transition-all">
+              Ver en Google Maps <span>→</span>
+            </a>
+          </div>
+
+          <div class="bg-[#0B1630] rounded-[2rem] p-7 lg:p-10 shadow-2xl overflow-hidden relative flex-1">
+            <div class="absolute -bottom-10 -right-10 w-52 h-52 bg-[#8A5CFF]/20 rounded-full blur-3xl"></div>
+            <div class="relative z-10">
+              <div class="w-14 h-14 rounded-2xl bg-white/10 border border-white/10 backdrop-blur-md flex items-center justify-center text-white text-3xl">✆</div>
+              <h3 class="mt-8 text-3xl lg:text-4xl font-extrabold tracking-tight text-white">Contáctanos</h3>
+
+              <div class="mt-8 space-y-6 text-base lg:text-lg text-white/75">
+                <a href="tel:+59167131579" class="flex items-center gap-4 hover:text-white transition"><span class="text-[#FF6B6B] text-2xl">📞</span><span>67131579</span></a>
+                <a href="mailto:ccr.comunidadcristiana@gmail.com" class="flex items-start gap-4 hover:text-white transition break-all"><span class="text-[#C084FC] text-2xl">✉</span><span>ccr.comunidadcristiana@gmail.com</span></a>
+              </div>
+
+              <a href="https://wa.me/59167131579" target="_blank" class="inline-flex items-center justify-center mt-10 px-8 py-4 rounded-full font-semibold text-white bg-gradient-to-r from-[#FF6B6B] to-[#8A5CFF] hover:scale-105 transition-all duration-300 shadow-xl">
+                ESCRÍBENOS POR WHATSAPP
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="relative bg-[#0B1630] text-white overflow-hidden">
+    <div class="h-px bg-white/10"></div>
+    <div class="absolute -top-20 right-0 w-72 h-72 bg-[#8A5CFF]/20 rounded-full blur-3xl"></div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-6 py-16 lg:py-20">
+      <div class="grid lg:grid-cols-4 gap-12 lg:gap-14">
+
+        <div class="lg:col-span-2">
+          <img src="imagenes/ccr_logo_hor-trnasp_wt.png" alt="CCR" class="h-14 lg:h-16 w-auto" />
+          <p class="mt-8 text-base lg:text-lg text-white/70 leading-relaxed max-w-xl">
+            Comunidad Cristiana de Restauración es una iglesia enfocada en compartir el amor de Jesucristo, restaurar vidas y construir una comunidad auténtica centrada en la fe, la esperanza y el servicio.
+          </p>
+
+          <div class="flex items-center gap-4 mt-10">
+            <a href="https://www.facebook.com/comunidadcristianaccr" target="_blank" class="w-12 h-12 rounded-full bg-white/10 border border-white/10 flex items-center justify-center hover:bg-white/20 transition text-lg">f</a>
+            <a href="mailto:ccr.comunidadcristiana@gmail.com" class="w-12 h-12 rounded-full bg-white/10 border border-white/10 flex items-center justify-center hover:bg-white/20 transition text-lg">✉</a>
+            <a href="https://www.youtube.com/@comunidadcristianaderestau6630" target="_blank" class="w-12 h-12 rounded-full bg-white/10 border border-white/10 flex items-center justify-center hover:bg-white/20 transition text-lg">▶</a>
+          </div>
+        </div>
+
+        <div>
+          <p class="uppercase tracking-[0.4em] text-xs font-bold text-[#C084FC] mb-8">Navegación</p>
+          <nav class="space-y-5 text-base lg:text-lg text-white/70">
+            <a href="#inicio" class="block hover:text-white transition">Inicio</a>
+            <a href="#nosotros" class="block hover:text-white transition">Quiénes Somos</a>
+            <a href="#pastor" class="block hover:text-white transition">Pastor</a>
+            <a href="#reuniones" class="block hover:text-white transition">Reuniones</a>
+            <a href="#oracion" class="block hover:text-white transition">Petición de Oración</a>
+            <a href="#contacto" class="block hover:text-white transition">Contacto</a>
+          </nav>
+        </div>
+
+        <div>
+          <p class="uppercase tracking-[0.4em] text-xs font-bold text-[#C084FC] mb-8">Contacto</p>
+          <div class="space-y-6 text-base lg:text-lg text-white/70">
+            <a href="https://maps.app.goo.gl/p8fPzqUUx53Qydr48" target="_blank" class="block hover:text-white transition leading-relaxed">
+              📍 Achumani Calle 11 #92,<br>casi esq. Alexander.<br>La Paz, Bolivia
+            </a>
+            <a href="tel:+59167131579" class="block hover:text-white transition">📞 67131579</a>
+            <a href="mailto:ccr.comunidadcristiana@gmail.com" class="block hover:text-white transition break-all">✉ ccr.comunidadcristiana@gmail.com</a>
+            <a href="https://wa.me/59167131579" target="_blank" class="inline-flex items-center justify-center mt-4 px-6 py-3 rounded-full font-semibold text-white bg-gradient-to-r from-[#FF6B6B] to-[#8A5CFF] hover:scale-105 transition-all duration-300 shadow-xl">
+              WHATSAPP
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="mt-16 lg:mt-20 pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-6">
+        <p class="text-white/50 text-sm text-center md:text-left">© 2026 Comunidad Cristiana de Restauración. Todos los derechos reservados.</p>
+        <p class="text-white/40 text-sm text-center md:text-right">Página diseñada por ESI Ventures</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const navbar = document.getElementById("navbar");
+    const menuBtn = document.getElementById("menuBtn");
+    const mobileMenu = document.getElementById("mobileMenu");
+    const mobileLinks = document.querySelectorAll(".mobile-link");
+
+    const bar1 = document.getElementById("bar1");
+    const bar2 = document.getElementById("bar2");
+    const bar3 = document.getElementById("bar3");
+
+    let menuOpen = false;
+
+    function toggleMenu() {
+      menuOpen = !menuOpen;
+      menuBtn.setAttribute("aria-expanded", menuOpen);
+
+      if (menuOpen) {
+        mobileMenu.classList.remove("mobile-menu-closed");
+        mobileMenu.classList.add("mobile-menu-open");
+        bar1.style.transform = "rotate(45deg) translate(5px, 6px)";
+        bar2.style.opacity = "0";
+        bar3.style.transform = "rotate(-45deg) translate(5px, -6px)";
+        navbar.classList.add("nav-scrolled");
+      } else {
+        mobileMenu.classList.remove("mobile-menu-open");
+        mobileMenu.classList.add("mobile-menu-closed");
+        bar1.style.transform = "rotate(0deg) translate(0, 0)";
+        bar2.style.opacity = "1";
+        bar3.style.transform = "rotate(0deg) translate(0, 0)";
+        if (window.scrollY <= 40) navbar.classList.remove("nav-scrolled");
+      }
+    }
+
+    menuBtn.addEventListener("click", toggleMenu);
+
+    mobileLinks.forEach(link => {
+      link.addEventListener("click", () => {
+        if (menuOpen) toggleMenu();
+      });
+    });
+
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 40 || menuOpen) navbar.classList.add("nav-scrolled");
+      else navbar.classList.remove("nav-scrolled");
+    });
+
+    const prayerForm = document.getElementById("prayerForm");
+    if (prayerForm) {
+      prayerForm.addEventListener("submit", function(e) {
+        e.preventDefault();
+
+        const name = document.getElementById("prayerName").value.trim();
+        const message = document.getElementById("prayerMessage").value.trim();
+
+        const text = `Hola CCR, mi nombre es ${name || "No indicado"}.%0A%0AQuisiera compartir esta petición de oración:%0A${encodeURIComponent(message || "No indicado")}`;
+        const url = `https://wa.me/59167131579?text=${text}`;
+        window.open(url, "_blank");
+      });
+    }
+  </script>
+
+</body>
+</html>
