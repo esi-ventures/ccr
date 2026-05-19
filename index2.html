@@ -94,27 +94,51 @@
 
     .carousel-prev,
     .carousel-next {
-      display: flex;
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
       z-index: 30;
-      width: 38px;
-      height: 38px;
-      border-radius: 999px;
-      background: rgba(11, 22, 48, .92);
-      color: white;
+
+      width: 42px;
+      height: 42px;
+
+      border-radius: 9999px;
+
+      background: rgba(11,22,48,0.78);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+
+      border: 1px solid rgba(255,255,255,0.15);
+
+      display: flex;
       align-items: center;
       justify-content: center;
+
+      cursor: pointer;
+
       box-shadow: 0 10px 25px rgba(0,0,0,.24);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+
       font-size: 28px;
       line-height: 1;
+
+      transition: all 0.3s ease;
     }
 
-    .carousel-prev { left: 0; }
-    .carousel-next { right: 0; }
+    .carousel-prev {
+      left: 8px;
+      color: #FF6B6B;
+    }
+
+    .carousel-next {
+      right: 8px;
+      color: #8A5CFF;
+    }
+
+    .carousel-prev:hover,
+    .carousel-next:hover {
+      transform: translateY(-50%) scale(1.08);
+      background: rgba(11,22,48,0.95);
+    }
 
     @media (min-width: 640px) {
       .mobile-card {
@@ -145,47 +169,7 @@
         max-width: none;
       }
 
- .carousel-prev,
-.carousel-next {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
 
-  width: 42px;
-  height: 42px;
-
-  border-radius: 9999px;
-
-  background: rgba(11,22,48,0.75);
-  backdrop-filter: blur(10px);
-
-  border: 1px solid rgba(255,255,255,0.15);
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  z-index: 30;
-  cursor: pointer;
-
-  transition: all 0.3s ease;
-}
-
-.carousel-prev {
-  left: 8px;
-  color: #FF6B6B;
-}
-
-.carousel-next {
-  right: 8px;
-  color: #8A5CFF;
-}
-
-.carousel-prev:hover,
-.carousel-next:hover {
-  transform: translateY(-50%) scale(1.08);
-  background: rgba(11,22,48,0.95);
-}
     }
 
     /* FAITH MODAL */
