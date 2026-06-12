@@ -719,22 +719,6 @@
     </div>
   </section>
 
-<section id="en-vivo" class="live-section">
-  <div class="container">
-    <p class="section-label">Transmisión en Vivo</p>
-    <h2>Únete a nuestro culto en vivo</h2>
-    <p>Conéctate a nuestras reuniones y recibe la Palabra de Dios desde donde estés.</p>
-
-    <div class="live-video">
-      <iframe 
-        src="https://www.youtube.com/embed/ID_DEL_VIDEO_O_LIVE"
-        title="Transmisión en Vivo CCR"
-        frameborder="0"
-        allowfullscreen>
-      </iframe>
-    </div>
-  </div>
-</section>
 
   
   <!-- PRÉDICAS -->
@@ -750,6 +734,52 @@
 
       </div>
 
+      <!-- SECCIÓN TRANSMISIÓN EN VIVO - ESTILO INTEGRADO A PRÉDICAS -->
+<div style="font-family: 'Helvetica Neue', Arial, sans-serif; max-width: 900px; margin: 40px auto 60px auto; padding: 0 20px; text-align: center;">
+    
+    <!-- Etiqueta de transmisión activa -->
+    <div style="display: inline-block; background: #e74c3c; color: #ffffff; padding: 5px 14px; border-radius: 20px; font-weight: bold; font-size: 0.8em; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; animation: livePulse 2s infinite;">
+        🔴 Transmisión Dominical
+    </div>
+
+    <!-- Texto de Horario e Invitación -->
+    <p style="color: #ffffff; font-size: 1.25em; margin-top: 0; margin-bottom: 10px; font-weight: 500;">
+        Únete a nuestro culto en vivo
+    </p>
+    <p style="color: #a0aec0; font-size: 1.05em; max-width: 650px; margin: 0 auto 30px auto; line-height: 1.6;">
+        Conéctate a nuestras reuniones todos los <strong>Domingos a las 10:30 AM</strong> (Hora de Bolivia 🇧🇴) y recibe la Palabra de Dios desde donde estés.
+    </p>
+
+    <!-- REPRODUCTOR DE VIDEO CENTRADO Y RESPONSIVO -->
+    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.6); margin-bottom: 30px; background: #000000;">
+        <!-- REEMPLAZA 'REEMPLAZA_CON_EL_ID_DE_TU_CANAL' con el ID real de tu canal de YouTube -->
+        <iframe 
+            src="https://youtube.com" 
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            allowfullscreen>
+        </iframe>
+    </div>
+
+    <!-- BOTÓN DE ACCIÓN DIRECTA -->
+    <div>
+        <a href="https://youtube.com" target="_blank" style="display: inline-block; background: #ff0000; color: #ffffff; padding: 12px 30px; font-weight: bold; text-decoration: none; border-radius: 30px; font-size: 0.95em; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(255, 0, 0, 0.2);">
+            🔔 Suscribirse y Activar Recordatorio en YouTube
+        </a>
+    </div>
+
+</div>
+
+<!-- Animación sutil para el indicador en vivo (No afecta al resto del sitio) -->
+<style>
+@keyframes livePulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.03); opacity: 0.85; }
+    100% { transform: scale(1); opacity: 1; }
+}
+</style>
+
+      
       <div class="carousel-wrap">
         <button type="button" aria-label="Anterior" class="carousel-prev">&#10094;</button>
 
