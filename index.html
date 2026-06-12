@@ -283,6 +283,37 @@
   }
 }
 
+.live-section {
+  padding: 80px 20px;
+  background: #07142b;
+  color: #fff;
+  text-align: center;
+}
+
+.live-video {
+  max-width: 900px;
+  margin: 35px auto 0;
+  aspect-ratio: 16 / 9;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 45px rgba(0,0,0,.35);
+}
+
+.live-video iframe {
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width: 768px) {
+  .live-section {
+    padding: 55px 16px;
+  }
+
+  .live-section h2 {
+    font-size: 2rem;
+  }
+}
+
     
   </style>
 </head>
