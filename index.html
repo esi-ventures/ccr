@@ -690,11 +690,13 @@
       </div>
 
       <div class="carousel-wrap">
-        <button type="button" aria-label="Anterior" class="carousel-prev">&#10094;</button>
+        <!-- Ocultamos las flechas en computadoras (lg:hidden) porque ya se ordenan en dos filas fijas -->
+        <button type="button" aria-label="Anterior" class="carousel-prev lg:hidden">❮</button>
 
         <div class="mobile-scroll carousel-track lg:grid-cols-3 lg:gap-8">
 
-          <div class="mobile-card bg-[#FAF8F5] rounded-[1.6rem] p-4 lg:p-8 border border-[#0B1630]/5 shadow-sm">
+          <!-- TARJETA: LUNES (Efecto Hover Añadido) -->
+          <div class="mobile-card bg-[#FAF8F5] rounded-[1.6rem] p-4 lg:p-8 border border-[#0B1630]/5 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-md hover:border-[#8A5CFF]/30 transform">
             <h3 class="text-xl lg:text-3xl font-extrabold mb-5">Lunes</h3>
             <div class="space-y-4">
               <div><h4 class="text-base lg:text-lg font-bold">Oración de Varones</h4><p class="text-[#FF6B6B] mt-1 font-semibold">07:00</p></div>
@@ -702,7 +704,8 @@
             </div>
           </div>
 
-          <div class="mobile-card bg-[#FAF8F5] rounded-[1.6rem] p-4 lg:p-8 border border-[#0B1630]/5 shadow-sm">
+          <!-- TARJETA: MARTES (Efecto Hover Añadido) -->
+          <div class="mobile-card bg-[#FAF8F5] rounded-[1.6rem] p-4 lg:p-8 border border-[#0B1630]/5 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-md hover:border-[#8A5CFF]/30 transform">
             <h3 class="text-xl lg:text-3xl font-extrabold mb-5">Martes</h3>
             <div class="space-y-4">
               <div><h4 class="text-base lg:text-lg font-bold">Oración de Mujeres</h4><p class="text-[#FF6B6B] mt-1 font-semibold">07:00</p></div>
@@ -710,19 +713,22 @@
             </div>
           </div>
 
-          <div class="mobile-card bg-[#FAF8F5] rounded-[1.6rem] p-4 lg:p-8 border border-[#0B1630]/5 shadow-sm">
+          <!-- TARJETA: MIÉRCOLES (Efecto Hover Añadido) -->
+          <div class="mobile-card bg-[#FAF8F5] rounded-[1.6rem] p-4 lg:p-8 border border-[#0B1630]/5 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-md hover:border-[#8A5CFF]/30 transform">
             <h3 class="text-xl lg:text-3xl font-extrabold mb-5">Miércoles</h3>
             <h4 class="text-base lg:text-lg font-bold">Estudio Bíblico</h4>
             <p class="text-[#FF6B6B] mt-1 font-semibold">20:00 – 21:00</p>
           </div>
 
-          <div class="mobile-card bg-[#FAF8F5] rounded-[1.6rem] p-4 lg:p-8 border border-[#0B1630]/5 shadow-sm">
+          <!-- TARJETA: JUEVES (Efecto Hover Añadido) -->
+          <div class="mobile-card bg-[#FAF8F5] rounded-[1.6rem] p-4 lg:p-8 border border-[#0B1630]/5 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-md hover:border-[#8A5CFF]/30 transform">
             <h3 class="text-xl lg:text-3xl font-extrabold mb-5">Jueves</h3>
             <h4 class="text-base lg:text-lg font-bold">Discipulado</h4>
             <p class="text-[#FF6B6B] mt-1 font-semibold">17:30 – 21:00</p>
           </div>
 
-          <div class="mobile-card bg-[#FAF8F5] rounded-[1.6rem] p-4 lg:p-8 border border-[#0B1630]/5 shadow-sm">
+          <!-- TARJETA: VIERNES (Efecto Hover Añadido) -->
+          <div class="mobile-card bg-[#FAF8F5] rounded-[1.6rem] p-4 lg:p-8 border border-[#0B1630]/5 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-md hover:border-[#8A5CFF]/30 transform">
             <h3 class="text-xl lg:text-3xl font-extrabold mb-5">Viernes</h3>
             <div class="space-y-4">
               <div><h4 class="text-base lg:text-lg font-bold">Reunión de Familias</h4><p class="text-[#FF6B6B] mt-1 font-semibold">20:00 – 22:00</p></div>
@@ -730,7 +736,8 @@
             </div>
           </div>
 
-          <div class="mobile-card bg-[#FAF8F5] rounded-[1.6rem] p-4 lg:p-8 border border-[#0B1630]/5 shadow-sm">
+          <!-- TARJETA: SÁBADO (Efecto Hover Añadido) -->
+          <div class="mobile-card bg-[#FAF8F5] rounded-[1.6rem] p-4 lg:p-8 border border-[#0B1630]/5 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-md hover:border-[#8A5CFF]/30 transform">
             <h3 class="text-xl lg:text-3xl font-extrabold mb-5">Sábado</h3>
             <div class="space-y-4">
               <div><h4 class="text-base lg:text-lg font-bold">Jóvenes — Koinonía</h4><p class="text-[#FF6B6B] mt-1 font-semibold">18:00 – 20:00</p></div>
@@ -740,16 +747,19 @@
 
         </div>
 
-        <button type="button" aria-label="Siguiente" class="carousel-next">&#10095;</button>
+        <!-- Ocultamos las flechas en computadoras (lg:hidden) -->
+        <button type="button" aria-label="Siguiente" class="carousel-next lg:hidden">❯</button>
       </div>
 
-      <div class="mt-10 relative overflow-hidden bg-gradient-to-r from-[#FF6B6B] to-[#8A5CFF] rounded-[2rem] p-8 lg:p-14 text-center text-white shadow-2xl">
+      <!-- BANNER DE ENCUENTRO PRINCIPAL (Efecto hover sutil de escala añadido) -->
+      <div class="mt-10 relative overflow-hidden bg-gradient-to-r from-[#FF6B6B] to-[#8A5CFF] rounded-[2rem] p-8 lg:p-14 text-center text-white shadow-2xl transition-all duration-300 hover:scale-[1.01] transform">
         <p class="uppercase tracking-[0.5em] text-xs lg:text-sm font-bold text-white/80 mb-5">Encuentro Principal</p>
         <h3 class="text-3xl md:text-5xl font-extrabold leading-tight">Domingo — Culto General</h3>
         <p class="mt-5 text-xl lg:text-2xl font-semibold">10:00 – 12:00</p>
       </div>
 
-      <div class="mt-10 bg-[#FAF8F5] rounded-[2rem] p-7 lg:p-12 border border-[#0B1630]/5 shadow-sm">
+      <!-- TARJETA DE CONSEJERÍA (Efecto Hover Añadido) -->
+      <div class="mt-10 bg-[#FAF8F5] rounded-[2rem] p-7 lg:p-12 border border-[#0B1630]/5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md transform">
         <div class="grid md:grid-cols-2 gap-8 items-center">
           <div>
             <p class="uppercase tracking-[0.4em] text-xs font-bold text-[#8A5CFF] mb-4">Acompañamiento Espiritual</p>
@@ -757,14 +767,15 @@
             <p class="mt-5 text-base lg:text-lg text-[#0B1630]/70 leading-relaxed">Espacios de consejería y acompañamiento espiritual para personas y familias.</p>
           </div>
           <div class="space-y-4">
-            <div class="bg-white rounded-2xl p-4"><p class="text-[#0B1630]/75 font-medium">Lunes, martes y miércoles por la tarde</p></div>
-            <div class="bg-white rounded-2xl p-4"><p class="text-[#0B1630]/75 font-medium">Contacto: 67131579</p></div>
+            <div class="bg-white rounded-2xl p-4 shadow-inner"><p class="text-[#0B1630]/75 font-medium">Lunes, martes y miércoles por la tarde</p></div>
+            <div class="bg-white rounded-2xl p-4 shadow-inner"><p class="text-[#0B1630]/75 font-medium">Contacto: 67131579</p></div>
           </div>
         </div>
       </div>
 
     </div>
   </section>
+
 
 
   
