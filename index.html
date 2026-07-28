@@ -488,23 +488,41 @@
 <!-- HERO -->
 <section id="inicio" class="relative min-h-screen flex items-center overflow-hidden">
 
-  <!-- IMAGEN DE FONDO -->
-  <div
-    class="absolute inset-0 bg-cover bg-right bg-no-repeat scale-[1.03] lg:bg-[position:72%_center]"
-    style="background-image: url('imagenes/hero-bautismo.jpg');"
-  ></div>
+ <!-- IMAGEN DE FONDO -->
+<div
+  class="absolute inset-0 bg-cover bg-right bg-no-repeat scale-[1.03] lg:bg-[position:72%_center]"
+  style="background-image: url('imagenes/hero-bautismo.jpg');"
+></div>
 
-  <!-- GRADIENTE IZQUIERDO PARA DAR CONTRASTE AL TEXTO -->
-  <div class="absolute inset-0 bg-gradient-to-r from-black/85 via-black/55 to-transparent"></div>
+<!-- CAPA DE GRADIENTES -->
+<div
+  class="absolute inset-0 z-[1] pointer-events-none"
+  style="
+    background:
+      linear-gradient(
+        to right,
+        rgba(0,0,0,.88) 0%,
+        rgba(0,0,0,.70) 30%,
+        rgba(0,0,0,.35) 55%,
+        rgba(0,0,0,.08) 100%
+      ),
 
-  <!-- GRADIENTE SUPERIOR PARA MEJORAR LA VISIBILIDAD DEL MENÚ -->
-  <div class="absolute inset-x-0 top-0 h-44 bg-gradient-to-b from-black/65 via-black/25 to-transparent"></div>
+      linear-gradient(
+        to bottom,
+        rgba(0,0,0,.70) 0%,
+        rgba(0,0,0,.18) 18%,
+        rgba(0,0,0,0) 40%,
+        rgba(11,22,48,.20) 72%,
+        rgba(11,22,48,.95) 100%
+      ),
 
-  <!-- GRADIENTE INFERIOR PARA INTEGRAR LA BARRA DE VALORES -->
-  <div class="absolute inset-x-0 bottom-0 h-80 bg-gradient-to-t from-[#0B1630]/95 via-[#0B1630]/45 to-transparent"></div>
-
-  <!-- VIÑETEADO SUAVE -->
-  <div class="absolute inset-0 shadow-[inset_0_0_220px_rgba(0,0,0,0.22)]"></div>
+      radial-gradient(
+        ellipse at center,
+        rgba(0,0,0,0) 45%,
+        rgba(0,0,0,.25) 100%
+      );
+  "
+></div>
 
   <!-- CONTENIDO PRINCIPAL -->
   <div class="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-10 pt-36 pb-64 lg:pb-48">
