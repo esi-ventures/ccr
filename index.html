@@ -317,6 +317,105 @@
   }
 }
 
+@media (max-width: 768px) {
+  .live-section {
+    padding: 55px 16px;
+  }
+
+  .live-section h2 {
+    font-size: 2rem;
+  }
+}
+
+
+/* ==========================================
+   DECLARACIÓN DE FE — ACORDEÓN
+========================================== */
+
+#faithModal summary {
+  list-style: none;
+  transition: background-color 0.3s ease;
+}
+
+#faithModal summary::-webkit-details-marker {
+  display: none;
+}
+
+#faithModal summary::marker {
+  content: "";
+}
+
+#faithModal details {
+  transition:
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
+}
+
+#faithModal details[open] {
+  box-shadow: 0 18px 45px rgba(11, 22, 48, 0.08);
+}
+
+#faithModal details summary:hover {
+  background: rgba(138, 92, 255, 0.04);
+}
+
+/* Evita que aparezca el contorno azul predeterminado */
+#faithModal summary:focus {
+  outline: none;
+}
+
+#faithModal summary:focus-visible {
+  outline: 2px solid rgba(138, 92, 255, 0.45);
+  outline-offset: -2px;
+  border-radius: 1.5rem;
+}
+
+/* Mejora el desplazamiento dentro del modal */
+#faithModal .faith-modal-panel {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(138, 92, 255, 0.55) transparent;
+}
+
+#faithModal .faith-modal-panel::-webkit-scrollbar {
+  width: 8px;
+}
+
+#faithModal .faith-modal-panel::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+#faithModal .faith-modal-panel::-webkit-scrollbar-thumb {
+  background: rgba(138, 92, 255, 0.45);
+  border-radius: 999px;
+}
+
+#faithModal .faith-modal-panel::-webkit-scrollbar-thumb:hover {
+  background: rgba(138, 92, 255, 0.7);
+}
+
+
+/* Ajustes para móviles */
+@media (max-width: 640px) {
+
+  #faithModal .faith-modal-panel {
+    max-height: 92vh;
+    border-radius: 1.5rem;
+  }
+
+  #faithModal summary {
+    padding: 18px 20px;
+  }
+
+  #faithModal details > div {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+</style>
+</head>
+
+<body class="bg-[#0B1630] text-white">
     
   </style>
 </head>
@@ -411,79 +510,496 @@
 </div>
   </header>
 
-  <!-- DECLARACIÓN DE FE MODAL -->
-  <div id="faithModal" class="faith-modal-closed fixed inset-0 z-[100] bg-[#0B1630]/80 backdrop-blur-xl transition-all duration-300">
-    <div class="min-h-screen px-5 py-8 flex items-center justify-center">
-      <div class="faith-modal-panel relative w-full max-w-4xl max-h-[86vh] overflow-y-auto bg-[#FAF8F5] text-[#0B1630] rounded-[2rem] shadow-2xl transition-all duration-300">
+ <!-- DECLARACIÓN DE FE MODAL -->
+<div
+  id="faithModal"
+  class="faith-modal-closed fixed inset-0 z-[100] bg-[#0B1630]/80 backdrop-blur-xl transition-all duration-300"
+>
+  <div class="min-h-screen px-4 sm:px-5 py-6 sm:py-8 flex items-center justify-center">
 
-        <button
-          type="button"
-          id="closeFaithModal"
-          aria-label="Cerrar declaración de fe"
-          class="sticky top-4 ml-auto mr-4 mt-4 z-10 w-11 h-11 rounded-full bg-[#0B1630] text-white flex items-center justify-center hover:scale-105 transition"
-        >
-          ✕
-        </button>
+    <div
+      class="faith-modal-panel relative w-full max-w-5xl max-h-[90vh] overflow-y-auto bg-[#FAF8F5] text-[#0B1630] rounded-[1.5rem] sm:rounded-[2rem] shadow-2xl transition-all duration-300"
+    >
 
-        <div class="px-7 pb-10 lg:px-14 lg:pb-14">
-          <p class="uppercase tracking-[.55em] lg:tracking-[1em] text-sm lg:text-xl font-bold text-[#8A5CFF] mb-5">
-            Lo Que Creemos
+      <!-- BOTÓN CERRAR -->
+      <button
+        type="button"
+        id="closeFaithModal"
+        aria-label="Cerrar declaración de fe"
+        class="sticky top-4 ml-auto mr-4 mt-4 z-20 w-11 h-11 rounded-full bg-[#0B1630] text-white flex items-center justify-center shadow-lg hover:scale-105 hover:bg-[#16264a] transition-all duration-300"
+      >
+        ✕
+      </button>
+
+      <div class="px-5 sm:px-8 lg:px-14 pb-10 lg:pb-14">
+
+        <!-- ENCABEZADO -->
+        <p class="uppercase tracking-[0.45em] lg:tracking-[0.8em] text-xs sm:text-sm lg:text-lg font-bold text-[#8A5CFF] mb-5">
+          Declaración de Fe
+        </p>
+
+        <h2 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold leading-[0.98] tracking-tight max-w-4xl">
+          Nuestra fe está centrada en Jesucristo y fundamentada en la Palabra de Dios.
+        </h2>
+
+        <p class="mt-6 text-base lg:text-lg text-[#0B1630]/75 leading-relaxed max-w-4xl">
+          Estas verdades guían nuestra enseñanza, nuestra adoración y nuestra vida como comunidad de fe.
+        </p>
+
+        <!-- ACORDEÓN -->
+        <div class="mt-10 space-y-4">
+
+          <!-- LA BIBLIA -->
+          <details class="group bg-white rounded-3xl border border-[#0B1630]/5 shadow-sm overflow-hidden">
+            <summary class="cursor-pointer list-none flex items-center justify-between gap-5 px-6 py-5">
+              <h3 class="text-xl sm:text-2xl font-extrabold">La Biblia</h3>
+
+              <span class="flex-shrink-0 w-9 h-9 rounded-full bg-[#8A5CFF]/10 text-[#8A5CFF] flex items-center justify-center text-xl font-bold transition-transform duration-300 group-open:rotate-45">
+                +
+              </span>
+            </summary>
+
+            <div class="px-6 pb-6">
+              <p class="text-[#0B1630]/75 leading-relaxed">
+                Creemos que la Biblia es la Palabra inspirada de Dios, verdadera, confiable y autoridad suprema para la vida y la fe cristiana.
+              </p>
+
+              <div class="mt-5 rounded-2xl bg-[#8A5CFF]/8 border border-[#8A5CFF]/10 p-5">
+                <p class="text-sm font-extrabold uppercase tracking-[0.2em] text-[#8A5CFF]">
+                  Base bíblica
+                </p>
+
+                <p class="mt-3 text-sm sm:text-base text-[#0B1630]/70 leading-relaxed">
+                  2 Timoteo 3:16–17; 2 Pedro 1:20–21; Juan 17:17; Isaías 40:8; Mateo 24:35; Salmo 119:105; Hebreos 4:12.
+                </p>
+              </div>
+            </div>
+          </details>
+
+          <!-- DIOS -->
+          <details class="group bg-white rounded-3xl border border-[#0B1630]/5 shadow-sm overflow-hidden">
+            <summary class="cursor-pointer list-none flex items-center justify-between gap-5 px-6 py-5">
+              <h3 class="text-xl sm:text-2xl font-extrabold">Dios</h3>
+
+              <span class="flex-shrink-0 w-9 h-9 rounded-full bg-[#8A5CFF]/10 text-[#8A5CFF] flex items-center justify-center text-xl font-bold transition-transform duration-300 group-open:rotate-45">
+                +
+              </span>
+            </summary>
+
+            <div class="px-6 pb-6">
+              <p class="text-[#0B1630]/75 leading-relaxed">
+                Creemos en un solo Dios eterno, creador de todas las cosas, que existe eternamente en tres personas: Padre, Hijo y Espíritu Santo.
+              </p>
+
+              <div class="mt-5 rounded-2xl bg-[#8A5CFF]/8 border border-[#8A5CFF]/10 p-5">
+                <p class="text-sm font-extrabold uppercase tracking-[0.2em] text-[#8A5CFF]">
+                  Base bíblica
+                </p>
+
+                <p class="mt-3 text-sm sm:text-base text-[#0B1630]/70 leading-relaxed">
+                  Deuteronomio 6:4; Salmo 90:2; Génesis 1:1; Mateo 28:19; 2 Corintios 13:14; Juan 1:1–3.
+                </p>
+              </div>
+            </div>
+          </details>
+
+          <!-- LA CREACIÓN -->
+          <details class="group bg-white rounded-3xl border border-[#0B1630]/5 shadow-sm overflow-hidden">
+            <summary class="cursor-pointer list-none flex items-center justify-between gap-5 px-6 py-5">
+              <h3 class="text-xl sm:text-2xl font-extrabold">La Creación</h3>
+
+              <span class="flex-shrink-0 w-9 h-9 rounded-full bg-[#8A5CFF]/10 text-[#8A5CFF] flex items-center justify-center text-xl font-bold transition-transform duration-300 group-open:rotate-45">
+                +
+              </span>
+            </summary>
+
+            <div class="px-6 pb-6">
+              <p class="text-[#0B1630]/75 leading-relaxed">
+                Creemos que Dios creó los cielos, la tierra y todo cuanto existe por el poder de Su palabra. El ser humano fue creado a imagen de Dios, con dignidad, propósito y la responsabilidad de glorificarle y cuidar Su creación.
+              </p>
+
+              <p class="mt-4 text-[#0B1630]/75 leading-relaxed">
+                Aunque el pecado corrompió y distorsionó esa imagen, Dios restaura al ser humano en Cristo. Toda la creación manifiesta Su poder, sabiduría y gloria. Creemos también que Jesucristo, el Hijo de Dios, participó en la creación y sostiene todas las cosas con Su poder.
+              </p>
+
+              <div class="mt-5 rounded-2xl bg-[#8A5CFF]/8 border border-[#8A5CFF]/10 p-5">
+                <p class="text-sm font-extrabold uppercase tracking-[0.2em] text-[#8A5CFF]">
+                  Base bíblica
+                </p>
+
+                <p class="mt-3 text-sm sm:text-base text-[#0B1630]/70 leading-relaxed">
+                  Génesis 1:1, 26–31; Génesis 2:7, 15; Génesis 9:6; Salmo 19:1; Salmo 33:6–9; Juan 1:1–3; Colosenses 1:16–17; Hebreos 11:3; Apocalipsis 4:11.
+                </p>
+              </div>
+            </div>
+          </details>
+
+          <!-- EL PECADO -->
+          <details class="group bg-white rounded-3xl border border-[#0B1630]/5 shadow-sm overflow-hidden">
+            <summary class="cursor-pointer list-none flex items-center justify-between gap-5 px-6 py-5">
+              <h3 class="text-xl sm:text-2xl font-extrabold">El pecado</h3>
+
+              <span class="flex-shrink-0 w-9 h-9 rounded-full bg-[#8A5CFF]/10 text-[#8A5CFF] flex items-center justify-center text-xl font-bold transition-transform duration-300 group-open:rotate-45">
+                +
+              </span>
+            </summary>
+
+            <div class="px-6 pb-6">
+              <p class="text-[#0B1630]/75 leading-relaxed">
+                Creemos que el pecado entró al mundo por la desobediencia del ser humano y que todos han pecado y están destituidos de la gloria de Dios.
+              </p>
+
+              <p class="mt-4 text-[#0B1630]/75 leading-relaxed">
+                El pecado trajo separación espiritual y muerte, afectando la relación del ser humano con Dios. Sin embargo, Dios ofrece perdón, reconciliación y vida eterna mediante Jesucristo.
+              </p>
+
+              <div class="mt-5 rounded-2xl bg-[#8A5CFF]/8 border border-[#8A5CFF]/10 p-5">
+                <p class="text-sm font-extrabold uppercase tracking-[0.2em] text-[#8A5CFF]">
+                  Base bíblica
+                </p>
+
+                <p class="mt-3 text-sm sm:text-base text-[#0B1630]/70 leading-relaxed">
+                  Génesis 3:1–19; Romanos 3:23; Romanos 5:12; Romanos 6:23; Isaías 59:2; 1 Juan 1:9; 2 Corintios 5:21.
+                </p>
+              </div>
+            </div>
+          </details>
+
+          <!-- JESUCRISTO -->
+          <details class="group bg-white rounded-3xl border border-[#0B1630]/5 shadow-sm overflow-hidden">
+            <summary class="cursor-pointer list-none flex items-center justify-between gap-5 px-6 py-5">
+              <h3 class="text-xl sm:text-2xl font-extrabold">Jesucristo</h3>
+
+              <span class="flex-shrink-0 w-9 h-9 rounded-full bg-[#8A5CFF]/10 text-[#8A5CFF] flex items-center justify-center text-xl font-bold transition-transform duration-300 group-open:rotate-45">
+                +
+              </span>
+            </summary>
+
+            <div class="px-6 pb-6">
+              <p class="text-[#0B1630]/75 leading-relaxed">
+                Creemos que Jesucristo es el Hijo de Dios, verdadero Dios y verdadero hombre. Vivió una vida sin pecado, murió en la cruz como sacrificio expiatorio por nuestros pecados, resucitó corporalmente al tercer día, venció la muerte y ofrece salvación eterna a todos los que ponen su fe en Él.
+              </p>
+
+              <div class="mt-5 rounded-2xl bg-[#8A5CFF]/8 border border-[#8A5CFF]/10 p-5">
+                <p class="text-sm font-extrabold uppercase tracking-[0.2em] text-[#8A5CFF]">
+                  Base bíblica
+                </p>
+
+                <p class="mt-3 text-sm sm:text-base text-[#0B1630]/70 leading-relaxed">
+                  Juan 1:1, 14; Colosenses 2:9; Hebreos 4:15; Isaías 53:5–6; 1 Corintios 15:3–4; Hebreos 2:14–15; Juan 3:16.
+                </p>
+              </div>
+            </div>
+          </details>
+
+          <!-- ESPÍRITU SANTO -->
+          <details class="group bg-white rounded-3xl border border-[#0B1630]/5 shadow-sm overflow-hidden">
+            <summary class="cursor-pointer list-none flex items-center justify-between gap-5 px-6 py-5">
+              <h3 class="text-xl sm:text-2xl font-extrabold">El Espíritu Santo</h3>
+
+              <span class="flex-shrink-0 w-9 h-9 rounded-full bg-[#8A5CFF]/10 text-[#8A5CFF] flex items-center justify-center text-xl font-bold transition-transform duration-300 group-open:rotate-45">
+                +
+              </span>
+            </summary>
+
+            <div class="px-6 pb-6">
+              <p class="text-[#0B1630]/75 leading-relaxed">
+                Creemos que el Espíritu Santo es una persona divina de la Trinidad, plenamente Dios, quien habita en cada creyente, convence de pecado, guía a toda verdad, fortalece, santifica y transforma nuestras vidas para reflejar el carácter de Cristo.
+              </p>
+
+              <div class="mt-5 rounded-2xl bg-[#8A5CFF]/8 border border-[#8A5CFF]/10 p-5">
+                <p class="text-sm font-extrabold uppercase tracking-[0.2em] text-[#8A5CFF]">
+                  Base bíblica
+                </p>
+
+                <p class="mt-3 text-sm sm:text-base text-[#0B1630]/70 leading-relaxed">
+                  Mateo 28:19; Hechos 5:3–4; Juan 14:16–17, 26; Juan 16:8–13; Romanos 8:9–11; 1 Corintios 6:19; Efesios 3:16; 2 Tesalonicenses 2:13; Gálatas 5:22–23.
+                </p>
+              </div>
+            </div>
+          </details>
+
+          <!-- SALVACIÓN -->
+          <details class="group bg-white rounded-3xl border border-[#0B1630]/5 shadow-sm overflow-hidden">
+            <summary class="cursor-pointer list-none flex items-center justify-between gap-5 px-6 py-5">
+              <h3 class="text-xl sm:text-2xl font-extrabold">Salvación</h3>
+
+              <span class="flex-shrink-0 w-9 h-9 rounded-full bg-[#8A5CFF]/10 text-[#8A5CFF] flex items-center justify-center text-xl font-bold transition-transform duration-300 group-open:rotate-45">
+                +
+              </span>
+            </summary>
+
+            <div class="px-6 pb-6">
+              <p class="text-[#0B1630]/75 leading-relaxed">
+                Creemos que la salvación es un regalo de la gracia de Dios, recibido únicamente por medio de la fe en Jesucristo y no por obras humanas.
+              </p>
+
+              <div class="mt-5 rounded-2xl bg-[#8A5CFF]/8 border border-[#8A5CFF]/10 p-5">
+                <p class="text-sm font-extrabold uppercase tracking-[0.2em] text-[#8A5CFF]">
+                  Base bíblica
+                </p>
+
+                <p class="mt-3 text-sm sm:text-base text-[#0B1630]/70 leading-relaxed">
+                  Efesios 2:8–9; Juan 3:16; Juan 14:6; Romanos 10:9–10; Tito 3:5–7; Hechos 4:12; Hechos 5:31; Hechos 11:18; 2 Timoteo 2:25.
+                </p>
+              </div>
+            </div>
+          </details>
+
+          <!-- LA IGLESIA -->
+          <details class="group bg-white rounded-3xl border border-[#0B1630]/5 shadow-sm overflow-hidden">
+            <summary class="cursor-pointer list-none flex items-center justify-between gap-5 px-6 py-5">
+              <h3 class="text-xl sm:text-2xl font-extrabold">La Iglesia</h3>
+
+              <span class="flex-shrink-0 w-9 h-9 rounded-full bg-[#8A5CFF]/10 text-[#8A5CFF] flex items-center justify-center text-xl font-bold transition-transform duration-300 group-open:rotate-45">
+                +
+              </span>
+            </summary>
+
+            <div class="px-6 pb-6">
+              <p class="text-[#0B1630]/75 leading-relaxed">
+                Creemos que la Iglesia es el cuerpo de Cristo, compuesto por todos los que han puesto su fe en Jesucristo, llamado a adorar a Dios, crecer espiritualmente, vivir en comunión y servir.
+              </p>
+
+              <div class="mt-5 rounded-2xl bg-[#8A5CFF]/8 border border-[#8A5CFF]/10 p-5">
+                <p class="text-sm font-extrabold uppercase tracking-[0.2em] text-[#8A5CFF]">
+                  Base bíblica
+                </p>
+
+                <p class="mt-3 text-sm sm:text-base text-[#0B1630]/70 leading-relaxed">
+                  Efesios 1:22–23; Efesios 4:11–16; 1 Corintios 12:12–27; Hechos 2:42–47; Hebreos 10:24–25.
+                </p>
+              </div>
+            </div>
+          </details>
+
+          <!-- MISIÓN DE LA IGLESIA -->
+          <details class="group bg-white rounded-3xl border border-[#0B1630]/5 shadow-sm overflow-hidden">
+            <summary class="cursor-pointer list-none flex items-center justify-between gap-5 px-6 py-5">
+              <h3 class="text-xl sm:text-2xl font-extrabold">La misión de la Iglesia</h3>
+
+              <span class="flex-shrink-0 w-9 h-9 rounded-full bg-[#8A5CFF]/10 text-[#8A5CFF] flex items-center justify-center text-xl font-bold transition-transform duration-300 group-open:rotate-45">
+                +
+              </span>
+            </summary>
+
+            <div class="px-6 pb-6">
+              <p class="text-[#0B1630]/75 leading-relaxed">
+                Creemos que la Iglesia ha sido enviada al mundo para anunciar el evangelio de Jesucristo, hacer discípulos de todas las naciones, bautizarlos y enseñarles a obedecer todo lo que Cristo mandó, sirviendo con amor y viviendo para la gloria de Dios.
+              </p>
+
+              <div class="mt-5 rounded-2xl bg-[#8A5CFF]/8 border border-[#8A5CFF]/10 p-5">
+                <p class="text-sm font-extrabold uppercase tracking-[0.2em] text-[#8A5CFF]">
+                  Base bíblica
+                </p>
+
+                <p class="mt-3 text-sm sm:text-base text-[#0B1630]/70 leading-relaxed">
+                  Juan 20:21; Mateo 28:18–20; Marcos 16:15; Hechos 1:8; 2 Corintios 5:18–20; Gálatas 5:13; Mateo 5:16.
+                </p>
+              </div>
+            </div>
+          </details>
+
+          <!-- ORDENANZAS -->
+          <details class="group bg-white rounded-3xl border border-[#0B1630]/5 shadow-sm overflow-hidden">
+            <summary class="cursor-pointer list-none flex items-center justify-between gap-5 px-6 py-5">
+              <h3 class="text-xl sm:text-2xl font-extrabold">Las ordenanzas</h3>
+
+              <span class="flex-shrink-0 w-9 h-9 rounded-full bg-[#8A5CFF]/10 text-[#8A5CFF] flex items-center justify-center text-xl font-bold transition-transform duration-300 group-open:rotate-45">
+                +
+              </span>
+            </summary>
+
+            <div class="px-6 pb-6">
+              <p class="text-[#0B1630]/75 leading-relaxed">
+                Creemos que Jesucristo instituyó dos ordenanzas para ser observadas por Su Iglesia hasta Su regreso:
+              </p>
+
+              <div class="mt-5 bg-[#FAF8F5] rounded-2xl p-5 border border-[#0B1630]/5">
+                <h4 class="text-lg font-extrabold">El bautismo en agua</h4>
+
+                <p class="mt-2 text-[#0B1630]/70 leading-relaxed">
+                  Como testimonio público de la fe en Cristo y de la nueva vida del creyente.
+                </p>
+
+                <p class="mt-3 text-sm text-[#8A5CFF] font-semibold leading-relaxed">
+                  Mateo 28:19–20; Marcos 16:16; Hechos 8:36–38; Romanos 6:3–4; Colosenses 2:12.
+                </p>
+              </div>
+
+              <div class="mt-4 bg-[#FAF8F5] rounded-2xl p-5 border border-[#0B1630]/5">
+                <h4 class="text-lg font-extrabold">La Cena del Señor</h4>
+
+                <p class="mt-2 text-[#0B1630]/70 leading-relaxed">
+                  Como un memorial de Su sacrificio y una proclamación de Su muerte hasta que Él vuelva.
+                </p>
+
+                <p class="mt-3 text-sm text-[#8A5CFF] font-semibold leading-relaxed">
+                  Lucas 22:19–20; 1 Corintios 11:23–26.
+                </p>
+              </div>
+            </div>
+          </details>
+
+          <!-- SANTIDAD -->
+          <details class="group bg-white rounded-3xl border border-[#0B1630]/5 shadow-sm overflow-hidden">
+            <summary class="cursor-pointer list-none flex items-center justify-between gap-5 px-6 py-5">
+              <h3 class="text-xl sm:text-2xl font-extrabold">La santidad y la vida cristiana</h3>
+
+              <span class="flex-shrink-0 w-9 h-9 rounded-full bg-[#8A5CFF]/10 text-[#8A5CFF] flex items-center justify-center text-xl font-bold transition-transform duration-300 group-open:rotate-45">
+                +
+              </span>
+            </summary>
+
+            <div class="px-6 pb-6">
+              <p class="text-[#0B1630]/75 leading-relaxed">
+                Creemos que todo creyente es llamado a vivir una vida de santidad, obediencia y amor, creciendo continuamente en su relación con Dios mediante la obra del Espíritu Santo, quien lo transforma a la imagen de Cristo.
+              </p>
+
+              <div class="mt-5 rounded-2xl bg-[#8A5CFF]/8 border border-[#8A5CFF]/10 p-5">
+                <p class="text-sm font-extrabold uppercase tracking-[0.2em] text-[#8A5CFF]">
+                  Base bíblica
+                </p>
+
+                <p class="mt-3 text-sm sm:text-base text-[#0B1630]/70 leading-relaxed">
+                  1 Pedro 1:15–16; Romanos 12:1–2; Gálatas 2:20; Filipenses 2:12–13; Juan 15:4–5; Juan 13:34–35; 1 Juan 2:3–6; 2 Corintios 3:18.
+                </p>
+              </div>
+            </div>
+          </details>
+
+          <!-- DONES -->
+          <details class="group bg-white rounded-3xl border border-[#0B1630]/5 shadow-sm overflow-hidden">
+            <summary class="cursor-pointer list-none flex items-center justify-between gap-5 px-6 py-5">
+              <h3 class="text-xl sm:text-2xl font-extrabold">Los dones espirituales</h3>
+
+              <span class="flex-shrink-0 w-9 h-9 rounded-full bg-[#8A5CFF]/10 text-[#8A5CFF] flex items-center justify-center text-xl font-bold transition-transform duration-300 group-open:rotate-45">
+                +
+              </span>
+            </summary>
+
+            <div class="px-6 pb-6">
+              <p class="text-[#0B1630]/75 leading-relaxed">
+                Creemos que el Espíritu Santo concede soberanamente dones espirituales a cada creyente para la edificación de la Iglesia, el servicio a los demás y la gloria de Dios.
+              </p>
+
+              <p class="mt-4 text-[#0B1630]/75 leading-relaxed">
+                Estos dones deben ejercerse con amor, fidelidad y conforme a la enseñanza de las Escrituras, para fortalecer el cuerpo de Cristo y exaltar el nombre de Dios.
+              </p>
+
+              <div class="mt-5 rounded-2xl bg-[#8A5CFF]/8 border border-[#8A5CFF]/10 p-5">
+                <p class="text-sm font-extrabold uppercase tracking-[0.2em] text-[#8A5CFF]">
+                  Base bíblica
+                </p>
+
+                <p class="mt-3 text-sm sm:text-base text-[#0B1630]/70 leading-relaxed">
+                  1 Corintios 12:4–11; Romanos 12:4–8; Efesios 4:11–13; 1 Corintios 14:12, 26; 1 Pedro 4:10–11.
+                </p>
+              </div>
+            </div>
+          </details>
+
+          <!-- ESPERANZA CRISTIANA -->
+          <details class="group bg-white rounded-3xl border border-[#0B1630]/5 shadow-sm overflow-hidden">
+            <summary class="cursor-pointer list-none flex items-center justify-between gap-5 px-6 py-5">
+              <h3 class="text-xl sm:text-2xl font-extrabold">La esperanza cristiana</h3>
+
+              <span class="flex-shrink-0 w-9 h-9 rounded-full bg-[#8A5CFF]/10 text-[#8A5CFF] flex items-center justify-center text-xl font-bold transition-transform duration-300 group-open:rotate-45">
+                +
+              </span>
+            </summary>
+
+            <div class="px-6 pb-6">
+              <p class="text-[#0B1630]/75 leading-relaxed">
+                Creemos en la segunda venida personal, visible y gloriosa de nuestro Señor Jesucristo, quien regresará para cumplir todas Sus promesas y establecer plenamente Su Reino eterno.
+              </p>
+
+              <p class="mt-4 text-[#0B1630]/75 leading-relaxed">
+                Creemos también en la vida eterna con Dios para todos los que han puesto su fe en Jesucristo, esperanza que fortalece nuestra fe, nos anima a perseverar y nos impulsa a vivir para la gloria de Dios.
+              </p>
+
+              <div class="mt-5 rounded-2xl bg-[#8A5CFF]/8 border border-[#8A5CFF]/10 p-5">
+                <p class="text-sm font-extrabold uppercase tracking-[0.2em] text-[#8A5CFF]">
+                  Base bíblica
+                </p>
+
+                <p class="mt-3 text-sm sm:text-base text-[#0B1630]/70 leading-relaxed">
+                  Juan 14:1–3; Juan 3:16; Hechos 1:11; 1 Tesalonicenses 4:16–17; Tito 2:13; 1 Pedro 1:3–5; 1 Juan 5:11–13; Apocalipsis 1:7; Apocalipsis 21:1–4.
+                </p>
+              </div>
+            </div>
+          </details>
+
+          <!-- RESURRECCIÓN -->
+          <details class="group bg-white rounded-3xl border border-[#0B1630]/5 shadow-sm overflow-hidden">
+            <summary class="cursor-pointer list-none flex items-center justify-between gap-5 px-6 py-5">
+              <h3 class="text-xl sm:text-2xl font-extrabold">La resurrección y la vida eterna</h3>
+
+              <span class="flex-shrink-0 w-9 h-9 rounded-full bg-[#8A5CFF]/10 text-[#8A5CFF] flex items-center justify-center text-xl font-bold transition-transform duration-300 group-open:rotate-45">
+                +
+              </span>
+            </summary>
+
+            <div class="px-6 pb-6">
+              <p class="text-[#0B1630]/75 leading-relaxed">
+                Creemos en la resurrección corporal de todos los seres humanos. Los que han puesto su fe en Jesucristo recibirán la vida eterna y vivirán para siempre con Dios, mientras que quienes hayan rechazado a Cristo enfrentarán el juicio justo de Dios.
+              </p>
+
+              <p class="mt-4 text-[#0B1630]/75 leading-relaxed">
+                Creemos en la victoria final de Cristo sobre la muerte y en la promesa de una nueva creación donde Dios habitará eternamente con Su pueblo.
+              </p>
+
+              <div class="mt-5 rounded-2xl bg-[#8A5CFF]/8 border border-[#8A5CFF]/10 p-5">
+                <p class="text-sm font-extrabold uppercase tracking-[0.2em] text-[#8A5CFF]">
+                  Base bíblica
+                </p>
+
+                <p class="mt-3 text-sm sm:text-base text-[#0B1630]/70 leading-relaxed">
+                  Daniel 12:2; Juan 5:28–29; Juan 11:25–26; 1 Corintios 15:51–57; 2 Tesalonicenses 1:8–9; Apocalipsis 20:11–15; Apocalipsis 21:1–4.
+                </p>
+              </div>
+            </div>
+          </details>
+
+        </div>
+
+        <!-- CONFESIÓN FINAL -->
+        <div class="mt-10 rounded-[2rem] bg-[#0B1630] text-white p-7 sm:p-9 lg:p-12 shadow-xl">
+
+          <p class="uppercase tracking-[0.35em] text-xs sm:text-sm font-bold text-[#C084FC]">
+            Nuestra confesión de fe
           </p>
 
-          <h2 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[0.95] tracking-tight">
-            Nuestra fe está centrada en Jesucristo y fundamentada en la Palabra de Dios.
-          </h2>
+          <h3 class="mt-5 text-2xl sm:text-3xl lg:text-4xl font-extrabold leading-tight">
+            Como comunidad de fe, confesamos que nuestra esperanza, salvación y fundamento se encuentran únicamente en Jesucristo.
+          </h3>
 
-          <p class="mt-7 text-base lg:text-lg text-[#0B1630]/75 leading-relaxed">
-            Estas verdades guían nuestra enseñanza, nuestra adoración y nuestra vida como comunidad de fe.
-          </p>
+          <blockquote class="mt-8 border-l-4 border-[#FF6B6B] pl-5 sm:pl-6">
+            <p class="text-base sm:text-lg text-white/85 leading-relaxed italic">
+              “Porque de tal manera amó Dios al mundo, que ha dado a su Hijo unigénito, para que todo aquel que en Él cree no se pierda, mas tenga vida eterna.”
+            </p>
 
-          <div class="mt-10 grid gap-4">
-            <div class="bg-white rounded-3xl p-6 border border-[#0B1630]/5 shadow-sm">
-              <h3 class="text-2xl font-extrabold">La Biblia</h3>
-              <p class="mt-3 text-[#0B1630]/70 leading-relaxed">Creemos que la Biblia es la Palabra inspirada de Dios, verdadera, confiable y autoridad suprema para la vida y la fe cristiana.</p>
-            </div>
+            <footer class="mt-3 text-sm font-bold text-[#FFB4B4]">
+              Juan 3:16
+            </footer>
+          </blockquote>
 
-            <div class="bg-white rounded-3xl p-6 border border-[#0B1630]/5 shadow-sm">
-              <h3 class="text-2xl font-extrabold">Dios</h3>
-              <p class="mt-3 text-[#0B1630]/70 leading-relaxed">Creemos en un solo Dios eterno, creador de todas las cosas, que existe en tres personas: Padre, Hijo y Espíritu Santo.</p>
-            </div>
+          <blockquote class="mt-7 border-l-4 border-[#8A5CFF] pl-5 sm:pl-6">
+            <p class="text-base sm:text-lg text-white/85 leading-relaxed italic">
+              “Porque nadie puede poner otro fundamento que el que está puesto, el cual es Jesucristo.”
+            </p>
 
-            <div class="bg-white rounded-3xl p-6 border border-[#0B1630]/5 shadow-sm">
-              <h3 class="text-2xl font-extrabold">Jesucristo</h3>
-              <p class="mt-3 text-[#0B1630]/70 leading-relaxed">Creemos que Jesucristo es el Hijo de Dios, vivió sin pecado, murió en la cruz por nuestros pecados y resucitó victoriosamente al tercer día.</p>
-            </div>
+            <footer class="mt-3 text-sm font-bold text-[#C9B7FF]">
+              1 Corintios 3:11
+            </footer>
+          </blockquote>
 
-            <div class="bg-white rounded-3xl p-6 border border-[#0B1630]/5 shadow-sm">
-              <h3 class="text-2xl font-extrabold">El Espíritu Santo</h3>
-              <p class="mt-3 text-[#0B1630]/70 leading-relaxed">Creemos que el Espíritu Santo habita en cada creyente, guiando, fortaleciendo y transformando nuestras vidas para reflejar a Cristo.</p>
-            </div>
-
-            <div class="bg-white rounded-3xl p-6 border border-[#0B1630]/5 shadow-sm">
-              <h3 class="text-2xl font-extrabold">Salvación</h3>
-              <p class="mt-3 text-[#0B1630]/70 leading-relaxed">Creemos que la salvación es un regalo de la gracia de Dios, recibido por medio de la fe en Jesucristo, no por obras humanas.</p>
-            </div>
-
-            <div class="bg-white rounded-3xl p-6 border border-[#0B1630]/5 shadow-sm">
-              <h3 class="text-2xl font-extrabold">La Iglesia</h3>
-              <p class="mt-3 text-[#0B1630]/70 leading-relaxed">Creemos que la Iglesia es el cuerpo de Cristo, llamado a adorar a Dios, crecer espiritualmente, servir y compartir el evangelio.</p>
-            </div>
-
-            <div class="bg-white rounded-3xl p-6 border border-[#0B1630]/5 shadow-sm">
-              <h3 class="text-2xl font-extrabold">Bautismo y Santa Cena</h3>
-              <p class="mt-3 text-[#0B1630]/70 leading-relaxed">Creemos en el bautismo como expresión pública de fe y en la Santa Cena como recordatorio del sacrificio de Jesús.</p>
-            </div>
-
-            <div class="bg-white rounded-3xl p-6 border border-[#0B1630]/5 shadow-sm">
-              <h3 class="text-2xl font-extrabold">Esperanza Eterna</h3>
-              <p class="mt-3 text-[#0B1630]/70 leading-relaxed">Creemos en la segunda venida de Jesucristo y en la promesa de vida eterna para todos los que han puesto su fe en Él.</p>
-            </div>
-          </div>
         </div>
 
       </div>
     </div>
   </div>
+</div>
 
 <!-- HERO -->
 <section id="inicio" class="relative min-h-screen flex items-center overflow-hidden">
