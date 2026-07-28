@@ -485,66 +485,164 @@
     </div>
   </div>
 
-  <!-- HERO -->
-  <section id="inicio" class="relative min-h-screen flex items-center overflow-hidden">
-   <div
-    class="absolute inset-0 bg-cover bg-right lg:bg-[position:72%_center] bg-no-repeat"
-    style="background-image:url('imagenes/hero-bautismo.jpg');">
-</div>
-    <div
-    class="absolute inset-0 bg-cover bg-right lg:bg-[position:72%_center] bg-no-repeat scale-105 blur-[1px]"
-    style="background-image:url('imagenes/hero-bautismo.jpg');">
-</div>
+<!-- HERO -->
+<section id="inicio" class="relative min-h-screen flex items-center overflow-hidden">
 
-    <div class="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-10 pt-36 pb-56 lg:pb-44">
-      <div class="max-w-2xl">
-        <p class="uppercase tracking-[0.35em] text-xs md:text-sm text-white/80 mb-5 font-medium">Bienvenido a CCR</p>
+  <!-- IMAGEN DE FONDO -->
+  <div
+    class="absolute inset-0 bg-cover bg-right bg-no-repeat scale-[1.03] lg:bg-[position:72%_center]"
+    style="background-image: url('imagenes/hero-bautismo.jpg');"
+  ></div>
 
-        <h1 class="text-4xl sm:text-5xl lg:text-7xl font-extrabold leading-[0.98] tracking-tight text-white">
-          Un lugar para crecer en fe, encontrar comunidad y acercarte a Dios.
-        </h1>
+  <!-- GRADIENTE IZQUIERDO PARA DAR CONTRASTE AL TEXTO -->
+  <div class="absolute inset-0 bg-gradient-to-r from-black/85 via-black/55 to-transparent"></div>
 
-        <p class="mt-7 text-base md:text-xl text-white/80 leading-relaxed max-w-xl">
-          Creemos en el poder transformador de Jesucristo para restaurar vidas, fortalecer familias y dar propósito.
-        </p>
+  <!-- GRADIENTE SUPERIOR PARA MEJORAR LA VISIBILIDAD DEL MENÚ -->
+  <div class="absolute inset-x-0 top-0 h-44 bg-gradient-to-b from-black/65 via-black/25 to-transparent"></div>
 
-        <div class="mt-9 flex flex-col sm:flex-row gap-4">
-          <a href="#visitanos" class="inline-flex items-center justify-center px-7 py-4 rounded-full font-semibold text-white bg-gradient-to-r from-[#FF6B6B] to-[#8A5CFF] hover:scale-105 transition-all duration-300 shadow-2xl shadow-black/30">PLANIFICA TU VISITA</a>
-          <button type="button" data-open-faith class="inline-flex items-center justify-center px-7 py-4 rounded-full border border-white/30 text-white hover:bg-white/10 backdrop-blur-md transition-all duration-300">LO QUE CREEMOS</button>
-        </div>
+  <!-- GRADIENTE INFERIOR PARA INTEGRAR LA BARRA DE VALORES -->
+  <div class="absolute inset-x-0 bottom-0 h-80 bg-gradient-to-t from-[#0B1630]/95 via-[#0B1630]/45 to-transparent"></div>
+
+  <!-- VIÑETEADO SUAVE -->
+  <div class="absolute inset-0 shadow-[inset_0_0_220px_rgba(0,0,0,0.22)]"></div>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <div class="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-10 pt-36 pb-64 lg:pb-48">
+
+    <div class="max-w-2xl">
+
+      <p class="uppercase tracking-[0.35em] text-xs md:text-sm text-white/80 mb-5 font-medium">
+        Bienvenido a CCR
+      </p>
+
+      <h1 class="text-4xl sm:text-5xl lg:text-7xl font-extrabold leading-[0.98] tracking-tight text-white">
+        Un lugar para crecer en fe, encontrar comunidad y acercarte a Dios.
+      </h1>
+
+      <p class="mt-7 text-base md:text-xl text-white/80 leading-relaxed max-w-xl">
+        Creemos en el poder transformador de Jesucristo para restaurar vidas,
+        fortalecer familias y dar propósito.
+      </p>
+
+      <div class="mt-9 flex flex-col sm:flex-row gap-4">
+
+        <a
+          href="#visitanos"
+          class="inline-flex items-center justify-center px-7 py-4 rounded-full font-semibold text-white bg-gradient-to-r from-[#FF6B6B] to-[#8A5CFF] hover:scale-105 transition-all duration-300 shadow-2xl shadow-black/30"
+        >
+          PLANIFICA TU VISITA
+        </a>
+
+        <button
+          type="button"
+          data-open-faith
+          class="inline-flex items-center justify-center px-7 py-4 rounded-full border border-white/30 text-white hover:bg-white/10 backdrop-blur-md transition-all duration-300"
+        >
+          LO QUE CREEMOS
+        </button>
+
       </div>
+
     </div>
 
-    <div class="absolute bottom-0 left-0 w-full z-20">
-      <div class="bg-black/35 backdrop-blur-xl border-t border-white/10">
-        <div class="max-w-7xl mx-auto px-6 lg:px-10 py-5">
-          <div class="grid grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-8">
-            <div class="flex items-start gap-3"><div class="text-[#FF6B6B] text-xl">♡</div><div><h3 class="text-xs font-bold uppercase text-white">Amor</h3><p class="text-xs text-white/65 mt-1">Amamos como Jesús nos amó.</p></div></div>
-            <div class="flex items-start gap-3"><div class="text-[#8A5CFF] text-xl">▱</div><div><h3 class="text-xs font-bold uppercase text-white">Palabra</h3><p class="text-xs text-white/65 mt-1">La Biblia es nuestro fundamento.</p></div></div>
-            <div class="flex items-start gap-3"><div class="text-[#FFB86B] text-xl">☷</div><div><h3 class="text-xs font-bold uppercase text-white">Comunidad</h3><p class="text-xs text-white/65 mt-1">Caminamos juntos en fe.</p></div></div>
-            <div class="flex items-start gap-3"><div class="text-[#C084FC] text-xl">✝</div><div><h3 class="text-xs font-bold uppercase text-white">Propósito</h3><p class="text-xs text-white/65 mt-1">Dios tiene propósito para ti.</p></div></div>
+  </div>
+
+  <!-- BARRA INFERIOR DE VALORES -->
+  <div class="absolute bottom-0 left-0 w-full z-20">
+
+    <div class="bg-[#0B1630]/55 backdrop-blur-xl border-t border-white/10">
+
+      <div class="max-w-7xl mx-auto px-6 lg:px-10 py-5">
+
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-8">
+
+          <!-- AMOR -->
+          <div class="flex items-start gap-3">
+            <div class="text-[#FF6B6B] text-xl">♡</div>
+
+            <div>
+              <h3 class="text-xs font-bold uppercase text-white">
+                Amor
+              </h3>
+
+              <p class="text-xs text-white/65 mt-1">
+                Amamos como Jesús nos amó.
+              </p>
+            </div>
           </div>
+
+          <!-- PALABRA -->
+          <div class="flex items-start gap-3">
+            <div class="text-[#8A5CFF] text-xl">▱</div>
+
+            <div>
+              <h3 class="text-xs font-bold uppercase text-white">
+                Palabra
+              </h3>
+
+              <p class="text-xs text-white/65 mt-1">
+                La Biblia es nuestro fundamento.
+              </p>
+            </div>
+          </div>
+
+          <!-- COMUNIDAD -->
+          <div class="flex items-start gap-3">
+            <div class="text-[#FFB86B] text-xl">☷</div>
+
+            <div>
+              <h3 class="text-xs font-bold uppercase text-white">
+                Comunidad
+              </h3>
+
+              <p class="text-xs text-white/65 mt-1">
+                Caminamos juntos en fe.
+              </p>
+            </div>
+          </div>
+
+          <!-- PROPÓSITO -->
+          <div class="flex items-start gap-3">
+            <div class="text-[#C084FC] text-xl">✝</div>
+
+            <div>
+              <h3 class="text-xs font-bold uppercase text-white">
+                Propósito
+              </h3>
+
+              <p class="text-xs text-white/65 mt-1">
+                Dios tiene propósito para ti.
+              </p>
+            </div>
+          </div>
+
         </div>
+
       </div>
 
-<div class="relative w-full overflow-hidden leading-none -mb-px">
-
-  <svg
-    class="block w-full h-[56px]"
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 1440 120"
-    preserveAspectRatio="none"
-  >
-    <path
-      fill="#FAF8F5"
-      d="M0,64L80,69.3C160,75,320,85,480,85.3C640,85,800,75,960,64C1120,53,1280,43,1360,37.3L1440,32L1440,120L0,120Z"
-    ></path>
-  </svg>
-
-</div>
     </div>
-  </section>
 
+    <!-- CURVA INFERIOR -->
+    <div class="relative w-full overflow-hidden leading-none -mb-px">
+
+      <svg
+        class="block w-full h-[56px]"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 1440 120"
+        preserveAspectRatio="none"
+      >
+        <path
+          fill="#FAF8F5"
+          d="M0,64L80,69.3C160,75,320,85,480,85.3C640,85,800,75,960,64C1120,53,1280,43,1360,37.3L1440,32L1440,120L0,120Z"
+        ></path>
+      </svg>
+
+    </div>
+
+  </div>
+
+</section>
+  
   <!-- QUIÉNES SOMOS -->
   <section id="nosotros" class="bg-[#FAF8F5] text-[#0B1630] py-20 lg:py-32 px-6 overflow-hidden">
     <div class="max-w-7xl mx-auto">
