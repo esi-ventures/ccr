@@ -2007,7 +2007,30 @@
 
 </a>
 
+<script>
+document.addEventListener("DOMContentLoaded", () => {
 
+  const accordions = document.querySelectorAll("#faithModal details");
+
+  accordions.forEach(item => {
+
+    item.addEventListener("toggle", function () {
+
+      if (!this.open) return;
+
+      accordions.forEach(other => {
+        if (other !== this) {
+          other.open = false;
+        }
+      });
+
+    });
+
+  });
+
+});
+</script>
+  
   
 </body>
 </html>
