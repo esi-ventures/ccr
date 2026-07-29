@@ -1824,105 +1824,714 @@ Contacto
  
 
   <!-- REUNIONES -->
-  <section id="reuniones" class="bg-white text-[#0B1630] py-20 lg:py-32 px-6 overflow-hidden">
-    <div class="max-w-7xl mx-auto">
+<section
+  id="reuniones"
+  class="bg-white text-[#0B1630] py-20 lg:py-32 px-6 overflow-hidden"
+>
+  <div class="max-w-7xl mx-auto">
 
-      <div class="max-w-5xl mb-14 lg:mb-20">
-        <p class="uppercase tracking-[.55em] lg:tracking-[1em] text-sm lg:text-xl font-bold text-[#8A5CFF] mb-5">Comunidad y Crecimiento</p>
-        <h2 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[0.95] lg:leading-[0.92] tracking-tight">
-          Reuniones Semanales
-        </h2>
-        <p class="mt-7 max-w-3xl text-base lg:text-lg text-[#0B1630]/75 leading-relaxed">
-          Cada reunión es una oportunidad para crecer, aprender y conectar con otros.
-        </p>
-      </div>
+    <!-- ENCABEZADO -->
+    <div class="max-w-5xl mb-12 lg:mb-16">
 
-      <div class="carousel-wrap">
-        <!-- Ocultamos las flechas en computadoras (lg:hidden) porque ya se ordenan en dos filas fijas -->
-        <button type="button" aria-label="Anterior" class="carousel-prev lg:hidden">❮</button>
+      <p
+        class="uppercase tracking-[.55em] lg:tracking-[1em]
+               text-sm lg:text-xl font-bold
+               text-[#8A5CFF] mb-5"
+      >
+        Comunidad y Crecimiento
+      </p>
 
-        <div class="mobile-scroll carousel-track lg:grid-cols-3 lg:gap-8">
+      <h2
+        class="text-4xl sm:text-5xl lg:text-6xl
+               font-extrabold leading-[0.95] lg:leading-[0.92]
+               tracking-tight"
+      >
+        Reuniones Semanales
+      </h2>
 
-          <!-- TARJETA: LUNES (Efecto Hover Añadido) -->
-          <div class="mobile-card bg-[#FAF8F5] rounded-[1.6rem] p-4 lg:p-8 border border-[#0B1630]/5 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-md hover:border-[#8A5CFF]/30 transform">
-            <h3 class="text-xl lg:text-3xl font-extrabold mb-5">Lunes</h3>
-            <div class="space-y-4">
-              <div><h4 class="text-base lg:text-lg font-bold">Oración de Varones</h4><p class="text-[#FF6B6B] mt-1 font-semibold">07:00</p></div>
-              <div><h4 class="text-base lg:text-lg font-bold">Reunión de Varones</h4><p class="text-[#FF6B6B] mt-1 font-semibold">20:00 – 22:00</p></div>
+      <p
+        class="mt-7 max-w-3xl text-base lg:text-lg
+               text-[#0B1630]/75 leading-relaxed"
+      >
+        Cada reunión es una oportunidad para crecer en la fe,
+        conocer la Palabra de Dios y compartir en comunidad.
+      </p>
+
+    </div>
+
+    <!-- CULTO PRINCIPAL DEL DOMINGO -->
+    <div
+      class="relative overflow-hidden rounded-[2rem]
+             bg-[#0B1630] text-white
+             shadow-2xl"
+    >
+
+      <!-- LUCES DECORATIVAS -->
+      <div
+        class="absolute -top-24 -right-16
+               w-80 h-80 rounded-full
+               bg-[#8A5CFF]/35 blur-3xl"
+      ></div>
+
+      <div
+        class="absolute -bottom-24 -left-16
+               w-80 h-80 rounded-full
+               bg-[#FF6B6B]/30 blur-3xl"
+      ></div>
+
+      <div
+        class="relative grid lg:grid-cols-[1.15fr_.85fr]
+               gap-10 items-center
+               p-7 sm:p-10 lg:p-14"
+      >
+
+        <!-- INFORMACIÓN -->
+        <div>
+
+          <div
+            class="inline-flex items-center gap-3
+                   px-4 py-2 rounded-full
+                   bg-white/10 border border-white/10
+                   text-xs sm:text-sm font-bold
+                   uppercase tracking-[0.25em]"
+          >
+            <span
+              class="w-2.5 h-2.5 rounded-full
+                     bg-[#FF6B6B] animate-pulse"
+            ></span>
+
+            Encuentro principal
+          </div>
+
+          <h3
+            class="mt-7 text-4xl sm:text-5xl lg:text-6xl
+                   font-extrabold leading-[0.95]
+                   tracking-tight"
+          >
+            Culto General
+          </h3>
+
+          <p
+            class="mt-5 text-lg sm:text-xl
+                   text-white/75 leading-relaxed max-w-2xl"
+          >
+            Te invitamos a compartir un tiempo de alabanza,
+            enseñanza bíblica, oración y comunión.
+          </p>
+
+          <div
+            class="mt-8 grid sm:grid-cols-2
+                   gap-4 max-w-2xl"
+          >
+
+            <!-- DÍA Y HORA -->
+            <div
+              class="rounded-2xl bg-white/10
+                     border border-white/10 p-5"
+            >
+              <p
+                class="text-xs uppercase tracking-[0.25em]
+                       text-white/55 font-bold"
+              >
+                Día y horario
+              </p>
+
+              <p class="mt-2 text-xl font-bold">
+                Domingo
+              </p>
+
+              <p class="mt-1 text-white/75">
+                10:00 – 12:00
+              </p>
             </div>
-          </div>
 
-          <!-- TARJETA: MARTES (Efecto Hover Añadido) -->
-          <div class="mobile-card bg-[#FAF8F5] rounded-[1.6rem] p-4 lg:p-8 border border-[#0B1630]/5 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-md hover:border-[#8A5CFF]/30 transform">
-            <h3 class="text-xl lg:text-3xl font-extrabold mb-5">Martes</h3>
-            <div class="space-y-4">
-              <div><h4 class="text-base lg:text-lg font-bold">Oración de Mujeres</h4><p class="text-[#FF6B6B] mt-1 font-semibold">07:00</p></div>
-              <div><h4 class="text-base lg:text-lg font-bold">Reunión de Mujeres</h4><p class="text-[#FF6B6B] mt-1 font-semibold">17:00 – 19:00</p></div>
+            <!-- DIRECCIÓN -->
+            <div
+              class="rounded-2xl bg-white/10
+                     border border-white/10 p-5"
+            >
+              <p
+                class="text-xs uppercase tracking-[0.25em]
+                       text-white/55 font-bold"
+              >
+                Dirección
+              </p>
+
+              <p class="mt-2 text-xl font-bold">
+                Achumani
+              </p>
+
+              <p class="mt-1 text-white/75">
+                Calle 11 #92, casi esquina Alexander
+              </p>
             </div>
+
           </div>
 
-          <!-- TARJETA: MIÉRCOLES (Efecto Hover Añadido) -->
-          <div class="mobile-card bg-[#FAF8F5] rounded-[1.6rem] p-4 lg:p-8 border border-[#0B1630]/5 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-md hover:border-[#8A5CFF]/30 transform">
-            <h3 class="text-xl lg:text-3xl font-extrabold mb-5">Miércoles</h3>
-            <h4 class="text-base lg:text-lg font-bold">Estudio Bíblico</h4>
-            <p class="text-[#FF6B6B] mt-1 font-semibold">20:00 – 21:00</p>
-          </div>
+          <div
+            class="mt-8 flex flex-col sm:flex-row gap-4"
+          >
 
-          <!-- TARJETA: JUEVES (Efecto Hover Añadido) -->
-          <div class="mobile-card bg-[#FAF8F5] rounded-[1.6rem] p-4 lg:p-8 border border-[#0B1630]/5 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-md hover:border-[#8A5CFF]/30 transform">
-            <h3 class="text-xl lg:text-3xl font-extrabold mb-5">Jueves</h3>
-            <h4 class="text-base lg:text-lg font-bold">Discipulado</h4>
-            <p class="text-[#FF6B6B] mt-1 font-semibold">17:30 – 21:00</p>
-          </div>
+            <a
+              href="#visitanos"
+              class="inline-flex items-center justify-center
+                     px-8 py-4 rounded-full
+                     bg-gradient-to-r
+                     from-[#FF6B6B] to-[#8A5CFF]
+                     text-white font-bold
+                     shadow-xl
+                     hover:scale-105
+                     transition-all duration-300"
+            >
+              PLANIFICA TU VISITA
+            </a>
 
-          <!-- TARJETA: VIERNES (Efecto Hover Añadido) -->
-          <div class="mobile-card bg-[#FAF8F5] rounded-[1.6rem] p-4 lg:p-8 border border-[#0B1630]/5 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-md hover:border-[#8A5CFF]/30 transform">
-            <h3 class="text-xl lg:text-3xl font-extrabold mb-5">Viernes</h3>
-            <div class="space-y-4">
-              <div><h4 class="text-base lg:text-lg font-bold">Reunión de Familias</h4><p class="text-[#FF6B6B] mt-1 font-semibold">20:00 – 22:00</p></div>
-              <div><h4 class="text-base lg:text-lg font-bold">Vigilia de Oración</h4><p class="text-[#FF6B6B] mt-1 font-semibold">20:00 – 22:00</p><p class="text-sm text-[#0B1630]/55 mt-1 italic">Último viernes de cada mes</p></div>
-            </div>
-          </div>
+            <a
+              href="https://wa.me/59167131579?text=Hola%20CCR,%20quisiera%20más%20información%20sobre%20el%20culto%20del%20domingo."
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center justify-center
+                     px-8 py-4 rounded-full
+                     border border-white/25
+                     text-white font-semibold
+                     hover:bg-white/10
+                     transition-all duration-300"
+            >
+              ESCRÍBENOS
+            </a>
 
-          <!-- TARJETA: SÁBADO (Efecto Hover Añadido) -->
-          <div class="mobile-card bg-[#FAF8F5] rounded-[1.6rem] p-4 lg:p-8 border border-[#0B1630]/5 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-md hover:border-[#8A5CFF]/30 transform">
-            <h3 class="text-xl lg:text-3xl font-extrabold mb-5">Sábado</h3>
-            <div class="space-y-4">
-              <div><h4 class="text-base lg:text-lg font-bold">Jóvenes — Koinonía</h4><p class="text-[#FF6B6B] mt-1 font-semibold">18:00 – 20:00</p></div>
-              <div><h4 class="text-base lg:text-lg font-bold">Alabanza</h4><p class="text-[#FF6B6B] mt-1 font-semibold">16:00 – 18:00</p></div>
-            </div>
           </div>
 
         </div>
 
-        <!-- Ocultamos las flechas en computadoras (lg:hidden) -->
-        <button type="button" aria-label="Siguiente" class="carousel-next lg:hidden">❯</button>
-      </div>
+        <!-- BLOQUE VISUAL -->
+        <div
+          class="relative rounded-[2rem]
+                 bg-gradient-to-br
+                 from-[#FF6B6B] to-[#8A5CFF]
+                 p-[1px]"
+        >
 
-      <!-- BANNER DE ENCUENTRO PRINCIPAL (Efecto hover sutil de escala añadido) -->
-      <div class="mt-10 relative overflow-hidden bg-gradient-to-r from-[#FF6B6B] to-[#8A5CFF] rounded-[2rem] p-8 lg:p-14 text-center text-white shadow-2xl transition-all duration-300 hover:scale-[1.01] transform">
-        <p class="uppercase tracking-[0.5em] text-xs lg:text-sm font-bold text-white/80 mb-5">Encuentro Principal</p>
-        <h3 class="text-3xl md:text-5xl font-extrabold leading-tight">Domingo — Culto General</h3>
-        <p class="mt-5 text-xl lg:text-2xl font-semibold">10:00 – 12:00</p>
-      </div>
+          <div
+            class="rounded-[calc(2rem-1px)]
+                   bg-[#111D38]/95
+                   px-7 py-10 sm:p-10
+                   text-center"
+          >
 
-      <!-- TARJETA DE CONSEJERÍA (Efecto Hover Añadido) -->
-      <div class="mt-10 bg-[#FAF8F5] rounded-[2rem] p-7 lg:p-12 border border-[#0B1630]/5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md transform">
-        <div class="grid md:grid-cols-2 gap-8 items-center">
-          <div>
-            <p class="uppercase tracking-[0.4em] text-xs font-bold text-[#8A5CFF] mb-4">Acompañamiento Espiritual</p>
-            <h3 class="text-3xl lg:text-4xl font-extrabold">Consejería</h3>
-            <p class="mt-5 text-base lg:text-lg text-[#0B1630]/70 leading-relaxed">Espacios de consejería y acompañamiento espiritual para personas y familias.</p>
+            <p
+              class="uppercase tracking-[0.4em]
+                     text-xs font-bold text-white/60"
+            >
+              Cada domingo
+            </p>
+
+            <p
+              class="mt-6 text-7xl sm:text-8xl
+                     font-extrabold tracking-tight"
+            >
+              10:00
+            </p>
+
+            <p
+              class="mt-3 text-lg sm:text-xl
+                     text-white/70"
+            >
+              Culto General
+            </p>
+
+            <div
+              class="mt-8 h-px
+                     bg-gradient-to-r
+                     from-transparent
+                     via-white/25
+                     to-transparent"
+            ></div>
+
+            <p
+              class="mt-8 text-base
+                     text-white/70 leading-relaxed"
+            >
+              Ven tal como eres. Nos encantará recibirte y conocerte.
+            </p>
+
           </div>
-          <div class="space-y-4">
-            <div class="bg-white rounded-2xl p-4 shadow-inner"><p class="text-[#0B1630]/75 font-medium">Lunes, martes y miércoles por la tarde</p></div>
-            <div class="bg-white rounded-2xl p-4 shadow-inner"><p class="text-[#0B1630]/75 font-medium">Contacto: 67131579</p></div>
-          </div>
+
         </div>
+
       </div>
 
     </div>
-  </section>
+
+    <!-- ACTIVIDADES DE LA SEMANA -->
+    <div class="mt-20 lg:mt-28">
+
+      <div class="max-w-3xl mb-10 lg:mb-14">
+
+        <p
+          class="uppercase tracking-[0.4em]
+                 text-xs sm:text-sm font-bold
+                 text-[#FF6B6B] mb-4"
+        >
+          Durante la semana
+        </p>
+
+        <h3
+          class="text-3xl sm:text-4xl lg:text-5xl
+                 font-extrabold tracking-tight"
+        >
+          Encuentra una reunión para ti
+        </h3>
+
+        <p
+          class="mt-5 text-base lg:text-lg
+                 text-[#0B1630]/70 leading-relaxed"
+        >
+          Contamos con espacios de oración, enseñanza,
+          discipulado y comunidad para diferentes etapas de la vida.
+        </p>
+
+      </div>
+
+      <!-- CARRUSEL EN MÓVIL / CUADRÍCULA EN ESCRITORIO -->
+      <div class="carousel-wrap">
+
+        <button
+          type="button"
+          aria-label="Reunión anterior"
+          class="carousel-prev lg:hidden"
+        >
+          ❮
+        </button>
+
+        <div
+          class="mobile-scroll carousel-track
+                 lg:grid-cols-3 lg:gap-8"
+        >
+
+          <!-- LUNES -->
+          <article
+            class="mobile-card bg-[#FAF8F5]
+                   rounded-[1.75rem] p-5 lg:p-8
+                   border border-[#0B1630]/5
+                   shadow-sm
+                   transition-all duration-300
+                   hover:-translate-y-2
+                   hover:shadow-lg
+                   hover:border-[#8A5CFF]/25"
+          >
+
+            <div class="flex items-center justify-between gap-4 mb-6">
+
+              <h4 class="text-2xl lg:text-3xl font-extrabold">
+                Lunes
+              </h4>
+
+              <span
+                class="flex items-center justify-center
+                       w-11 h-11 rounded-full
+                       bg-[#8A5CFF]/10
+                       text-[#8A5CFF] text-xl"
+              >
+                ◌
+              </span>
+
+            </div>
+
+            <div class="space-y-5">
+
+              <div>
+                <h5 class="text-base lg:text-lg font-bold">
+                  Oración de Varones
+                </h5>
+
+                <p class="text-[#FF6B6B] mt-1 font-semibold">
+                  07:00
+                </p>
+              </div>
+
+              <div class="h-px bg-[#0B1630]/8"></div>
+
+              <div>
+                <h5 class="text-base lg:text-lg font-bold">
+                  Reunión de Varones
+                </h5>
+
+                <p class="text-[#FF6B6B] mt-1 font-semibold">
+                  20:00 – 22:00
+                </p>
+              </div>
+
+            </div>
+
+          </article>
+
+          <!-- MARTES -->
+          <article
+            class="mobile-card bg-[#FAF8F5]
+                   rounded-[1.75rem] p-5 lg:p-8
+                   border border-[#0B1630]/5
+                   shadow-sm
+                   transition-all duration-300
+                   hover:-translate-y-2
+                   hover:shadow-lg
+                   hover:border-[#8A5CFF]/25"
+          >
+
+            <div class="flex items-center justify-between gap-4 mb-6">
+
+              <h4 class="text-2xl lg:text-3xl font-extrabold">
+                Martes
+              </h4>
+
+              <span
+                class="flex items-center justify-center
+                       w-11 h-11 rounded-full
+                       bg-[#FF6B6B]/10
+                       text-[#FF6B6B] text-xl"
+              >
+                ♡
+              </span>
+
+            </div>
+
+            <div class="space-y-5">
+
+              <div>
+                <h5 class="text-base lg:text-lg font-bold">
+                  Oración de Mujeres
+                </h5>
+
+                <p class="text-[#FF6B6B] mt-1 font-semibold">
+                  07:00
+                </p>
+              </div>
+
+              <div class="h-px bg-[#0B1630]/8"></div>
+
+              <div>
+                <h5 class="text-base lg:text-lg font-bold">
+                  Reunión de Mujeres
+                </h5>
+
+                <p class="text-[#FF6B6B] mt-1 font-semibold">
+                  17:00 – 19:00
+                </p>
+              </div>
+
+            </div>
+
+          </article>
+
+          <!-- MIÉRCOLES -->
+          <article
+            class="mobile-card bg-[#FAF8F5]
+                   rounded-[1.75rem] p-5 lg:p-8
+                   border border-[#0B1630]/5
+                   shadow-sm
+                   transition-all duration-300
+                   hover:-translate-y-2
+                   hover:shadow-lg
+                   hover:border-[#8A5CFF]/25"
+          >
+
+            <div class="flex items-center justify-between gap-4 mb-6">
+
+              <h4 class="text-2xl lg:text-3xl font-extrabold">
+                Miércoles
+              </h4>
+
+              <span
+                class="flex items-center justify-center
+                       w-11 h-11 rounded-full
+                       bg-[#8A5CFF]/10
+                       text-[#8A5CFF] text-xl"
+              >
+                ▱
+              </span>
+
+            </div>
+
+            <div>
+              <h5 class="text-base lg:text-lg font-bold">
+                Estudio Bíblico
+              </h5>
+
+              <p class="text-[#FF6B6B] mt-1 font-semibold">
+                20:00 – 21:00
+              </p>
+            </div>
+
+          </article>
+
+          <!-- JUEVES -->
+          <article
+            class="mobile-card bg-[#FAF8F5]
+                   rounded-[1.75rem] p-5 lg:p-8
+                   border border-[#0B1630]/5
+                   shadow-sm
+                   transition-all duration-300
+                   hover:-translate-y-2
+                   hover:shadow-lg
+                   hover:border-[#8A5CFF]/25"
+          >
+
+            <div class="flex items-center justify-between gap-4 mb-6">
+
+              <h4 class="text-2xl lg:text-3xl font-extrabold">
+                Jueves
+              </h4>
+
+              <span
+                class="flex items-center justify-center
+                       w-11 h-11 rounded-full
+                       bg-[#FFB86B]/15
+                       text-[#FF8A4C] text-xl"
+              >
+                ✦
+              </span>
+
+            </div>
+
+            <div>
+              <h5 class="text-base lg:text-lg font-bold">
+                Discipulado
+              </h5>
+
+              <p class="text-[#FF6B6B] mt-1 font-semibold">
+                17:30 – 21:00
+              </p>
+            </div>
+
+          </article>
+
+          <!-- VIERNES -->
+          <article
+            class="mobile-card bg-[#FAF8F5]
+                   rounded-[1.75rem] p-5 lg:p-8
+                   border border-[#0B1630]/5
+                   shadow-sm
+                   transition-all duration-300
+                   hover:-translate-y-2
+                   hover:shadow-lg
+                   hover:border-[#8A5CFF]/25"
+          >
+
+            <div class="flex items-center justify-between gap-4 mb-6">
+
+              <h4 class="text-2xl lg:text-3xl font-extrabold">
+                Viernes
+              </h4>
+
+              <span
+                class="flex items-center justify-center
+                       w-11 h-11 rounded-full
+                       bg-[#FF6B6B]/10
+                       text-[#FF6B6B] text-xl"
+              >
+                ♡
+              </span>
+
+            </div>
+
+            <div class="space-y-5">
+
+              <div>
+                <h5 class="text-base lg:text-lg font-bold">
+                  Reunión de Familias
+                </h5>
+
+                <p class="text-[#FF6B6B] mt-1 font-semibold">
+                  20:00 – 22:00
+                </p>
+              </div>
+
+              <div class="h-px bg-[#0B1630]/8"></div>
+
+              <div>
+                <h5 class="text-base lg:text-lg font-bold">
+                  Vigilia de Oración
+                </h5>
+
+                <p class="text-[#FF6B6B] mt-1 font-semibold">
+                  20:00 – 22:00
+                </p>
+
+                <p
+                  class="mt-2 text-sm
+                         text-[#0B1630]/55 italic"
+                >
+                  Último viernes de cada mes
+                </p>
+              </div>
+
+            </div>
+
+          </article>
+
+          <!-- SÁBADO -->
+          <article
+            class="mobile-card bg-[#FAF8F5]
+                   rounded-[1.75rem] p-5 lg:p-8
+                   border border-[#0B1630]/5
+                   shadow-sm
+                   transition-all duration-300
+                   hover:-translate-y-2
+                   hover:shadow-lg
+                   hover:border-[#8A5CFF]/25"
+          >
+
+            <div class="flex items-center justify-between gap-4 mb-6">
+
+              <h4 class="text-2xl lg:text-3xl font-extrabold">
+                Sábado
+              </h4>
+
+              <span
+                class="flex items-center justify-center
+                       w-11 h-11 rounded-full
+                       bg-[#8A5CFF]/10
+                       text-[#8A5CFF] text-xl"
+              >
+                ✝
+              </span>
+
+            </div>
+
+            <div class="space-y-5">
+
+              <div>
+                <h5 class="text-base lg:text-lg font-bold">
+                  Jóvenes — Koinonía
+                </h5>
+
+                <p class="text-[#FF6B6B] mt-1 font-semibold">
+                  18:00 – 20:00
+                </p>
+              </div>
+
+              <div class="h-px bg-[#0B1630]/8"></div>
+
+              <div>
+                <h5 class="text-base lg:text-lg font-bold">
+                  Alabanza
+                </h5>
+
+                <p class="text-[#FF6B6B] mt-1 font-semibold">
+                  16:00 – 18:00
+                </p>
+              </div>
+
+            </div>
+
+          </article>
+
+        </div>
+
+        <button
+          type="button"
+          aria-label="Siguiente reunión"
+          class="carousel-next lg:hidden"
+        >
+          ❯
+        </button>
+
+      </div>
+
+    </div>
+
+    <!-- CONSEJERÍA -->
+    <div
+      class="mt-20 lg:mt-28
+             rounded-[2rem]
+             bg-[#FAF8F5]
+             border border-[#0B1630]/5
+             overflow-hidden shadow-sm"
+    >
+
+      <div
+        class="grid lg:grid-cols-[1.1fr_.9fr]
+               gap-8 lg:gap-14 items-center
+               p-7 sm:p-10 lg:p-14"
+      >
+
+        <div>
+
+          <p
+            class="uppercase tracking-[0.4em]
+                   text-xs font-bold
+                   text-[#8A5CFF] mb-4"
+          >
+            Acompañamiento espiritual
+          </p>
+
+          <h3
+            class="text-3xl sm:text-4xl lg:text-5xl
+                   font-extrabold tracking-tight"
+          >
+            Consejería
+          </h3>
+
+          <p
+            class="mt-5 text-base lg:text-lg
+                   text-[#0B1630]/70 leading-relaxed"
+          >
+            Ofrecemos espacios de conversación, oración y
+            acompañamiento espiritual para personas y familias.
+          </p>
+
+        </div>
+
+        <div class="space-y-4">
+
+          <div
+            class="bg-white rounded-2xl p-5
+                   border border-[#0B1630]/5"
+          >
+            <p
+              class="text-xs uppercase tracking-[0.2em]
+                     font-bold text-[#0B1630]/45"
+            >
+              Disponibilidad
+            </p>
+
+            <p class="mt-2 text-[#0B1630] font-semibold">
+              Lunes, martes y miércoles por la tarde
+            </p>
+          </div>
+
+          <div
+            class="bg-white rounded-2xl p-5
+                   border border-[#0B1630]/5"
+          >
+            <p
+              class="text-xs uppercase tracking-[0.2em]
+                     font-bold text-[#0B1630]/45"
+            >
+              Solicitar una cita
+            </p>
+
+            <a
+              href="https://wa.me/59167131579?text=Hola%20CCR,%20quisiera%20solicitar%20una%20cita%20de%20consejería."
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-block mt-2
+                     text-[#8A5CFF] font-bold
+                     hover:text-[#FF6B6B]
+                     transition-colors"
+            >
+              WhatsApp: 67131579
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
 
 
 
