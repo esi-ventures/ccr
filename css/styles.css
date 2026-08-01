@@ -1,0 +1,395 @@
+html { scroll-behavior: smooth; }
+
+    body { overflow-x: hidden; }
+
+    .nav-scrolled {
+      background: rgba(11, 22, 48, 0.88);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.28);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .mobile-menu-open {
+      max-height: 560px;
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .mobile-menu-closed {
+      max-height: 0;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    /* CARRUSELES CON DEDO + FLECHAS */
+    .carousel-wrap {
+      position: relative;
+      width: 100%;
+      overflow: visible;
+    }
+
+.mobile-scroll {
+  display: flex;
+  gap: 0.9rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+
+  touch-action: auto;
+  overscroll-behavior-x: contain;
+
+  padding: 0 2.5rem 1rem 2.5rem;
+  margin-left: -0.75rem;
+  margin-right: -0.75rem;
+  scrollbar-width: none;
+}
+
+    .mobile-scroll::-webkit-scrollbar {
+      display: none;
+    }
+
+    .mobile-card {
+      flex: 0 0 54%;
+      min-width: 54%;
+      max-width: 54%;
+      scroll-snap-align: center;
+    }
+
+    .video-card {
+      flex: 0 0 78%;
+      min-width: 78%;
+      max-width: 78%;
+      scroll-snap-align: center;
+    }
+
+.carousel-prev,
+.carousel-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 30;
+
+  width: 54px;
+  height: 54px;
+
+  border-radius: 9999px;
+
+  background: linear-gradient(
+    135deg,
+    #FF6B6B 0%,
+    #8A5CFF 100%
+  );
+
+  color: white;
+
+  appearance: none;
+  -webkit-appearance: none;
+  border: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  text-align: center;
+
+  box-shadow:
+    0 10px 30px rgba(138,92,255,.35),
+    0 6px 18px rgba(255,107,107,.25);
+
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1;
+  padding-bottom: 2px;
+
+  transition: all 0.3s ease;
+}
+
+.carousel-prev {
+  left: 10px;
+}
+
+.carousel-next {
+  right: 10px;
+}
+
+.carousel-prev:hover,
+.carousel-next:hover {
+  transform: translateY(-50%) scale(1.08);
+  filter: brightness(1.08);
+}
+
+    @media (min-width: 640px) {
+      .mobile-card {
+        flex-basis: 38%;
+        min-width: 38%;
+        max-width: 38%;
+      }
+
+      .video-card {
+        flex-basis: 46%;
+        min-width: 46%;
+        max-width: 46%;
+      }
+    }
+
+    @media (min-width: 1024px) {
+  .mobile-scroll {
+    display: grid;
+    overflow: visible;
+    padding: 0;
+    margin: 0;
+  }
+
+  .mobile-card,
+  .video-card {
+    flex: initial;
+    min-width: 0;
+    max-width: none;
+  }
+
+  .carousel-prev,
+  .carousel-next {
+    display: none;
+  }
+}
+
+    /* FAITH MODAL */
+    .faith-modal-open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .faith-modal-open .faith-modal-panel {
+      transform: translateY(0) scale(1);
+      opacity: 1;
+    }
+
+    .faith-modal-closed {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .faith-modal-closed .faith-modal-panel {
+      transform: translateY(24px) scale(.98);
+      opacity: 0;
+    }
+
+
+    .donaciones-section {
+  background: #07142b;
+  color: #ffffff;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.donaciones-section h2 {
+  color: #f5f8ff;
+  font-size: 42px;
+  font-weight: 800;
+  margin-bottom: 20px;
+}
+
+.donaciones-section .versiculo {
+  color: #dbe8ff;
+  font-size: 20px;
+  font-style: italic;
+  line-height: 1.7;
+  max-width: 850px;
+  margin: 0 auto 30px;
+}
+
+.donaciones-section .referencia {
+  color: #9fc5ff;
+  font-weight: 700;
+}
+
+.donaciones-section p {
+  color: #d0ddf2;
+  font-size: 20px;
+  line-height: 1.7;
+  max-width: 950px;
+  margin: 0 auto;
+}
+
+.donaciones-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  margin-top: 50px;
+}
+
+.donacion-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 35px 25px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+  transition: all 0.3s ease;
+}
+
+.donacion-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 18px 45px rgba(120, 170, 255, 0.35);
+}
+
+@media (max-width: 768px) {
+  .donaciones-section {
+    padding: 55px 18px;
+  }
+
+  .donaciones-section h2 {
+    font-size: 30px;
+  }
+
+  .donaciones-section .versiculo,
+  .donaciones-section p {
+    font-size: 17px;
+  }
+
+  .donaciones-cards {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .donacion-card {
+    padding: 28px 20px;
+  }
+}
+
+.live-section {
+  padding: 80px 20px;
+  background: #07142b;
+  color: #fff;
+  text-align: center;
+}
+
+.live-video {
+  max-width: 900px;
+  margin: 35px auto 0;
+  aspect-ratio: 16 / 9;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 45px rgba(0,0,0,.35);
+}
+
+.live-video iframe {
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width: 768px) {
+  .live-section {
+    padding: 55px 16px;
+  }
+
+  .live-section h2 {
+    font-size: 2rem;
+  }
+}
+
+
+
+
+/* ==========================================
+   DECLARACIÓN DE FE — ACORDEÓN
+========================================== */
+
+#faithModal summary {
+  list-style: none;
+  transition: background-color 0.3s ease;
+}
+
+#faithModal summary::-webkit-details-marker {
+  display: none;
+}
+
+#faithModal summary::marker {
+  content: "";
+}
+
+#faithModal details {
+  transition:
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
+}
+
+#faithModal details[open] {
+  box-shadow: 0 18px 45px rgba(11, 22, 48, 0.08);
+}
+
+#faithModal details summary:hover {
+  background: rgba(138, 92, 255, 0.04);
+}
+
+/* Evita que aparezca el contorno azul predeterminado */
+#faithModal summary:focus {
+  outline: none;
+}
+
+#faithModal summary:focus-visible {
+  outline: 2px solid rgba(138, 92, 255, 0.45);
+  outline-offset: -2px;
+  border-radius: 1.5rem;
+}
+
+/* Mejora el desplazamiento dentro del modal */
+#faithModal .faith-modal-panel {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(138, 92, 255, 0.55) transparent;
+}
+
+#faithModal .faith-modal-panel::-webkit-scrollbar {
+  width: 8px;
+}
+
+#faithModal .faith-modal-panel::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+#faithModal .faith-modal-panel::-webkit-scrollbar-thumb {
+  background: rgba(138, 92, 255, 0.45);
+  border-radius: 999px;
+}
+
+#faithModal .faith-modal-panel::-webkit-scrollbar-thumb:hover {
+  background: rgba(138, 92, 255, 0.7);
+}
+
+
+/* Ajustes para móviles */
+@media (max-width: 640px) {
+
+  #faithModal .faith-modal-panel {
+    max-height: 92vh;
+    border-radius: 1.5rem;
+  }
+
+  #faithModal summary {
+    padding: 18px 20px;
+  }
+
+  #faithModal details > div {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+    /* ==========================================
+   HERO - AJUSTE SOLO PARA MÓVIL
+========================================== */
+
+.hero-bautismo-bg{
+    background-position:center center;
+}
+
+@media (max-width:768px){
+
+    .hero-bautismo-bg{
+        background-position:60% center;
+        background-size:cover;
+    }
+
+}
