@@ -3617,53 +3617,11 @@ Contacto
   </footer>
 
 
-  <script>
-    const navbar = document.getElementById("navbar");
-    const menuBtn = document.getElementById("menuBtn");
-    const mobileMenu = document.getElementById("mobileMenu");
-    const mobileLinks = document.querySelectorAll(".mobile-link");
+<script src="js/config.js"></script>
+<script src="js/menu.js"></script>
+<script src="js/app.js"></script>
 
-    const bar1 = document.getElementById("bar1");
-    const bar2 = document.getElementById("bar2");
-    const bar3 = document.getElementById("bar3");
-
-    let menuOpen = false;
-
-    function toggleMenu() {
-      menuOpen = !menuOpen;
-      menuBtn.setAttribute("aria-expanded", menuOpen);
-
-      if (menuOpen) {
-        mobileMenu.classList.remove("mobile-menu-closed");
-        mobileMenu.classList.add("mobile-menu-open");
-        bar1.style.transform = "rotate(45deg) translate(5px, 6px)";
-        bar2.style.opacity = "0";
-        bar3.style.transform = "rotate(-45deg) translate(5px, -6px)";
-        navbar.classList.add("nav-scrolled");
-      } else {
-        mobileMenu.classList.remove("mobile-menu-open");
-        mobileMenu.classList.add("mobile-menu-closed");
-        bar1.style.transform = "rotate(0deg) translate(0, 0)";
-        bar2.style.opacity = "1";
-        bar3.style.transform = "rotate(0deg) translate(0, 0)";
-        if (window.scrollY <= 40) navbar.classList.remove("nav-scrolled");
-      }
-    }
-
-    if (menuBtn) {
-      menuBtn.addEventListener("click", toggleMenu);
-    }
-
-    mobileLinks.forEach(link => {
-      link.addEventListener("click", () => {
-        if (menuOpen) toggleMenu();
-      });
-    });
-
-    window.addEventListener("scroll", () => {
-      if (window.scrollY > 40 || menuOpen) navbar.classList.add("nav-scrolled");
-      else navbar.classList.remove("nav-scrolled");
-    });
+<script>
 
     /* Declaración de Fe Modal */
     const faithModal = document.getElementById("faithModal");
